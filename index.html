@@ -468,7 +468,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=d67650d6"></script>
+<script src="/posts.js?v=5212350e"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -707,6 +707,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!md.hidden)mOpen(fa
 /* 검색은 아이콘으로 (2026-11-27 Ray) — 누르면 입력창이 열리고, X 는 지우기·닫기 */
 const hdr=document.querySelector("header");
 $("sbtn").addEventListener("click",()=>{hdr.classList.add("sopen");qi.focus()});
+{const sp=new URLSearchParams(location.search);if(sp.get("s")){hdr.classList.add("sopen");setTimeout(()=>qi.focus(),50);history.replaceState(null,"",location.pathname)}}
 qi.addEventListener("blur",()=>{if(!qi.value.trim())setTimeout(()=>hdr.classList.remove("sopen"),150)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&hdr.classList.contains("sopen")){qi.value="";qi.dispatchEvent(new Event("input"));hdr.classList.remove("sopen")}});
 $("clear").addEventListener("click",()=>{hdr.classList.remove("sopen");qi.value="";q="";drawBoard();qi.focus()});
