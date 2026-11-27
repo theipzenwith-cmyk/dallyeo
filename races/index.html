@@ -125,6 +125,22 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .race .cap{cursor:pointer}
 .race .rcard{overflow:hidden}.race h3{font-size:clamp(20px,7cqw,30px);overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
+.ig{margin-top:6px;color:var(--ink)}
+.igbar{display:flex;align-items:center;gap:2px;margin-left:-8px}
+.ib{width:46px;height:46px;border:0;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer;border-radius:12px;padding:0}
+.ib svg{width:28px;height:28px}
+.ib.like svg{stroke:#E2492F}.ib.like[aria-pressed=true] svg{fill:#E2492F}
+.ib.pop svg{animation:ddpop .35s ease-out}@keyframes ddpop{45%{transform:scale(1.32)}}
+.views{margin-left:auto;display:flex;align-items:center;gap:6px;color:var(--soft);font:600 14px system-ui,sans-serif}.views svg{width:20px;height:20px}
+.likes{margin:0 0 6px;font:700 15px system-ui,sans-serif}
+.cmt{margin:5px 0;font-size:15px;line-height:1.5;word-break:break-word}.cmt b{margin-right:7px;font-weight:700}.cmt small{color:var(--soft);margin-left:7px;font-size:12px}
+.cmall{border:0;background:none;color:var(--soft);font:15px system-ui,sans-serif;padding:2px 0;cursor:pointer}
+.cin{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);margin-top:10px;padding-top:8px}
+.cin .me{font:600 12px system-ui,sans-serif;color:var(--soft);white-space:nowrap;max-width:40%;overflow:hidden;text-overflow:ellipsis}
+.cin input{flex:1;min-width:0;background:none;border:0;color:var(--ink);font:16px system-ui,sans-serif;outline:none;padding:10px 0}
+.cin button{border:0;background:none;color:#F6D43A;font:700 15px system-ui,sans-serif;cursor:pointer;padding:8px 4px}.cin button:disabled{opacity:.35;cursor:default}
+.dheart{position:absolute;left:50%;top:45%;width:120px;height:120px;fill:#E2492F;pointer-events:none;z-index:6;transform:translate(-50%,-50%) scale(0);animation:ddh .85s ease-out forwards;filter:drop-shadow(0 4px 18px rgba(0,0,0,.35))}
+@keyframes ddh{25%{transform:translate(-50%,-50%) scale(1.15)}45%{transform:translate(-50%,-50%) scale(.95)}70%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
 .ytc .ycard{display:block;border-radius:20px;overflow:hidden;background:#141414;border:1px solid #2c2c2c;color:#f4f3ee;text-decoration:none}
 .ytc img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .ytc .yin{padding:16px 18px 18px}.ytc .yk{margin:0 0 6px;font:400 14px "Jua",sans-serif;color:#ff5a4e}
@@ -262,7 +278,7 @@ html,body{overflow-x:clip}
 <script src="/posts.js?v=80d0e261"></script>
 <script>
 {
-const CATS=[["전체","全"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["대회 일정","대"]];
+const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
 const P=window.DD_P;
 for(const p of P)p.c=[];
 const BASE="/";
@@ -359,6 +375,47 @@ const go=i=>{const d=$("deck");idx=Math.max(0,Math.min(N(cur)-1,i));d.scrollTo({
 const sync=()=>{const d=$("deck");if(!d)return;idx=Math.round(d.scrollLeft/Math.max(1,d.clientWidth));
  $("cnt").textContent=`${idx+1} / ${N(cur)}`;$("prev").disabled=idx===0;$("next").disabled=idx===N(cur)-1;
  [...$("dots").children].forEach((b,i)=>b.setAttribute("aria-current",i===idx))};
+/* 좋아요·조회수·댓글 — 파이어베이스(Firestore REST) · 2026-11-27 Ray 「인스타 구조」 */
+const FB={key:"AIzaSyDaQ23BiDahetmivUex9qZPfCRdJgmW-l0",base:"https://firestore.googleapis.com/v1/projects/dallyeo-85c6b/databases/(default)/documents"};
+const FBDOC="projects/dallyeo-85c6b/databases/(default)/documents";
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const nick=()=>{let n=ls.get("dd_name",null);if(n)return n;const A=["달리는","숨찬","가벼운","꾸준한","새벽","씩씩한","느긋한","빠른","땀나는","신난"],B=["수달","치타","여우","토끼","펭귄","고양이","강아지","다람쥐","거북이","사슴"];
+ n=A[Math.random()*A.length|0]+" "+B[Math.random()*B.length|0]+" "+(1000+Math.random()*9000|0);ls.set("dd_name",n);return n};
+const fbCommit=w=>fetch(FB.base+":commit?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({writes:w})});
+const fbBump=(id,v,l)=>fbCommit([{transform:{document:FBDOC+"/stats/"+id,fieldTransforms:[{fieldPath:"views",increment:{integerValue:String(v)}},{fieldPath:"likes",increment:{integerValue:String(l)}}]}}]);
+const iv=f=>f?+(f.integerValue||0):0;
+const ago=t=>{const s=(Date.now()-new Date(t))/1e3;return s<60?"방금":s<3600?(s/60|0)+"분":s<86400?(s/3600|0)+"시간":s<604800?(s/86400|0)+"일":new Date(t).toLocaleDateString("ko-KR",{month:"long",day:"numeric"})};
+const BADW=/씨발|시발|ㅅㅂ|병신|ㅂㅅ|개새|좆|존나|fuck|shit/i;
+function igInit(p,toast){
+ const id=p.id,lb=$("likeBtn"),lc=$("likeCnt"),vc=$("viewCnt"),box=$("cmts"),f=$("cin"),inp=$("cinput"),post=$("cpost");
+ let likes=0,views=0,liked=ls.get("dd_likes",[]).includes(id),all=[],open=false;
+ const showL=()=>{lb.setAttribute("aria-pressed",liked);lc.textContent="좋아요 "+likes.toLocaleString()+"개"};
+ const showV=()=>{vc.textContent=views.toLocaleString()};
+ $("meName").textContent=nick();
+ fetch(FB.base+"/stats/"+id+"?key="+FB.key).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.fields){likes=iv(j.fields.likes);views=iv(j.fields.views)}
+  let seen=false;try{seen=sessionStorage.getItem("dd_v_"+id)}catch(e){}
+  if(!seen){views++;try{sessionStorage.setItem("dd_v_"+id,1)}catch(e){}fbBump(id,1,0).catch(()=>{})}
+  showL();showV()}).catch(()=>{showL();showV()});
+ const like=(on)=>{if(on===liked)return;liked=on;likes=Math.max(0,likes+(on?1:-1));const L=ls.get("dd_likes",[]).filter(x=>x!==id);if(on)L.push(id);ls.set("dd_likes",L);
+  showL();lb.classList.remove("pop");void lb.offsetWidth;lb.classList.add("pop");fbBump(id,0,on?1:-1).catch(()=>{})};
+ lb.onclick=()=>like(!liked);
+ const deck=$("deck");deck.addEventListener("dblclick",e=>{like(true);const h=document.createElementNS("http://www.w3.org/2000/svg","svg");h.setAttribute("viewBox","0 0 24 24");h.setAttribute("class","dheart");h.innerHTML='<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>';deck.parentNode.appendChild(h);setTimeout(()=>h.remove(),900)});
+ $("cmtBtn").onclick=()=>inp.focus();
+ const draw=()=>{const list=open?all:all.slice(0,2);
+  box.innerHTML=(all.length>2&&!open?`<button type="button" class="cmall">댓글 ${all.length}개 모두 보기</button>`:"")+list.map(c=>`<p class="cmt"><b>${esc(c.name)}</b>${esc(c.text)}<small>${esc(ago(c.at))}</small></p>`).join("");
+  const m=box.querySelector(".cmall");if(m)m.onclick=()=>{open=true;draw()}};
+ fetch(FB.base+":runQuery?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"comments"}],where:{fieldFilter:{field:{fieldPath:"post"},op:"EQUAL",value:{stringValue:id}}},limit:200}})})
+  .then(r=>r.json()).then(rows=>{all=(rows||[]).filter(x=>x.document).map(x=>{const F=x.document.fields;return{name:F.name.stringValue,text:F.text.stringValue,at:F.at.timestampValue}}).sort((a,b)=>new Date(b.at)-new Date(a.at));draw()}).catch(()=>{});
+ inp.oninput=()=>{post.disabled=!inp.value.trim()};
+ f.onsubmit=async e=>{e.preventDefault();const t=inp.value.trim();if(!t)return;
+  if(/https?:\/\/|www\./i.test(t)){toast("링크는 댓글에 넣을 수 없어요");return}
+  if(BADW.test(t)){toast("고운 말로 써 주세요");return}
+  const last=+(ls.get("dd_lastc",0));if(Date.now()-last<20000){toast("잠시 뒤에 다시 써 주세요");return}
+  post.disabled=true;const rid=Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+  try{const r=await fbCommit([{update:{name:FBDOC+"/comments/"+rid,fields:{post:{stringValue:id},name:{stringValue:nick()},text:{stringValue:t}}},updateTransforms:[{fieldPath:"at",setToServerValue:"REQUEST_TIME"}],currentDocument:{exists:false}}]);
+   if(!r.ok)throw 0;ls.set("dd_lastc",Date.now());all.unshift({name:nick(),text:t,at:new Date().toISOString()});open=true;inp.value="";draw()}
+  catch(err){toast("댓글을 올리지 못했어요. 잠시 뒤 다시 해 주세요")}finally{post.disabled=!inp.value.trim()}};
+}
 const show=p=>{cur=p;idx=0;
  view.innerHTML=`<a class="back" href="${BASE}">← 보드로</a>
 <div class="post">
@@ -368,7 +425,12 @@ const show=p=>{cur=p;idx=0;
   <button class="nav p" id="prev" type="button" aria-label="이전 카드">‹</button>
   <button class="nav n" id="next" type="button" aria-label="다음 카드">›</button>
   <div class="dots" id="dots">${Array.from({length:N(p)},(_,i)=>`<button type="button" aria-label="${i+1}번 카드"></button>`).join("")}</div>
-  <div class="share"><button class="k" id="shareBtn" type="button">친구 공유하기</button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
+  <div class="ig">
+   <div class="igbar"><button class="ib like" id="likeBtn" type="button" aria-label="좋아요" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg></button><button class="ib" id="cmtBtn" type="button" aria-label="댓글 달기"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/></svg></button><button class="ib" id="shareBtn" type="button" aria-label="친구에게 공유하기"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M21.5 3 10.2 14.3M21.5 3 14.6 21l-3.9-8.4L2.5 8.9z"/></svg></button><span class="views" aria-label="조회수"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M1.5 12S5.3 5 12 5s10.5 7 10.5 7-3.8 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/></svg><b id="viewCnt">·</b></span></div>
+   <p class="likes" id="likeCnt">좋아요 0개</p>
+   <div class="cmts" id="cmts"></div>
+   <form class="cin" id="cin" autocomplete="off"><span class="me" id="meName"></span><input id="cinput" maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button id="cpost" type="submit" disabled>게시</button></form>
+  </div>
  </div>
  <div class="side">
   <h1 class="sr">${esc(p.cap)}</h1>
@@ -392,8 +454,8 @@ const show=p=>{cur=p;idx=0;
  const toast=m=>{const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
  const copy=()=>{const done=()=>toast("링크를 복사했어요");if(navigator.clipboard&&isSecureContext){navigator.clipboard.writeText(shareUrl).then(done,()=>old())}else old();
   function old(){const a=document.createElement("textarea");a.value=shareUrl;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){prompt("링크를 복사해 주세요",shareUrl)}a.remove()}};
- $("copyBtn").addEventListener("click",copy);
  $("shareBtn").addEventListener("click",async()=>{if(navigator.share){try{await navigator.share({title:p.cap,text:p.fine||p.cap,url:shareUrl})}catch(e){}}else{copy()}});
+ igInit(p,toast);
  const d=$("deck");
  d.addEventListener("scroll",()=>{cancelAnimationFrame(d._r);d._r=requestAnimationFrame(sync)});
  $("prev").addEventListener("click",()=>go(idx-1));$("next").addEventListener("click",()=>go(idx+1));
