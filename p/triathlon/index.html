@@ -105,7 +105,7 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 
 .rmodal iframe{flex:1;width:100%;border:0;background:#fff}
 @media(max-width:600px){.rmodal{padding:0}.rmodal .rbox{height:100%;border-radius:0}}
 .race .rcard{border-radius:20px;background:var(--yellow);color:#141414;padding:22px 20px 20px;display:flex;flex-direction:column;gap:8px}
-.race .rk{margin:0;font:400 15px "Jua",sans-serif}.race .rcard{position:relative}.race .rk{position:absolute;top:18px;right:18px}.race .rk+h3{margin-top:30px}.race .rk b{background:#141414;color:#fff;padding:2px 9px;border-radius:99px;margin-left:4px;font-weight:400;white-space:nowrap;display:inline-block}
+.race .rk{margin:0;font:400 15px "Jua",sans-serif}.race .rk b{background:#141414;color:#fff;padding:2px 9px;border-radius:99px;margin-left:4px;font-weight:400;white-space:nowrap;display:inline-block}
 .race h3{margin:0;font:400 30px/1.12 "Do Hyeon",sans-serif;letter-spacing:-.02em;word-break:keep-all}
 .race .rd,.race .rs{margin:0;font-size:14px;line-height:1.5}
 .rc{display:flex;flex-wrap:wrap;gap:6px}.rc span{font:400 14px "Jua",sans-serif;padding:3px 10px;border-radius:99px;border:1.5px solid currentColor}
@@ -113,7 +113,7 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 
 .rgo.done{opacity:.6}
 .rgo.off{background:transparent;color:inherit;border:1.5px dashed currentColor;opacity:.7}
 .race .cap{cursor:pointer}
-.race .rcard{overflow:hidden}.race h3{font-size:clamp(34px,12cqw,58px);line-height:1.08;letter-spacing:-.02em;word-break:keep-all;overflow-wrap:anywhere;margin:6px 0 4px}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
+.race .rcard{overflow:hidden}.race h3{font-size:clamp(22px,7.5cqw,32px);word-break:keep-all;overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
 .ig{margin-top:6px;color:var(--ink)}
 .igbar{display:flex;align-items:center;gap:2px;margin-left:-8px}
@@ -277,6 +277,23 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 .fp .qa{grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px}.fp .qa button{height:40px;font-size:15px;border-radius:12px;padding:0 6px}
 .fp .qa button.ok:not(.pick)::after{content:" ✓";font-size:14px}.fp .qw{font-size:14px}
 @media(max-width:600px){.fp .deckbox{width:100vw;max-width:none;margin-left:calc(50% - 50vw)}.fp .deck{border-radius:0;border-inline:0}.fp{margin-bottom:24px}}
+
+/* 캐릭터 프로필 */
+.board.plist{columns:auto;display:block}
+.fph{cursor:pointer}
+.prof{max-width:560px;margin:0 auto;padding-top:8px}
+.ptop{display:flex;align-items:center;gap:28px}
+.pav{flex:none;width:88px;height:88px;border-radius:50%;box-shadow:0 0 0 3px var(--bg),0 0 0 6px var(--red);overflow:hidden}.pav svg{width:100%;height:100%}
+.pst{flex:1;display:flex;justify-content:space-around;text-align:center}.pst b{display:block;font:700 18px system-ui,sans-serif}.pst span{font-size:13px;color:var(--soft)}
+.pname{font:700 16px system-ui,sans-serif;margin:14px 0 2px}.pname small{display:block;font-weight:400;color:var(--soft);font-size:13px;margin-top:2px}
+.pbio{margin:6px 0 12px;font-size:15px;line-height:1.5}
+.pback{width:100%;height:36px;border:0;border-radius:10px;background:var(--fill);color:var(--ink);font:600 14px system-ui,sans-serif;cursor:pointer;margin-bottom:16px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.pg{padding:0;border:0;cursor:pointer;aspect-ratio:4/5;overflow:hidden;container-type:inline-size;background:var(--paper);display:block}
+.pg .poster{height:100%;pointer-events:none}
+@media(max-width:600px){.pgrid{margin-inline:calc(50% - 50vw)}.ptop{gap:18px}}
+.sl.txt:not(.sum):not(.end)>.no{visibility:hidden}.sl.pic .cart .no{display:none} /* 오른쪽 위 1/7 이 있어서 왼쪽 위 번호는 숨김 */
+.rfeed{max-width:560px;margin:0 auto}.rfeed .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.rfeed .rhead{margin-bottom:20px}.rfeed .item{margin-bottom:18px}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -348,19 +365,20 @@ const textPoster=(p,k=1)=>`<div class="poster t-${p.tone}">${p.vert
 /* 한 줄 피드 — 상세 없이 피드에서 넘기기·좋아요·퀴즈·댓글 (2026-11-27 Ray 「인스타·유튜브처럼 · 깔끔하게」) */
 const SV=(d,x="")=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"${x}>${d}</svg>`;
 /* 프로필 = 주제마다 캐릭터 하나 (2026-11-27 Ray 「랜덤으로 · 캐릭터를 부여」 · 사이트 캐릭터라 가짜 사람 아님) */
-const CHR={"몸속 이야기":{n:"콩닥이",b:"#E2492F",f:"#fff",x:'<path d="M12 6.2c-1-1.6-3.6-1.6-4.3.4" />'},
- "비교·대결":{n:"저울이",b:"#2F6FE2",f:"#fff",x:'<path d="M6 6.5h12M12 4.5v2"/>'},
- "런린이 가이드":{n:"새싹러너",b:"#22A06B",f:"#fff",x:'<path d="M12 6.5c0-2 1.5-3 3.5-3-.2 2-1.5 3-3.5 3zM12 6.5c0-1.6-1.2-2.4-2.8-2.4.2 1.6 1.2 2.4 2.8 2.4z"/>'},
- "장비":{n:"끈이",b:"#8A5CF6",f:"#fff",x:'<path d="M9 5.5l3 1.5 3-1.5M10 4l2 1 2-1"/>'},
- "러닝 잡지식":{n:"궁금이",b:"#F6D43A",f:"#141414",x:'<path d="M10.6 4.2c.4-1 2.8-1 2.8.4 0 .9-1.4 1-1.4 2"/>'}};
-const CH=c=>CHR[c]||{n:"달려달려",b:"#444",f:"#fff",x:""};
-const AVS=c=>{const h=CH(c);return `<svg viewBox="0 0 24 24" fill="none" stroke="${h.f}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.3" cy="11.5" r="1.1" fill="${h.f}" stroke="none"/><circle cx="14.7" cy="11.5" r="1.1" fill="${h.f}" stroke="none"/><path d="M9.2 15.2c1.6 1.4 4 1.4 5.6 0"/>${h.x}</svg>`};
+const CHR={
+ "몸속 이야기":{n:"콩닥이",t:"헉헉… 달릴 때 몸속에서 무슨 일이 생기는지, 나한테 물어봐!",b:"#E2492F",d:'<path d="M6.8 9.6l2.6 1.4-2.6 1.4M17.2 9.6l-2.6 1.4 2.6 1.4" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.6 14.2h6.8q-.4 4.6-3.4 4.6t-3.4-4.6z" fill="#3a0d06"/><path d="M10.6 17.4q1.4-1.6 2.8 0q0 1.4-1.4 1.4t-1.4-1.4z" fill="#ff8a9a"/><path d="M18.6 4.6c1 1.5 1.3 2.3.8 2.9a1.1 1.1 0 0 1-1.6 0c-.5-.6-.2-1.4.8-2.9z" fill="#bfe6ff"/>'},
+ "비교·대결":{n:"저울이",t:"둘 중에 뭐가 나아? 결론부터 딱 말해 줄게.",b:"#2F6FE2",d:'<path d="M6.8 11.2h3.6M13.6 11.2h3.6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="9.4" cy="12.3" r="1" fill="#fff"/><circle cx="16.2" cy="12.3" r="1" fill="#fff"/><path d="M13.4 8.4l3.8-1.6M6.8 9l3.4.3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9.4 16.2q3 1.4 5.8-1.2" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>'},
+ "런린이 가이드":{n:"새싹러너",t:"나도 이제 막 뛰기 시작했어! 같이 천천히 가자.",b:"#22A06B",d:'<path d="M12 6.6c0-2.2 1.7-3.4 4-3.3-.2 2.3-1.7 3.4-4 3.3zM12 6.6c0-1.8-1.4-2.7-3.2-2.6.2 1.8 1.4 2.7 3.2 2.6z" fill="#c8f7a0"/><circle cx="8.9" cy="11.2" r="2.3" fill="#fff"/><circle cx="15.1" cy="11.2" r="2.3" fill="#fff"/><circle cx="9.4" cy="11.6" r="1.2" fill="#123"/><circle cx="15.6" cy="11.6" r="1.2" fill="#123"/><circle cx="9.9" cy="11" r=".4" fill="#fff"/><circle cx="16.1" cy="11" r=".4" fill="#fff"/><path d="M7.8 15h8.4q0 4.2-4.2 4.2T7.8 15z" fill="#0b3b22"/><path d="M8.6 15h6.8v1H8.6z" fill="#fff"/>'},
+ "장비":{n:"끈이",t:"신발 끈 꽉! 장비 얘기라면 밤새울 수 있어.",b:"#8A5CF6",d:'<path d="M8 6.2c1.2-2.2 3-.4 4 .6 1-1 2.8-2.8 4-.6-1.4.6-2.6 1-4 .6-1.4.4-2.6 0-4-.6z" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><circle cx="9" cy="11.4" r="2.1" fill="#fff"/><circle cx="15" cy="11.4" r="2.1" fill="#fff"/><circle cx="10.2" cy="11.8" r="1" fill="#1d0b40"/><circle cx="13.8" cy="11.8" r="1" fill="#1d0b40"/><path d="M8.4 16.2q1.2-1 2.4 0t2.4 0 2.4 0" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/>'},
+ "러닝 잡지식":{n:"궁금이",t:"근데 왜? 러닝에 숨은 잡지식 모으는 중.",b:"#F6D43A",d:'<path d="M10.4 6.4c.2-2.2 3.6-2.4 3.6-.4 0 1-1.2 1.3-1.6 2" fill="none" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.8" cy="11.4" r="2.5" fill="#fff" stroke="#141414" stroke-width="1"/><circle cx="8.8" cy="11.6" r="1.1" fill="#141414"/><circle cx="15.4" cy="11.8" r="1.1" fill="#141414"/><path d="M14.2 9.6l2.4-.6" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="12.4" cy="16.4" rx="1.4" ry="1.7" fill="#141414"/>'}};
+const CH=c=>CHR[c]||{n:"달려달려",b:"#444",d:""};
+const AVS=c=>`<svg viewBox="0 0 24 24">${CH(c).d}</svg>`;
 const item=p=>`<article class="item fp" data-id="${esc(p.id)}">
 <div class="fph"><span class="av" aria-hidden="true" style="background:${CH(p.cat).b}">${AVS(p.cat)}</span><div><b>${esc(CH(p.cat).n)}</b><small>${esc(p.cat)} · 달려달려</small></div><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></div>
 <div class="deckbox"><div class="deck" tabindex="0" aria-label="${esc(p.cap)} · 카드 넘기기">${slides(p)}</div><span class="count">1 / ${N(p)}</span><button class="nav p" type="button" aria-label="이전 카드" disabled>‹</button><button class="nav n" type="button" aria-label="다음 카드">›</button></div>
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}</button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}</button><button class="ib shb" type="button" aria-label="친구에게 공유하기">${SV('<path d="M21.5 3 10.2 14.3M21.5 3 14.6 21l-3.9-8.4L2.5 8.9z"/>')}</button><div class="dots" aria-hidden="true">${Array.from({length:N(p)},(_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div><span class="views" aria-label="조회수">${SV('<path d="M1.5 12S5.3 5 12 5s10.5 7 10.5 7-3.8 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/>')}<b>·</b></span></div>
 <p class="likes">좋아요 ·</p>
-<h2 class="ftitle"><b>달려달려</b>${esc(p.cap)}</h2>
+<h2 class="ftitle"><b>${esc(CH(p.cat).n)}</b>${esc(p.cap)}</h2>
 ${p.qz?`<div class="qbox">${qzHTML(p,0)}</div>`:""}
 <div class="cmts"></div>
 <form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form>
@@ -378,16 +396,15 @@ const TODAY=(()=>{const n=new Date(),z=x=>String(x).padStart(2,"0");return new D
 const dday=r=>{if(!r.date)return "";const d=Math.round((new Date(r.date)-TODAY)/864e5);return d>0?`D-${d}`:d===0?"D-DAY":"지난 대회"};
 const upcoming=()=>R.filter(r=>!r.date||new Date(r.date)>=TODAY);
 const go_=r=>r.url?`<a class="rgo${r.status==="마감"?" done":""}" href="${esc(r.url)}" target="_blank" rel="noopener"${r.frame?` data-frame="${esc(r.name)}"`:""}>${r.status==="마감"?"공식 페이지 보기":"접수하러 가기"}</a>`:`<span class="rgo off">공식 페이지 확인 중</span>`;
-const raceCard=r=>`<div class="item race"><div class="rcard"><p class="rk">대회 <b>${esc(dday(r))}</b></p><h3>${esc(r.name)}</h3><p class="rd">${esc(r.dateText||r.date||"날짜 미정")}<br>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}</p>`:""}${go_(r)}</div></div>`;
+const raceCard=r=>`<div class="item race"><div class="rcard"><p class="rk">다가오는 대회 <b>${esc(dday(r))}</b></p><h3>${esc(r.name)}</h3><p class="rd">${esc(r.dateText||r.date||"날짜 미정")}<br>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}</p>`:""}${go_(r)}</div></div>`;
 const raceRow=r=>{const d=r.date?new Date(r.date):null;return `<li class="rrow"><div class="rdate">${d?`<b>${d.getMonth()+1}.${d.getDate()}</b><span>${"일월화수목금토"[d.getDay()]}</span>`:"<b>미정</b>"}</div><div class="rinfo"><h3>${esc(r.name)} <small>${esc(dday(r))}</small></h3><p>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}${r.status?` · ${esc(r.status)}`:""}</p>`:""}${r.note?`<p class="rn">${esc(r.note)}</p>`:""}</div>${go_(r)}</li>`};
 const drawRaces=k=>{const r=upcoming().filter(x=>!k||(x.name+x.region+x.place+(x.courses||[]).join("")).includes(k));
- const by={};r.forEach(x=>{const m=x.date?x.date.slice(0,7):"미정";(by[m]=by[m]||[]).push(x)});
- board.innerHTML=`<section class="races"><p class="rhead">국내 달리기 대회 일정 · 공식 페이지에서 확인한 내용이에요 (확인일 ${esc((R[0]||{}).checked||"")}). 일정과 접수는 바뀔 수 있으니 접수 전에 공식 페이지를 꼭 확인하세요.</p>${Object.keys(by).sort().map(m=>`<h2>${m==="미정"?"날짜 미정":`${+m.slice(0,4)}년 ${+m.slice(5)}월`}</h2><ul>${by[m].map(raceRow).join("")}</ul>`).join("")||`<p class="empty">찾는 대회가 아직 없어요.</p>`}</section>`};
+ board.innerHTML=`<section class="races rfeed"><h2 class="rtitle">다가오는 대회</h2><p class="rhead">공식 페이지에서 확인한 내용이에요 (확인일 ${esc((R[0]||{}).checked||"")}). 일정과 접수는 바뀔 수 있으니 접수 전에 공식 페이지를 꼭 확인하세요.</p>${r.map(raceCard).join("")||`<p class="empty">찾는 대회가 아직 없어요.</p>`}</section>`};
 let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
 const drawChips=()=>{chips.innerHTML=CATS.map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n)}</button>`).join("")};
-const txt=p=>p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
+const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
 const ncol=()=>1;
@@ -427,7 +444,18 @@ const topLoad=()=>{if(TOP!==null)return;TOP={list:[],today:false};
    .then(r=>r.json()).then(rows=>{TOP={list:pick((rows||[]).filter(x=>x.document).map(x=>x.document.name.split("/").pop())),today:false};topFill()})}).catch(()=>{})};
 const topCard=()=>`<div class="item top"${topHTML()?"":" hidden"}>${topHTML()}</div>`;
 board.addEventListener("click",e=>{const b=e.target.closest(".qz .qa button");if(!b)return;e.preventDefault();const box=b.closest(".item.qz");const p=P.find(x=>x.id===box.dataset.id);if(p)qzAnswer(box,p,+b.dataset.i)});
-const drawBoard=()=>{const k=q.trim();topLoad();board.classList.toggle("rlist",cat==="대회 일정");
+/* 캐릭터 프로필 (인스타 계정 화면처럼) — 프사·이름 누르면 열림 · 칸 누르면 그 주제 피드로 */
+let prof=null;
+const drawProfile=()=>{const h=CH(prof),L=P.filter(p=>p.cat===prof);board.classList.remove("mason","rlist");board.classList.add("plist");sent.hidden=true;
+ board.innerHTML=`<section class="prof"><div class="ptop"><span class="pav" style="background:${h.b}">${AVS(prof)}</span><div class="pst"><div><b>${L.length}</b><span>게시물</span></div><div><b>${L.reduce((a,p)=>a+(p.k?p.k.length:3),0)}</b><span>카드</span></div><div><b>${L.filter(p=>p.qz).length}</b><span>퀴즈</span></div></div></div>
+ <h2 class="pname">${esc(h.n)} <small>${esc(prof)} · 달려달려 캐릭터</small></h2><p class="pbio">${esc(h.t||"")}</p>
+ <button type="button" class="pback">피드로 돌아가기</button>
+ <div class="pgrid">${L.map(p=>`<button type="button" class="pg" data-id="${esc(p.id)}" aria-label="${esc(p.cap)}">${poster(p,.5)}</button>`).join("")}</div></section>`};
+board.addEventListener("click",e=>{const a=e.target.closest(".fph");if(a){const el=a.closest(".fp");const p=el&&P.find(x=>x.id===el.dataset.id);if(p){e.preventDefault();prof=p.cat;window.scrollTo(0,0);drawBoard()}return}
+ const g=e.target.closest(".pg");if(g){const p=P.find(x=>x.id===g.dataset.id);prof=null;cat=p.cat;drawChips();show(p);return}
+ if(e.target.closest(".pback")){prof=null;window.scrollTo(0,0);drawBoard()}});
+chips.addEventListener("click",()=>{prof=null},true);
+const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");if(prof)return drawProfile();board.classList.toggle("rlist",cat==="대회 일정");
  if(cat==="대회 일정"){board.classList.remove("mason");sent.hidden=true;return drawRaces(k)}
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k))&&!(cur&&p.id===cur.id));const up=upcoming();
  const ad=cat==="전체"&&!k&&up.length;
@@ -439,8 +467,8 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.toggle("rlist",c
   if(home&&i===(cur?5:4))feed.push(topCard());});
  board.classList.add("mason");makeCols();shown=0;more()};
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
-chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(window.INIT_POST){location.href=BASE+"?c="+encodeURIComponent(b.dataset.c);return}cat=b.dataset.c;drawChips();drawBoard()});
-qi.addEventListener("input",()=>{if(window.INIT_POST)return;q=qi.value;drawBoard()});qi.addEventListener("keydown",e=>{if(e.key==="Enter"&&window.INIT_POST)location.href=BASE+"?q="+encodeURIComponent(qi.value)});
+chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
+qi.addEventListener("input",()=>{q=qi.value;cur=null;prof=null;drawBoard()});
 $("clear").addEventListener("click",()=>{qi.value="";q="";drawBoard();qi.focus()});
 /* 좋아요·조회수·댓글 — 파이어베이스(Firestore REST) · 2026-11-27 Ray 「인스타 구조」 */
 const FB={key:"AIzaSyDaQ23BiDahetmivUex9qZPfCRdJgmW-l0",base:"https://firestore.googleapis.com/v1/projects/dallyeo-85c6b/databases/(default)/documents"};
