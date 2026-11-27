@@ -482,7 +482,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=f464f1df"></script>
+<script src="/posts.js?v=8c27ae1b"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["헉헉 수다","✎"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -665,7 +665,8 @@ board.addEventListener("click",e=>{const b=e.target.closest(".ytp");if(b){ytSeen
 let TALK=[];const TCOL={w:["#ffffff","#141414"],y:["#F6D43A","#141414"],r:["#E2492F","#fff"],b:["#2F6FE2","#fff"],g:["#22A06B","#fff"],k:["#141414","#fff"]};
 const talkItem=t=>{const [bg,fg]=TCOL[t.color]||TCOL.y;return `<article class="item fp talk" data-id="t-${esc(t.id)}"><div class="fph"><span class="av tav">${esc([...t.name][0]||"?")}</span><div><b>${esc(t.name)}</b><small>헉헉 수다 · ${esc(ago(t.at))}</small></div><button type="button" class="trep" data-t="${esc(t.id)}" aria-label="신고">신고</button></div>
 <div class="tcardx" style="background:${bg};color:${fg}"><p style="font-size:${Math.min(14,Math.max(6,t.s||9))}cqw">${esc(t.text)}</p></div>
-<div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button></div></div></article>`};
+<div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><button class="shb shbtn" type="button">친구에게 공유</button></div>
+<div class="cmts"></div><form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form></div></article>`};
 const talkLoad=()=>Promise.all([
  fetch(FB.base+":runQuery?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"talk"}],orderBy:[{field:{fieldPath:"at"},direction:"DESCENDING"}],limit:100}})}).then(r=>r.json()),
  fetch(FB.base+"/report?pageSize=300&key="+FB.key).then(r=>r.json())]).then(([rows,rep])=>{
@@ -735,18 +736,15 @@ const iv=f=>f?+(f.integerValue||0):0;
 const ago=t=>{const s=(Date.now()-new Date(t))/1e3;return s<60?"방금":s<3600?(s/60|0)+"분":s<86400?(s/3600|0)+"시간":s<604800?(s/86400|0)+"일":new Date(t).toLocaleDateString("ko-KR",{month:"long",day:"numeric"})};
 const BADW=/씨발|시발|ㅅㅂ|병신|ㅂㅅ|개새|좆|존나|fuck|shit/i;
 const toast=m=>{const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
-const urlOf=p=>location.protocol.startsWith("http")?location.origin+(typeof BASE!=="undefined"?BASE:"/")+"p/"+p.id+"/":location.href;
+const urlOf=p=>p.talk?location.origin+(typeof BASE!=="undefined"?BASE:"/")+"?c="+encodeURIComponent("헉헉 수다"):location.protocol.startsWith("http")?location.origin+(typeof BASE!=="undefined"?BASE:"/")+"p/"+p.id+"/":location.href;
 const copyTxt=u=>{const done=()=>toast("링크를 복사했어요");const old=()=>{const a=document.createElement("textarea");a.value=u;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){prompt("링크를 복사해 주세요",u)}a.remove()};
  if(navigator.clipboard&&isSecureContext)navigator.clipboard.writeText(u).then(done,old);else old()};
 /* 화면에 보이면 숫자·댓글 불러오기 · 60% 넘게 1.5초 보면 조회 1 */
 const fpLoad=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fpLoad.unobserve(e.target);e.target._load()}}),{rootMargin:"400px"});
 const fpView=new IntersectionObserver(es=>es.forEach(e=>{const el=e.target;clearTimeout(el._vt);if(e.intersectionRatio>=.6)el._vt=setTimeout(()=>{fpView.unobserve(el);el._view()},1500)}),{threshold:[0,.6]});
-function fpInit(el){el.dataset.on=1;const id=el.dataset.id,p=P.find(x=>x.id===id)||QP.find(x=>x.id===id)||(id&&id.startsWith("t-")?{id,cap:"헉헉 수다",talk:1}:null);if(!p)return;
+function fpInit(el){el.dataset.on=1;const id=el.dataset.id,p=P.find(x=>x.id===id)||QP.find(x=>x.id===id)||(id&&id.startsWith("t-")?{id,cap:"헉헉수다 · 달려달려",fine:(TALK.find(t=>"t-"+t.id===id)||{}).text,talk:1}:null);if(!p)return;
  const q=c=>el.querySelector(c),deck=q(".deck"),cnt=q(".count"),pv=q(".nav.p"),nx=q(".nav.n"),dots=[...el.querySelectorAll(".dots i")],n=deck?N(p):0;
  if(p.src)pollInit(el,p);
- if(p.talk){const lb=q(".like"),lc=q(".lc");let likes=0,liked=ls.get("dd_likes",[]).includes(id);const show=()=>{lb.setAttribute("aria-pressed",liked);lc.textContent=likes.toLocaleString()};show();
-  fpLoad.observe(el);el._load=()=>fetch(FB.base+"/stats/"+id+"?key="+FB.key).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.fields)likes=iv(j.fields.likes);show()}).catch(()=>{});el._view=()=>{};
-  lb.onclick=()=>{liked=!liked;likes=Math.max(0,likes+(liked?1:-1));const L=ls.get("dd_likes",[]).filter(x=>x!==id);if(liked)L.push(id);ls.set("dd_likes",L);show();fbBump(id,0,liked?1:-1).catch(()=>{})};return}
  const lb=q(".like"),lc=q(".lc"),vc={},cc=q(".cc"),box=q(".cmts"),f=q(".cin"),inp=f.querySelector("input"),post=f.querySelector("button");
  let k=0,likes=0,views=0,liked=ls.get("dd_likes",[]).includes(id),all=[],open=false;
  const sync=()=>{k=Math.round(deck.scrollLeft/Math.max(1,deck.clientWidth));cnt.textContent=`${k+1} / ${n}`;pv.disabled=k===0;nx.disabled=k===n-1;dots.forEach((d,i)=>d.classList.toggle("on",i===k))};
