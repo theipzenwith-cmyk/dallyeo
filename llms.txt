@@ -1,0 +1,104 @@
+# 달려달려 (runrun.co.kr)
+
+> 러닝·걷기 궁금증을 공개된 연구와 공식 자료로 확인해, 쉬운 말 카드뉴스 한 편(카드 3~4장)으로 정리한 사이트예요. 글마다 출처(논문·공식 기관)를 밝혀요. 의학적 조언은 하지 않아요.
+
+- 국내 달리기 대회 일정: https://runrun.co.kr/races/
+
+## 런린이 가이드
+
+- [러닝 쉬면 체력 얼마나 빠질까](https://runrun.co.kr/p/running-break-fitness-loss/): 3주 쉬면 조금, 8주면 꽤 빠져요. 그래도 실핏줄은 남는대요.
+- [러닝 주간 거리 10% 규칙, 근거 있을까](https://runrun.co.kr/p/weekly-mileage-10-percent-rule/): 10%를 넘겨도 부상률은 비슷했지만, 30% 넘게 늘리면 조심하래요.
+- [러닝 케이던스 올리면 무릎이 편해질까](https://runrun.co.kr/p/running-cadence-step-rate-knee/): 같은 속도에서 걸음 수를 5~10% 늘리면 무릎 부담이 줄었대요.
+- [50대·60대 러닝 시작, 늦은 걸까](https://runrun.co.kr/p/start-running-after-50/): 60대도 좋아지는 비율은 젊은 쪽과 비슷하고, 혈관은 석 달이면 반응한대요.
+- [운동 습관 만드는 데 며칠 걸릴까](https://runrun.co.kr/p/running-habit-66-days/): 평균 66일, 사람마다 18~254일. 한 번 빼먹어도 괜찮대요.
+- [달릴 때 옆구리 통증, 왜 오른쪽이 많을까](https://runrun.co.kr/p/side-stitch-right-side-food/): 오른쪽 옆구리가 가장 흔하고, 출발 직전에 많이 먹으면 더 잘 생겼대요.
+- [발이 안쪽으로 무너지면(회내) 러닝화를 따로 사야 할까](https://runrun.co.kr/p/foot-pronation-novice-neutral-shoe/): 같은 러닝화를 신은 초보들은 발이 안쪽으로 기울어도 더 다치진 않았대요.
+- [세게 운동한 다음 날, 또 해도 될까 · 근육 연료와 회복 시간](https://runrun.co.kr/p/hard-workout-next-day-again/): 하루 뒤에도 근육 연료는 덜 찼고, 허벅지 뻐근함은 사흘 갔대요.
+- [운동 시작하면 효과는 언제부터 · 3일·10일·한 달·3달 몸속 변화](https://runrun.co.kr/p/when-training-effects-start/): 핏속 물은 며칠, 근육은 몇 주, 힘줄은 몇 달. 바뀌는 순서가 달라요.
+- [마라톤 테이퍼링, 대회 2주 전 얼마나 줄일까](https://runrun.co.kr/p/marathon-taper-two-weeks/): 대회 2주 전부터 양은 줄이고 빠르기는 지키는 쪽이 좋았대요.
+- [러닝 케이던스 180, 꼭 맞춰야 할까](https://runrun.co.kr/p/running-cadence-180/): 180은 선수 관찰에서 퍼진 숫자래요. 걸음 수는 속도와 키에 따라 달라요.
+- [달리기 전 스트레칭, 꼭 해야 할까](https://runrun.co.kr/p/stretching-before-run/): 늘이기는 짧게, 몸풀기는 움직이며. 부상 예방은 근력 운동 쪽이래요.
+- [러닝 초보 5km, 9주 완주 계획](https://runrun.co.kr/p/first-5km/): 1분 뛰고 1분 30초 걷기부터. 주 3번이면 돼요.
+- [술 마신 다음 날 러닝, 해도 될까](https://runrun.co.kr/p/hangover-next-day-run/): 숙취 땐 더 지치게 느껴진대요. 힘든 운동 뒤 술은 회복을 늦출 수 있어요.
+- [운동 처음이면 뭐부터 해야 할까](https://runrun.co.kr/p/first-exercise-where-to-start/): 말하면서 할 수 있는 세기로 시작해요. 무릎이 걱정되면 물속·평지부터.
+- [러닝 시작하고 아픈 곳들, 정상일까](https://runrun.co.kr/p/new-runner-aches/): 근육통은 2~3일 뒤가 제일 심하고, 옆구리 통증은 흔한 일이래요.
+- [최대 심박수 220−나이 맞을까 · 나이와 심폐 체력](https://runrun.co.kr/p/max-heart-rate-220-age/): 220−나이는 대략값이래요. 그래도 몸은 몇 살이든 운동에 반응해요.
+- [빠르게 걷기 기준, 1분에 몇 걸음이면 될까](https://runrun.co.kr/p/brisk-walk-cadence-100/): 1분 100걸음부터 중간 세기래요. 10초에 17걸음이면 넘어요.
+
+## 몸속 이야기
+
+- [러닝 꾸준히 하면 심박수 언제부터 떨어질까](https://runrun.co.kr/p/same-pace-heart-rate-drop/): 같은 속도의 심박은 석 달 안에 거의 다 내려가고, 체력은 더 올라요.
+- [운동 시작 2주, 같은 운동이 왜 벌써 덜 힘들까](https://runrun.co.kr/p/first-two-weeks-why-easier/): 며칠 만에 피의 물 성분이 늘고, 열흘쯤 지나면 심장이 덜 빨리 뛴대요.
+- [테니스 치는 팔은 뼈가 더 굵어질까 · 뼈는 쓰는 만큼](https://runrun.co.kr/p/tennis-arm-bone-thicker/): 자주 쓰는 쪽 팔뼈가 더 두껍다는 연구가 있어요. 일찍 시작할수록 차이가 컸대요.
+- [러너스 하이는 엔도르핀 때문일까](https://runrun.co.kr/p/runners-high-not-just-endorphin/): 엔도르핀만으로는 설명이 안 된다는 연구가 있어요. 아직 갈려요.
+- [마라톤 '벽'은 왜 생길까 · 몸속 연료가 바닥날 때](https://runrun.co.kr/p/marathon-wall-glycogen/): 쌓아 둔 연료가 바닥나는 때가 벽이래요. 언제 오는지는 사람마다 달라요.
+- [달리면 적혈구가 깨진다? 발 구름 이야기](https://runrun.co.kr/p/running-hemolysis-footstrike/): 달리면 발 충격으로 적혈구가 조금 깨진대요. 양은 적은 편이래요.
+- [겨울에 손가락이 시렸다 따뜻해지는 이유 · 헌팅 반응](https://runrun.co.kr/p/cold-fingers-hunting-reaction/): 차가운 손끝에 따뜻한 피가 몰려왔다 빠졌다 해요. '헌팅 반응'이래요.
+- [러너가 스쿼트 하면 빨라질까 · 근력운동과 러닝 이코노미](https://runrun.co.kr/p/squat-running-economy/): 무거운 스쿼트 8주에 같은 속도가 덜 힘들어졌다는 연구가 있어요.
+- [달리다 배 아픈 이유, 러너 배탈](https://runrun.co.kr/p/stomach-ache-while-running/): 오래 달리면 배 불편함이 흔하대요. 그래도 장도 연습이 된대요.
+- [달리다 종아리에 쥐 나는 이유](https://runrun.co.kr/p/calf-cramp-while-running/): 물·소금보다 빠른 속도와 예전에 쥐 났던 경험이 더 관련 있었대요.
+- [겨울 러닝, 찬 공기 마시면 폐가 얼까](https://runrun.co.kr/p/winter-run/): 폐는 안 얼어요. 조심할 건 목마름과 다 뛰고 멈출 때예요.
+- [마라톤 42.195km, 몸속에서 생기는 일](https://runrun.co.kr/p/marathon-body/): 탄수화물, 물, 내리막. 세 가지를 알면 덜 무너져요.
+- [철인 3종, 종목마다 몸속에서 생기는 일](https://runrun.co.kr/p/triathlon/): 진짜 고비는 종목이 바뀌는 순간.
+- [밥 먹고 10분 걷기, 정말 효과 있을까](https://runrun.co.kr/p/walk-10min-after-meal/): 밥 먹고 바로 가볍게 걸으면, 앉아 있을 때보다 혈당이 덜 오른대요.
+- [한라산 정상까지 오르면 몸속에서 일어나는 일](https://runrun.co.kr/p/hallasan-summit-body/): 오래 걸으면 연료가 지방 쪽으로 바뀌고, 간식이 버티는 시간을 늘린대요.
+- [롯데타워 123층 계단 오르면 몸속에서 생기는 일](https://runrun.co.kr/p/lotte-tower-123-stairs/): 2,917계단, 처음 서두르면 뒤에서 무너진대요. 같은 속도로 꾸준히가 답.
+- [자전거 출퇴근 30일, 몸은 어떻게 바뀔까](https://runrun.co.kr/p/bike-commute-30-days/): 자전거는 무릎 힘이 걷기보다 작고, 몇 주 안에 피의 물 성분부터 는대요.
+- [오래 달리면 근육 속 실핏줄이 늘까 · 러닝과 근력 같이 해야 하는 이유](https://runrun.co.kr/p/runner-capillary-strength/): 오래 달린 사람 근육엔 실핏줄이 촘촘하대요. 근력 운동 주 2일도 더해요.
+- [달리면서 물 얼마나 마셔야 할까](https://runrun.co.kr/p/how-much-water-while-running/): 너무 적게도, 너무 많이도 문제예요. 목마를 때 몇 모금씩이 기본.
+- [줄넘기 3주, 바로 늘려도 될까 · 근육과 힘줄의 시간차](https://runrun.co.kr/p/jump-rope-tendon-3weeks/): 근육은 3~4주면 바뀌지만 힘줄은 한두 달 늦게 따라온대요.
+
+## 러닝 잡지식
+
+- [운동해도 체력이 안 느는 사람, 정말 있을까](https://runrun.co.kr/p/exercise-non-responder-myth/): '안 느는 사람'은 횟수나 세기를 올리자 거의 사라졌대요.
+- [울트라마라톤 100km 뛰면 발이 부을까](https://runrun.co.kr/p/ultramarathon-100km-foot-swelling/): 100km 뒤 발 부피는 평균 그대로였고, 물을 많이 마신 사람일수록 부었대요.
+- [사람은 오래 달리도록 진화했을까 · 오래 쫓는 사냥 이야기](https://runrun.co.kr/p/born-to-run-hypothesis/): 오래 쫓는 사냥 덕에 달리는 몸이 됐다는 주장이 있어요. 아직 논쟁 중이에요.
+- [5km 평균 기록은 몇 분일까 · 일반 러너 4만 5천 명 설문](https://runrun.co.kr/p/5km-average-time-parkrun/): 5km 기록의 한가운데는 29분 20초쯤이었대요. 걷는 사람도 많아요.
+- [근육 1kg 늘면 하루 몇 칼로리 더 쓸까 · 몸 부위별 에너지](https://runrun.co.kr/p/muscle-1kg-calories-per-day/): 근육 1kg은 쉴 때 하루 13kcal쯤 쓴대요. 생각보다 작아요.
+- [운동 강도 MET 뜻 · 빠르게 걷기와 줄넘기는 몇 MET일까](https://runrun.co.kr/p/what-is-met-walk-vs-rope/): 가만히 있을 때의 몇 배를 쓰는지가 MET예요. 줄넘기는 12쯤이래요.
+- [마라톤 2시간 벽은 깨질까 · 세계 기록 이야기](https://runrun.co.kr/p/sub-two-hour-marathon/): 1991년 계산으론 1시간 57분대도 가능. 공인 기록은 2시간 0분 35초예요.
+- [마라톤은 왜 42.195km일까](https://runrun.co.kr/p/why-marathon-42195/): 1908년 런던 올림픽 코스 길이가 그대로 굳어졌대요. 처음엔 약 40km였어요.
+- [음악 들으며 달리면 덜 힘들까](https://runrun.co.kr/p/music-while-running/): 음악은 기분을 올리고 힘든 느낌을 줄인다는 분석이 있어요.
+- [지방은 20분 이상 뛰어야 타기 시작할까](https://runrun.co.kr/p/fat-burn-after-20min-myth/): 지방은 처음부터 함께 쓰이고, 세기와 시간에 따라 비율이 바뀐대요.
+- [동물 vs 사람 5km, 사람은 몇 등?](https://runrun.co.kr/p/animal-vs-human/): 100m는 꼴찌. 길게 가면 이야기가 달라요.
+- [트레일 러닝, 산길에서 몸이 하는 일](https://runrun.co.kr/p/trail-run/): 눈은 2~3걸음 앞, 아주 가파르면 걸어도 돼요.
+- [하루 만 보는 어디서 나온 숫자일까](https://runrun.co.kr/p/where-10000-steps-came-from/): 만 보는 일본 걷기 모임 구호에서 왔대요. 연구는 5천~7천 보 근처를 말해요.
+- [사자는 하루 종일 잔다? 동물 상식 오해](https://runrun.co.kr/p/lion-sleep-animal-myths/): 사자는 하루 41%쯤 움직였대요. 개는 헐떡임, 사람은 땀으로 식혀요.
+
+## 비교·대결
+
+- [걷다 뛰다 vs 쭉 달리기, 마라톤 기록 차이는?](https://runrun.co.kr/p/run-walk-vs-run-only-marathon/): 걷기를 섞어도 기록은 비슷했고, 근육 통증과 피로는 덜했대요.
+- [맨발 달리기 vs 러닝화, 뭐가 덜 힘들까 · 신발 무게 100g의 차이](https://runrun.co.kr/p/barefoot-vs-light-shoes-100g/): 100g 무거워지면 약 1% 더 힘들고, 같은 무게면 신발 쪽이 덜 힘들었대요.
+- [축구 vs 러닝 4주, 숨 쓰는 힘은 어느 쪽이 더 늘까](https://runrun.co.kr/p/soccer-vs-running-4-weeks/): 4주 뒤엔 둘이 거의 같았고, 12주까지는 축구 쪽만 조금 더 올랐대요.
+- [테니스 1시간 vs 러닝 1시간, 실제로 움직이는 시간은?](https://runrun.co.kr/p/tennis-1hour-real-play-time/): 테니스 1시간 중 공이 오가는 시간은 13분쯤이라는 연구가 있어요.
+- [치타 vs 썰매개, 빠른 몸과 오래가는 몸은 뭐가 다를까](https://runrun.co.kr/p/cheetah-vs-sled-dog/): 치타는 전속력을 몇 초, 썰매개는 490km를 사흘 가까이. 몸이 달라요.
+- [달릴 때 숨은 몇 걸음에 한 번? 네발 동물 vs 사람](https://runrun.co.kr/p/breathing-steps-quadruped-vs-human/): 네발 동물은 걸음 하나에 숨 하나, 사람은 비율을 골라 쓴다는 연구가 있어요.
+- [근력운동 끝까지 vs 여유 남기고, 근육은 어느 쪽이 클까](https://runrun.co.kr/p/to-failure-or-stop-early/): 무거우면 끝까지 안 가도 비슷, 가벼우면 끝까지 가야 컸다는 연구가 있어요.
+- [운동하는 날 vs 쉬는 날, 하루 걸음 수는 얼마나 차이 날까](https://runrun.co.kr/p/workout-day-vs-rest-day-steps/): 30분 걷기 목표는 안 걷는 날 걸음이 확 줄었대요.
+- [킥복싱 5주 vs 안 한 5주, 체력 차이는?](https://runrun.co.kr/p/kickboxing-5-weeks-vs-none/): 숨 쓰는 힘은 13% 늘었지만 체지방은 그대로였대요. 식단은 따로 챙겨요.
+- [마라톤 기록 잘 나오는 기온은 몇 도일까](https://runrun.co.kr/p/best-marathon-temperature/): 약 4~10℃에서 가장 빨랐대요. 더울수록 느린 주자가 더 손해래요.
+- [모래사장·눈길 달리기, 얼마나 더 힘들까](https://runrun.co.kr/p/sand-snow-vs-road-running/): 모래 위 달리기는 약 1.6배 힘이 들고, 새 눈길은 다져진 길보다 느려진대요.
+- [헬스 vs 러닝, 100일 뒤 몸 비교](https://runrun.co.kr/p/gym-vs-run/): 먼저 바뀌는 곳이 달라요. 결론은 둘 다.
+- [20대·40대·60대가 같이 뛰면 몸은?](https://runrun.co.kr/p/age-run/): 근육통은 의외로 젊은 쪽이, 좋아지는 비율은 셋이 비슷.
+- [걷기 vs 달리기, 몸속에서 바뀌는 곳](https://runrun.co.kr/p/walk-vs-run/): 달리기는 심장, 걷기는 관절. 실핏줄은 둘 다.
+- [줄넘기 vs 달리기, 뭐가 더 힘들까](https://runrun.co.kr/p/jump-rope/): 한 번은 줄넘기가 더 힘들어요. 오래 가는 힘은 달리기.
+- [축구 90분 vs 러닝 90분, 몸은 어떻게 다를까](https://runrun.co.kr/p/soccer-vs-run-90min/): 축구는 꺾고 터지는 몸을, 러닝은 오래 버티는 몸을 써요.
+- [등산 vs 러닝, 내려올 때 무릎과 몸은 어떻게 다를까](https://runrun.co.kr/p/hiking-vs-running-downhill/): 오르막은 미는 힘, 내리막은 버티는 힘. 자연 길은 머리도 쉬게 한대요.
+- [매일 계단 15분 vs 주말 등산 3시간, 뭐가 나을까](https://runrun.co.kr/p/daily-stairs-vs-weekend-hike/): 체력은 몰아서 해도 비슷하게 오른대요. 다만 효과는 이틀쯤이에요.
+- [하루 만 보 vs 30분 빠르게 걷기, 뭐가 나을까](https://runrun.co.kr/p/10000-steps-vs-brisk-30min/): 만 보는 하루를 고르게 채우고, 빠른 30분은 숨 쓰는 힘을 키워요.
+- [무겁게 7번 vs 가볍게 20번, 근육은 어느 쪽이 클까](https://runrun.co.kr/p/heavy-7-vs-light-20/): 무겁게 들면 끝까지 안 가도 되고, 가볍게 들면 끝까지 가야 컸대요.
+
+## 장비
+
+- [러닝화 쿠션, 푹신한 게 부상에 나을까](https://runrun.co.kr/p/running-shoe-cushion-soft-vs-firm/): 딱딱한 신발 쪽이 더 다쳤지만, 가벼운 러너에게서만 뚜렷했대요.
+- [러닝화 두 켤레 번갈아 신으면 덜 다칠까](https://runrun.co.kr/p/two-pairs-running-shoes-rotation/): 신발을 번갈아 신은 사람이 덜 다쳤대요. 신발 덕인지는 아직 몰라요.
+- [러닝 양말, 면 양말 신으면 물집이 더 잘 생길까](https://runrun.co.kr/p/running-socks-cotton-blisters/): 면보다 아크릴 양말에서 물집이 적고 작았대요. 대부분 발가락에 생겼어요.
+- [스마트워치 걸음 수·심박·칼로리, 얼마나 정확할까](https://runrun.co.kr/p/smartwatch-steps-calories-accuracy/): 걸음 수와 심박은 꽤 맞는데, 칼로리는 가장 나은 기기도 27% 넘게 틀렸대요.
+- [러닝 전 몸풀기로 줄넘기 5분, 기록에 도움 될까](https://runrun.co.kr/p/jump-rope-warmup-for-runners/): 몸풀기 5분을 줄넘기로 바꾸면 3km 기록이 빨라졌다는 연구가 있어요.
+- [달리면서 탄수화물 얼마나 먹어야 할까 · 에너지 젤](https://runrun.co.kr/p/carbs-per-hour-energy-gel/): 1시간이면 헹구기만 해도, 2~3시간이면 한 시간 약 60g이 권장된대요.
+- [겨울 러닝 옷 몇 겹 입어야 할까 · 레이어드](https://runrun.co.kr/p/winter-running-layers/): 기본은 세 겹. 껴입고 출발하지 말고, 겉옷은 쉴 때 입으래요.
+- [등산 스틱 쓰면 무릎이 덜 힘들까 · 내리막](https://runrun.co.kr/p/trekking-poles-knee-downhill/): 내리막에서 무릎에 걸리는 힘이 12~25% 줄었다는 연구가 있어요.
+- [카본화 신으면 정말 빨라질까](https://runrun.co.kr/p/carbon-plate-shoes/): 탄소판 신발이 힘을 약 4% 아꼈대요. 다만 빠른 속도에서 잰 값이에요.
+- [압박 양말 신고 달리면 효과 있을까](https://runrun.co.kr/p/compression-socks-running/): 기록은 거의 그대로, 다 뛴 뒤 다리 뻐근함엔 도움이 된다는 분석이 있어요.
+- [러닝화는 왜 오후에 사라고 할까](https://runrun.co.kr/p/buy-running-shoes-afternoon/): 앉아 있어도, 뛰고 나도 발이 부어요. 신발은 부은 발에 맞추기.
+
