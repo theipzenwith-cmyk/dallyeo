@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>달려달려 대시보드</title>
+<!-- 2026-11-27 Ray 「내 사이트 숫자 한 화면」 — 파이어베이스(조회·좋아요·댓글·하루 조회)를 바로 읽음. 검색엔진엔 안 잡힘(noindex) -->
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f6f5f1,#121212);--card:light-dark(#ffffff,#1c1c1b);--ink:light-dark(#111,#f0efea);--soft:light-dark(#6b6b6b,#a5a5a2);--line:light-dark(#e4e2dc,#2e2e2c);--bar:light-dark(#141414,#f0efea);--accent:#f6d43a;--red:#e2492f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:24px;margin:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.top small{color:var(--soft)}
+button.re{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:inherit;cursor:pointer}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.tile p{margin:0;color:var(--soft);font-size:13px}
+.tile b{display:block;font-size:30px;line-height:1.2;font-variant-numeric:tabular-nums}
+.tile span{font-size:12px;color:var(--soft)}
+.grid{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.card h2{font-size:16px;margin:0 0 10px}
+.chart{position:relative;height:180px;display:flex;align-items:flex-end;gap:10px;border-bottom:1px solid var(--line);padding-top:22px}
+.chart .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative;cursor:default}
+.chart .b{width:100%;max-width:36px;background:var(--bar);border-radius:4px 4px 0 0;min-height:2px}
+.chart .c.today .b{background:var(--red)}
+.chart .v{font-size:12px;font-variant-numeric:tabular-nums;margin-bottom:4px;color:var(--ink)}
+.chart .c:not(:hover):not(.today) .v{visibility:hidden}
+.days{display:flex;gap:10px;margin-top:6px}.days span{flex:1;text-align:center;font-size:12px;color:var(--soft)}
+ol.rank{margin:0;padding:0;list-style:none;counter-reset:r}
+ol.rank li{counter-increment:r;display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline}
+ol.rank li::before{content:counter(r);font-weight:800;min-width:18px;color:var(--soft)}
+ol.rank a{color:inherit;text-decoration:none;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ol.rank b{font-variant-numeric:tabular-nums}
+.empty{color:var(--soft);margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--soft);font-weight:600;cursor:pointer;white-space:nowrap;user-select:none}
+th[aria-sort]::after{content:" ↓"}
+td a{color:inherit;text-decoration:none}td a:hover{text-decoration:underline}
+.tw{overflow-x:auto}
+.cm{padding:8px 0;border-bottom:1px solid var(--line)}
+.cm small{color:var(--soft);display:block;font-size:12px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--ink);text-decoration:none;background:var(--card);font-size:14px}
+.links a:hover{border-color:var(--ink)}
+.mt{margin-top:14px}
+.err{color:var(--red)}
+</style>
+</head>
+<body>
+<main>
+ <div class="top"><div><h1>달려달려 대시보드</h1><small id="when">불러오는 중…</small></div><button class="re" id="re" type="button">새로고침</button></div>
+ <div class="tiles">
+  <div class="tile"><p>오늘 조회</p><b id="tToday">–</b><span id="tTodayN"></span></div>
+  <div class="tile"><p>최근 7일 조회</p><b id="t7">–</b><span>하루 평균 <i id="t7a">–</i></span></div>
+  <div class="tile"><p>전체 조회</p><b id="tViews">–</b><span>글별 누적</span></div>
+  <div class="tile"><p>좋아요</p><b id="tLikes">–</b><span>전체</span></div>
+  <div class="tile"><p>댓글</p><b id="tCmts">–</b><span>전체</span></div>
+  <div class="tile"><p>공개된 글</p><b id="tPosts">–</b><span>대기 212편 · 2027-03-13까지</span></div>
+ </div>
+ <div class="grid">
+  <section class="card"><h2>최근 7일 조회 <small style="color:var(--soft);font-weight:400">(빨강 = 오늘)</small></h2><div class="chart" id="chart" role="img" aria-label="최근 7일 하루 조회 수"></div><div class="days" id="days"></div></section>
+  <section class="card"><h2>오늘 많이 본 글</h2><ol class="rank" id="todayTop"></ol></section>
+ </div>
+ <div class="grid mt">
+  <section class="card"><h2>글별 숫자 <small style="color:var(--soft);font-weight:400">(제목 위 칸을 누르면 정렬)</small></h2><div class="tw"><table><thead><tr><th data-k="cap">글</th><th data-k="v" aria-sort="descending">조회</th><th data-k="l">좋아요</th><th data-k="c">댓글</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+  <section class="card"><h2>최근 댓글</h2><div id="cmts"></div></section>
+ </div>
+ <section class="card mt"><h2>다른 곳에서 보기</h2><div class="links">
+  <a href="https://analytics.google.com/" target="_blank" rel="noopener">구글 애널리틱스 (방문자·지역·기기)</a>
+  <a href="https://search.google.com/search-console?resource_id=sc-domain:runrun.co.kr" target="_blank" rel="noopener">구글 서치콘솔 (검색어)</a>
+  <a href="https://searchadvisor.naver.com/console/board" target="_blank" rel="noopener">네이버 서치어드바이저</a>
+  <a href="https://www.bing.com/webmasters/home?siteUrl=https%3A%2F%2Frunrun.co.kr%2F" target="_blank" rel="noopener">빙 웹마스터</a>
+  <a href="https://adsense.google.com/" target="_blank" rel="noopener">애드센스</a>
+  <a href="https://console.firebase.google.com/project/dallyeo-85c6b/firestore" target="_blank" rel="noopener">파이어베이스 (댓글 지우기)</a>
+  <a href="https://github.com/theipzenwith-cmyk/dallyeo-src/actions" target="_blank" rel="noopener">매일 자동 공개 기록</a>
+ </div></section>
+</main>
+<script src="/posts.js?v=1a7b29ac"></script>
+<script>
+{
+const KEY="AIzaSyDaQ23BiDahetmivUex9qZPfCRdJgmW-l0",BASE="https://firestore.googleapis.com/v1/projects/dallyeo-85c6b/databases/(default)/documents";
+const P=window.DD_P||[],byId=Object.fromEntries(P.map(p=>[p.id,p]));
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num=n=>Number(n||0).toLocaleString("ko-KR"),iv=f=>f?+(f.integerValue||0):0;
+const z=x=>String(x).padStart(2,"0"),dk=d=>`${d.getFullYear()}${z(d.getMonth()+1)}${z(d.getDate())}`;
+const title=id=>byId[id]?byId[id].cap:id;
+const listAll=async col=>{let out=[],tok="";do{const r=await fetch(`${BASE}/${col}?pageSize=300&key=${KEY}${tok?"&pageToken="+tok:""}`);const j=await r.json();out=out.concat(j.documents||[]);tok=j.nextPageToken||""}while(tok);return out};
+const dayRows=async d=>{const r=await fetch(`${BASE}/day/${d}:runQuery?key=${KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"p"}],orderBy:[{field:{fieldPath:"n"},direction:"DESCENDING"}],limit:300}})});const j=await r.json();return (j||[]).filter(x=>x.document).map(x=>({id:x.document.name.split("/").pop(),n:iv(x.document.fields.n)}))};
+let sortK="v",rowsData=[];
+const drawRows=()=>{const r=[...rowsData].sort((a,b)=>sortK==="cap"?a.cap.localeCompare(b.cap,"ko"):b[sortK]-a[sortK]);
+ $("rows").innerHTML=r.map(x=>`<tr><td><a href="/p/${esc(x.id)}/" target="_blank" rel="noopener">${esc(x.cap)}</a></td><td>${num(x.v)}</td><td>${num(x.l)}</td><td>${num(x.c)}</td></tr>`).join("");
+ document.querySelectorAll("th").forEach(th=>th.dataset.k===sortK?th.setAttribute("aria-sort",sortK==="cap"?"ascending":"descending"):th.removeAttribute("aria-sort"))};
+document.querySelector("thead").addEventListener("click",e=>{const th=e.target.closest("th");if(!th)return;sortK=th.dataset.k;drawRows()});
+const load=async()=>{$("when").textContent="불러오는 중…";
+ try{
+  const days=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);return d});
+  const [stats,cmts,...dr]=await Promise.all([listAll("stats"),listAll("comments"),...days.map(d=>dayRows(dk(d)))]);
+  const S={};stats.forEach(d=>{S[d.name.split("/").pop()]={v:iv(d.fields&&d.fields.views),l:iv(d.fields&&d.fields.likes)}});
+  const C={};const cl=cmts.map(d=>{const f=d.fields||{};return{post:f.post&&f.post.stringValue,name:f.name&&f.name.stringValue,text:f.text&&f.text.stringValue,at:f.at&&f.at.timestampValue}});
+  cl.forEach(c=>{C[c.post]=(C[c.post]||0)+1});
+  const ids=new Set([...P.map(p=>p.id),...Object.keys(S)]);
+  rowsData=[...ids].map(id=>({id,cap:title(id),v:(S[id]||{}).v||0,l:(S[id]||{}).l||0,c:C[id]||0}));drawRows();
+  const sums=dr.map(r=>r.reduce((a,x)=>a+x.n,0)),tot7=sums.reduce((a,b)=>a+b,0),today=dr[6];
+  $("tToday").textContent=num(sums[6]);$("tTodayN").textContent=`글 ${today.length}편이 읽힘`;
+  $("t7").textContent=num(tot7);$("t7a").textContent=num(Math.round(tot7/7));
+  $("tViews").textContent=num(rowsData.reduce((a,x)=>a+x.v,0));$("tLikes").textContent=num(rowsData.reduce((a,x)=>a+x.l,0));
+  $("tCmts").textContent=num(cl.length);$("tPosts").textContent=num(P.length);
+  const mx=Math.max(1,...sums);
+  $("chart").innerHTML=sums.map((s,i)=>`<div class="c${i===6?" today":""}" title="${days[i].getMonth()+1}월 ${days[i].getDate()}일 · ${num(s)}회"><span class="v">${num(s)}</span><div class="b" style="height:${Math.round(s/mx*100)}%"></div></div>`).join("");
+  $("days").innerHTML=days.map((d,i)=>`<span>${i===6?"오늘":`${d.getMonth()+1}/${d.getDate()}`}</span>`).join("");
+  $("todayTop").innerHTML=today.length?today.slice(0,10).map(x=>`<li><a href="/p/${esc(x.id)}/" target="_blank" rel="noopener">${esc(title(x.id))}</a><b>${num(x.n)}</b></li>`).join(""):`<li class="empty" style="list-style:none">아직 오늘 읽힌 글이 없어요</li>`;
+  const recent=cl.filter(c=>c.at).sort((a,b)=>new Date(b.at)-new Date(a.at)).slice(0,10);
+  $("cmts").innerHTML=recent.length?recent.map(c=>`<div class="cm">${esc(c.text||"")}<small>${esc(c.name||"")} · ${esc(title(c.post))} · ${new Date(c.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</small></div>`).join(""):`<p class="empty">아직 댓글이 없어요</p>`;
+  $("when").textContent="방금 불러옴 · "+new Date().toLocaleTimeString("ko-KR",{hour:"2-digit",minute:"2-digit"});
+ }catch(e){$("when").innerHTML='<span class="err">불러오지 못했어요. 새로고침을 눌러 주세요.</span>'}};
+$("re").onclick=load;load();setInterval(load,5*60*1000);
+}
+</script>
+</body>
+</html>
