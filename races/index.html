@@ -425,7 +425,7 @@ header.sopen .search{flex:1}
 .tcols button[aria-pressed=true]{outline:3px solid var(--ink);outline-offset:2px}.tcols small{margin-left:auto;color:var(--soft)}
 .talign{display:flex;gap:6px}.talign button{width:40px;height:36px;border:0;border-radius:10px;background:var(--fill);color:var(--ink);display:grid;place-items:center;cursor:pointer}.talign button svg{width:20px;height:20px}.talign button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 .tsize{display:flex;align-items:center;gap:10px;color:var(--soft)}.tsize input{flex:1;accent-color:var(--red);height:28px}
-.tbar{position:sticky;top:-16px;z-index:2;display:flex;align-items:center;gap:8px;margin:-16px calc(-1 * max(18px,calc(50% - 280px))) 0;padding:10px max(12px,calc(50% - 286px));background:var(--bg);border-bottom:1px solid var(--line)}.tbar b{flex:1;font:400 22px "Do Hyeon",sans-serif}.tx{width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer}.tsend{height:38px;padding:0 18px;border:0;border-radius:10px;background:var(--red);color:#fff;font:700 15px system-ui,sans-serif;cursor:pointer}.tsend:disabled{opacity:.4;cursor:default}
+.tbar{position:sticky;top:-16px;z-index:2;display:flex;align-items:center;gap:8px;margin:-16px calc(-1 * max(18px,calc(50% - 280px))) 0;padding:10px max(12px,calc(50% - 286px));background:var(--bg);border-bottom:1px solid var(--line)}.tbar b{flex:1;font:400 22px "Do Hyeon",sans-serif}.tclose{width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer}.tsend{height:38px;padding:0 18px;border:0;border-radius:10px;background:var(--red);color:#fff;font:700 15px system-ui,sans-serif;cursor:pointer}.tsend:disabled{opacity:.4;cursor:default}
 .talk .tav{background:var(--fill)!important;color:var(--ink);display:grid;place-items:center;font:700 15px system-ui,sans-serif}
 .trep{margin-left:auto;border:0;background:none;color:var(--soft);font-size:12px;cursor:pointer;position:relative;z-index:1}
 .tcardx{border:1px solid var(--line);aspect-ratio:4/5;border-radius:14px;display:flex;align-items:center;padding:10%;container-type:inline-size}
@@ -453,7 +453,7 @@ html,body{overflow-x:clip}
 </header>
 <button type="button" class="fab" id="fab" aria-label="헉헉 수다 글쓰기"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.25 4.75l4 4L8.75 19.25h-4v-4z"/><path d="m13.25 6.75 4 4"/></svg></button>
 <div class="tsheet" id="tsheet" hidden><div class="mback" data-tclose></div><form class="tform" id="tform" autocomplete="off">
- <div class="tbar"><button type="button" class="tx" data-tclose aria-label="닫기"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><b>헉헉수다</b><button type="submit" class="tsend" id="tsend" disabled>올리기</button></div>
+ <div class="tbar"><button type="button" class="tclose" data-tclose aria-label="닫기"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><b>헉헉수다</b><button type="submit" class="tsend" id="tsend" disabled>올리기</button></div>
  <p class="tme"><span id="tname"></span>(으)로 올라가요 · 짧게, 고운 말로</p>
  <div class="tprev" id="tprev"><textarea id="ttext" maxlength="80" rows="4" placeholder="오늘 몇 km 뛰었어? 러닝하다 생긴 일, 한마디 남겨 봐!"></textarea></div>
  <div class="tcols" id="tcols"><button type="button" data-c="y" aria-label="노랑" aria-pressed="true"></button><button type="button" data-c="r" aria-label="빨강"></button><button type="button" data-c="b" aria-label="파랑"></button><button type="button" data-c="g" aria-label="초록"></button><button type="button" data-c="k" aria-label="검정"></button><button type="button" data-c="w" aria-label="흰색"></button><small id="tlen">0 / 80</small></div>
@@ -484,7 +484,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=5212350e"></script>
+<script src="/posts.js?v=e085ac56"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
