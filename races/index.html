@@ -339,6 +339,15 @@ header:not(.sopen) .search{display:none}
 header.sopen .logo,header.sopen .sbtn,header.sopen .yt{display:none}
 header.sopen .search{flex:1}
 .search:has(input:placeholder-shown) button{display:grid}
+
+/* 이거알아 유튜브 영상 */
+.yv .fph{cursor:default}.yv .av img{width:100%;height:100%;object-fit:cover;display:block}
+.ytp{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;cursor:pointer;background:#000}
+.ytp img{width:100%;height:100%;object-fit:cover;display:block}
+.ytp .pl{position:absolute;left:50%;top:50%;translate:-50% -50%;width:64px;height:46px;border-radius:12px;background:#E2492F;display:grid;place-items:center}.ytp .pl svg{width:26px;height:26px}
+.ytf{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000}
+.yv .igbar{align-items:flex-start;gap:12px}.yv .yt-t{flex:1;margin:4px 0 0;font-weight:600}.yv .shbtn{display:inline-flex;align-items:center;text-decoration:none;flex:none}
+@media(max-width:600px){.ytp,.ytf{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -370,7 +379,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=a991e75f"></script>
+<script src="/posts.js?v=7984a003"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -505,6 +514,13 @@ board.addEventListener("click",e=>{const a=e.target.closest(".fph");if(a){const 
  const g=e.target.closest(".pg");if(g&&g.dataset.id.startsWith("quiz-")){prof=null;qonly=g.dataset.id;window.scrollTo(0,0);drawBoard();return}if(g){const p=P.find(x=>x.id===g.dataset.id);prof=null;cat=p.cat;drawChips();show(p);return}
  if(e.target.closest(".pback")){prof=null;qonly=null;window.scrollTo(0,0);drawBoard()}});
 chips.addEventListener("click",()=>{prof=null;qonly=null},true);qi.addEventListener("input",()=>{qonly=null},true);
+/* 「이거알아?」 유튜브 영상 — 피드에서 바로 재생 + 채널 가기 (2026-11-27 Ray) */
+const YTV=window.DD_YT||[];
+const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+"yt1.jpg";
+ return `<article class="item fp yv"><div class="fph"><span class="av"><img src="${av}" alt="" width="34" height="34" loading="lazy"></span><div><b>이거알아?</b><small>유튜브 · 몸속 이야기 영상</small></div></div>
+ <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
+ <div class="ig"><div class="igbar"><h2 class="ftitle yt-t">${esc(v.t)}</h2><a class="shbtn" href="${YT_URL}" target="_blank" rel="noopener">채널 가기</a></div></div></article>`};
+board.addEventListener("click",e=>{const b=e.target.closest(".ytp");if(!b)return;const f=document.createElement("iframe");f.className="ytf";f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.v+"?autoplay=1&playsinline=1&rel=0";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="유튜브 영상";b.replaceWith(f)});
 const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");if(prof)return drawProfile();board.classList.toggle("rlist",cat==="대회 일정");
  if(cat==="대회 일정"){board.classList.remove("mason");sent.hidden=true;return drawRaces(k)}
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k))&&!(cur&&p.id===cur.id));const up=upcoming();
@@ -512,9 +528,9 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
  feed=[];const home=cat==="전체"&&!k;let qn=0;
  if(qonly){const qi0=Math.max(0,QP.findIndex(x=>x.id===qonly));feed=QP.slice(qi0).concat(QP.slice(0,qi0)).map(item);board.classList.add("mason");makeCols();shown=0;return more()}
- if(cur)feed.push(item(cur));if(ad)feed.push(raceCard(up[0]));if(home&&!cur)feed.push(ytCard(0));
+ if(cur)feed.push(item(cur));if(ad)feed.push(raceCard(up[0]));if(home&&!cur)feed.push(ytVid(0));let yn=1;
  r.forEach((p,i)=>{feed.push(item(p));if(ad&&i%5===4)feed.push(raceCard(up[(Math.floor(i/5)+1)%up.length]));
-  if(home&&!cur&&i===13)feed.push(ytCard(1));if(home&&cur&&i===2)feed.push(ytCard(2));
+  if(home&&i%8===(cur?2:6))feed.push(ytVid(yn++));
   if(home&&i===(cur?5:4))feed.push(topCard());
   if(home&&i%6===2&&qn<QP.length)feed.push(item(QP[qn++]));});
  board.classList.add("mason");makeCols();shown=0;more()};
