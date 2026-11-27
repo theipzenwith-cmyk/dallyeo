@@ -483,10 +483,10 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=419a097a"></script>
+<script src="/posts.js?v=47b10640"></script>
 <script>
 {
-const CATS=[["전체","全"],["헉헉 수다","✎"],["카드뉴스","▦"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
+const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
 const P=window.DD_P;
 for(const p of P)p.c=[];
 const BASE="/";
@@ -593,7 +593,7 @@ let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
 let chipFirst=true;const chipCenter=()=>{const b=chips.querySelector('[aria-pressed="true"]');if(!b)return;const cr=chips.getBoundingClientRect(),br=b.getBoundingClientRect();chips.scrollBy({left:(br.left+br.width/2)-(cr.left+cr.width/2),behavior:chipFirst?"auto":"smooth"});chipFirst=false};
-const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="카드뉴스"||n==="대회 일정"||n==="헉헉 수다"||n==="러닝 코스"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
+const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="대회 일정"||n==="헉헉 수다"||n==="러닝 코스"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
