@@ -110,7 +110,7 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 
 .race .rd,.race .rs{margin:0;font-size:14px;line-height:1.5}
 .rc{display:flex;flex-wrap:wrap;gap:6px}.rc span{font:400 14px "Jua",sans-serif;padding:3px 10px;border-radius:99px;border:1.5px solid currentColor}
 .rgo{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 18px;border-radius:14px;background:#141414;color:#fff;text-decoration:none;font-weight:700;font-size:15px;margin-top:4px;flex:none}
-.rgo.done{opacity:.6}
+.rgo.done{opacity:1}
 .rgo.off{background:transparent;color:inherit;border:1.5px dashed currentColor;opacity:.7}
 .race .cap{cursor:pointer}
 .race .rcard{overflow:hidden}.race h3{font-size:clamp(22px,7.5cqw,32px);word-break:keep-all;overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
@@ -261,7 +261,8 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 @media (max-width:600px){.board{columns:2;column-gap:10px}.item{margin-bottom:16px}.card{border-radius:16px}.cap{font-size:13px;padding-inline:3px}.yt{display:none}.logo{font-size:22px}.search{height:46px;padding-left:16px}.chip{height:48px;font-size:17px;border-radius:15px}.chip i{width:38px;height:38px;font-size:17px;border-radius:11px}.nav{display:none}.deck{border-radius:16px}}
 
 /* 한 줄 피드 (2026-11-27) — 인스타처럼 깔끔하게 */
-.board.mason{max-width:560px;margin-inline:auto;display:block}.board.mason .col{width:100%}
+.board.mason{display:flex;align-items:flex-start;gap:24px}.board.mason .col{flex:1 1 0;min-width:0}
+@media(max-width:760px){.board.mason{display:block}.board.mason .col{width:100%}}
 .fp{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 .fph{display:flex;align-items:center;gap:10px;padding:0 2px 12px;position:relative}
 .fph .av{flex:none;width:34px;height:34px;border-radius:50%;background:var(--yellow);color:#141414;display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--red)}
@@ -281,7 +282,7 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 /* 캐릭터 프로필 */
 .board.plist{columns:auto;display:block}
 .fph{cursor:pointer}
-.prof{max-width:560px;margin:0 auto;padding-top:8px}
+.prof{max-width:935px;margin:0 auto;padding-top:8px}
 .ptop{display:flex;align-items:center;gap:28px}
 .pav{flex:none;width:88px;height:88px;border-radius:50%;box-shadow:0 0 0 3px var(--bg),0 0 0 6px var(--red);overflow:hidden}.pav svg{width:100%;height:100%}
 .pst{flex:1;display:flex;justify-content:space-around;text-align:center}.pst b{display:block;font:700 18px system-ui,sans-serif}.pst span{font-size:13px;color:var(--soft)}
@@ -293,7 +294,7 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 .pg .poster{height:100%;pointer-events:none}
 @media(max-width:600px){.pgrid{margin-inline:calc(50% - 50vw)}.ptop{gap:18px}}
 .sl.txt:not(.sum):not(.end)>.no{visibility:hidden}.sl.pic .cart .no{display:none} /* 오른쪽 위 1/7 이 있어서 왼쪽 위 번호는 숨김 */
-.rfeed{max-width:560px;margin:0 auto}.rfeed .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.rfeed .rhead{margin-bottom:20px}.rfeed .item{margin-bottom:18px}
+.rfeed{max-width:none}@media(min-width:761px){.rfeed{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:start}.rfeed .rtitle,.rfeed .rhead,.rfeed .empty{grid-column:1/-1}.rfeed .item{margin:0}}.rfeed .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.rfeed .rhead{margin-bottom:20px}.rfeed .item{margin-bottom:18px}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -407,7 +408,7 @@ const drawChips=()=>{chips.innerHTML=CATS.map(([n,g])=>`<button class="chip" typ
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
-const ncol=()=>1;
+const ncol=()=>innerWidth<=760?1:Math.max(1,Math.min(4,Math.floor((board.clientWidth+24)/344)));
 const sent=document.createElement("div");sent.className="loadmore";sent.hidden=true;sent.innerHTML="<span></span>";board.after(sent);
 const put=html=>{const t=document.createElement("template");t.innerHTML=html;[...t.content.children].forEach(el=>{let m=cols[0];for(const c of cols)if(c.offsetHeight<m.offsetHeight||(c.offsetHeight===m.offsetHeight&&c.childElementCount<m.childElementCount))m=c;m.appendChild(el)})};
 const makeCols=()=>{board.innerHTML="";cols=Array.from({length:ncol()},()=>board.appendChild(Object.assign(document.createElement("div"),{className:"col"})))};
