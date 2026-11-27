@@ -152,9 +152,10 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .qa{display:grid;gap:8px}
 .qa button{height:48px;border-radius:14px;border:2px solid transparent;background:var(--bg);color:var(--ink);font:400 18px "Jua",sans-serif;cursor:pointer}
 
-.qa button.ok{border-color:#1f9d55;background:#e6f6ec;color:#14532d}
-.qa button.no{border-color:var(--red);background:#fde8e4;color:#7a1d0e}
-.qa button:disabled{cursor:default}.qa button:disabled:not(.ok):not(.no){opacity:.5}
+.qa button.pick{background:var(--red);border-color:var(--red);color:#fff}
+.qa button.ok:not(.pick){border-color:var(--red);color:var(--red)}
+.qa button.ok:not(.pick)::after{content:" ← 정답";font-size:14px}
+.qa button:disabled{cursor:default}.qa button:disabled:not(.ok):not(.pick){opacity:.5}
 .qw{margin:0;font:15px/1.5 system-ui,sans-serif}.qw[hidden],.qgo[hidden],.item[hidden]{display:none}
 .qgo{font:700 15px system-ui,sans-serif;color:inherit}
 .tcard ol{margin:0;padding:0;list-style:none;counter-reset:t;display:grid;gap:10px}
@@ -380,8 +381,8 @@ const ytCard=i=>{const y=YT[i%YT.length];const src=(typeof BASE!=="undefined"?BA
 const qzHTML=(p,feed)=>{const z=p.qz;return `<p class="qk">${feed?"달려달려 퀴즈":"이 글 퀴즈"}</p><h3>${esc(z.q)}</h3><div class="qa">${z.a.map((a,i)=>`<button type="button" data-i="${i}">${esc(a)}</button>`).join("")}</div><p class="qw" hidden></p>${feed?`<a class="qgo" href="${BASE}p/${p.id}/" hidden>이 글 읽어 보기 →</a>`:""}`};
 const qzCard=p=>`<div class="item qz" data-id="${esc(p.id)}"><div class="qcard">${qzHTML(p,1)}</div></div>`;
 const qzAnswer=(box,p,i)=>{const z=p.qz;if(box.dataset.done)return;box.dataset.done=1;
- box.querySelectorAll(".qa button").forEach((b,j)=>{b.disabled=true;if(j===z.ans)b.classList.add("ok");else if(j===i)b.classList.add("no")});
- const w=box.querySelector(".qw");w.innerHTML=`<b>${i===z.ans?"정답이에요!":"아쉬워요!"}</b> ${esc(z.why)}`;w.hidden=false;
+ box.querySelectorAll(".qa button").forEach((b,j)=>{b.disabled=true;if(j===i)b.classList.add("pick");if(j===z.ans)b.classList.add("ok")});
+ const w=box.querySelector(".qw");w.innerHTML=`<b style="color:var(--red)">${i===z.ans?"정답이에요!":"아쉬워요!"}</b> ${esc(z.why)}`;w.hidden=false;
  const g=box.querySelector(".qgo");if(g)g.hidden=false;
  const S=ls.get("dd_quiz",{});S[p.id]=i===z.ans?1:0;ls.set("dd_quiz",S)};
 /* 오늘 많이 본 글 TOP 5 — 파이어베이스 day/{날짜} 에 글마다 하루 조회 수 · 3편 넘게 모이면 보임, 모자라면 전체 많이 본 글 */
