@@ -54,14 +54,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans KR"
 a{color:inherit}
 button,input,textarea{font:inherit;color:inherit}
 .wrap{max-width:1240px;margin:0 auto;padding-inline:max(3vw,14px)}
-header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4px}
+header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 4px}
 .bar{display:flex;align-items:center;gap:12px}
 .logo{flex:none;font:400 26px/1 "Do Hyeon",sans-serif;text-decoration:none;letter-spacing:-.02em}
 .search{flex:1;display:flex;align-items:center;gap:8px;height:52px;border-radius:999px;background:var(--fill);padding:0 8px 0 22px}
 .search input{flex:1;border:0;background:none;font-size:16px;height:100%;outline:none}
+.search:has(input:placeholder-shown) button{display:none}.search input::-webkit-search-cancel-button{display:none}
 .search button{width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;font-size:22px;line-height:1}
 .search:focus-within{outline:2px solid var(--ink)}
-.yt{flex:none;height:44px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--bg);display:inline-flex;align-items:center;text-decoration:none;font-weight:700;font-size:14px}
+.yt{flex:none;height:44px;padding:0 16px;border-radius:14px;background:var(--ink);color:var(--bg);display:inline-flex;align-items:center;text-decoration:none;font-weight:700;font-size:14px}
 .chips{display:flex;gap:10px;overflow-x:auto;padding-block:14px 10px;scrollbar-width:none}
 .chip{flex:none;display:flex;align-items:center;gap:10px;height:56px;padding:0 20px;border-radius:18px;border:0;cursor:pointer;font:400 19px "Jua",sans-serif;background:var(--fill);color:var(--ink)}
 .chip i{font:normal 400 20px/1 "Do Hyeon",sans-serif;width:44px;height:44px;border-radius:13px;background:var(--bg);display:grid;place-items:center;border:1px solid var(--line)}
@@ -104,15 +105,15 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .rmodal iframe{flex:1;width:100%;border:0;background:#fff}
 @media(max-width:600px){.rmodal{padding:0}.rmodal .rbox{height:100%;border-radius:0}}
 .race .rcard{border-radius:20px;background:var(--yellow);color:#141414;padding:22px 20px 20px;display:flex;flex-direction:column;gap:8px}
-.race .rk{margin:0;font:400 15px "Jua",sans-serif}.race .rk b{background:#141414;color:#fff;padding:2px 9px;border-radius:99px;margin-left:4px;font-weight:400;white-space:nowrap;display:inline-block}
+.race .rk{margin:0;font:400 15px "Jua",sans-serif}.race .rcard{position:relative}.race .rk{position:absolute;top:18px;right:18px}.race .rk+h3{margin-top:30px}.race .rk b{background:#141414;color:#fff;padding:2px 9px;border-radius:99px;margin-left:4px;font-weight:400;white-space:nowrap;display:inline-block}
 .race h3{margin:0;font:400 30px/1.12 "Do Hyeon",sans-serif;letter-spacing:-.02em;word-break:keep-all}
 .race .rd,.race .rs{margin:0;font-size:14px;line-height:1.5}
 .rc{display:flex;flex-wrap:wrap;gap:6px}.rc span{font:400 14px "Jua",sans-serif;padding:3px 10px;border-radius:99px;border:1.5px solid currentColor}
-.rgo{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 18px;border-radius:999px;background:#141414;color:#fff;text-decoration:none;font-weight:700;font-size:15px;margin-top:4px;flex:none}
+.rgo{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 18px;border-radius:14px;background:#141414;color:#fff;text-decoration:none;font-weight:700;font-size:15px;margin-top:4px;flex:none}
 .rgo.done{opacity:.6}
 .rgo.off{background:transparent;color:inherit;border:1.5px dashed currentColor;opacity:.7}
 .race .cap{cursor:pointer}
-.race .rcard{overflow:hidden}.race h3{font-size:clamp(20px,7cqw,30px);overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
+.race .rcard{overflow:hidden}.race h3{font-size:clamp(34px,12cqw,58px);line-height:1.08;letter-spacing:-.02em;word-break:keep-all;overflow-wrap:anywhere;margin:6px 0 4px}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
 .ig{margin-top:6px;color:var(--ink)}
 .igbar{display:flex;align-items:center;gap:2px;margin-left:-8px}
@@ -127,11 +128,11 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .cmt.pin{margin-top:16px}.cmt.pin b{display:inline-flex;align-items:center;gap:4px}.op{font:700 11px system-ui,sans-serif;background:var(--red);color:#fff;border-radius:6px;padding:2px 6px;margin-right:6px}
 .cin{display:grid;gap:6px;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
 .cin .me{font:600 12px system-ui,sans-serif;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:18px}
-.cbox{display:flex;align-items:center;gap:6px;height:48px;border-radius:999px;background:var(--fill);padding:0 6px 0 18px}
+.cbox{display:flex;align-items:center;gap:6px;height:48px;border-radius:14px;background:var(--fill);padding:0 6px 0 16px}
 .cbox:focus-within{outline:2px solid var(--ink)}
 .cin input{flex:1;min-width:0;background:none;border:0;color:var(--ink);font:16px system-ui,sans-serif;outline:none;height:100%}
 .cin input::placeholder{color:var(--soft)}
-.cin button{border:0;background:var(--ink);color:var(--bg);font:700 14px system-ui,sans-serif;cursor:pointer;height:36px;padding:0 16px;border-radius:999px}.cin button:disabled{opacity:.3;cursor:default}
+.cin button{flex:none;border:0;background:var(--red);color:#fff;cursor:pointer;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;padding:0}.cin button svg{width:20px;height:20px;stroke-width:2.4}.cin button:disabled{background:var(--line);color:var(--soft);cursor:default}
 .qbox,.qcard,.tcard{border-radius:20px;padding:20px 18px;display:grid;gap:10px}
 .qbox{background:var(--fill);margin-top:12px}
 .qcard{background:var(--fill);color:var(--ink);border:2px solid var(--yellow)}
@@ -158,7 +159,7 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .ytc img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .ytc .yin{padding:16px 18px 18px}.ytc .yk{margin:0 0 6px;font:400 14px "Jua",sans-serif;color:#ff5a4e}
 .ytc h3{margin:0 0 8px;font:400 clamp(20px,5.4cqw,26px)/1.15 "Do Hyeon",sans-serif}.ytc .yin p{margin:0 0 14px;font-size:14px;line-height:1.5;opacity:.8}
-.ytc .ygo{display:inline-block;padding:10px 14px;border-radius:999px;background:#E2492F;color:#fff;font:400 15px "Jua",sans-serif;white-space:nowrap}
+.ytc .ygo{display:inline-block;padding:10px 14px;border-radius:12px;background:#E2492F;color:#fff;font:400 15px "Jua",sans-serif;white-space:nowrap}
 .share{display:flex;gap:8px;margin:16px 0 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .post{grid-template-columns:minmax(0,1fr)!important}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
@@ -347,14 +348,14 @@ const textPoster=(p,k=1)=>`<div class="poster t-${p.tone}">${p.vert
 /* 한 줄 피드 — 상세 없이 피드에서 넘기기·좋아요·퀴즈·댓글 (2026-11-27 Ray 「인스타·유튜브처럼 · 깔끔하게」) */
 const SV=(d,x="")=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"${x}>${d}</svg>`;
 const item=p=>`<article class="item fp" data-id="${esc(p.id)}">
-<header class="fph"><span class="av" aria-hidden="true">달</span><div><b>달려달려</b><small>${esc(p.cat)}</small></div><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></header>
+<div class="fph"><span class="av" aria-hidden="true">달</span><div><b>달려달려</b><small>${esc(p.cat)}</small></div><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></div>
 <div class="deckbox"><div class="deck" tabindex="0" aria-label="${esc(p.cap)} · 카드 넘기기">${slides(p)}</div><span class="count">1 / ${N(p)}</span><button class="nav p" type="button" aria-label="이전 카드" disabled>‹</button><button class="nav n" type="button" aria-label="다음 카드">›</button></div>
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}</button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}</button><button class="ib shb" type="button" aria-label="친구에게 공유하기">${SV('<path d="M21.5 3 10.2 14.3M21.5 3 14.6 21l-3.9-8.4L2.5 8.9z"/>')}</button><div class="dots" aria-hidden="true">${Array.from({length:N(p)},(_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div><span class="views" aria-label="조회수">${SV('<path d="M1.5 12S5.3 5 12 5s10.5 7 10.5 7-3.8 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/>')}<b>·</b></span></div>
 <p class="likes">좋아요 ·</p>
 <h2 class="ftitle"><b>달려달려</b>${esc(p.cap)}</h2>
 ${p.qz?`<div class="qbox">${qzHTML(p,0)}</div>`:""}
 <div class="cmts"></div>
-<form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled>게시</button></div></form>
+<form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form>
 </div></article>`;
 const N=p=>p.k?p.k.length+3:5;
 const slides=p=>p.k?[`<div class="sl" aria-label="1 / ${N(p)}">${poster(p,.82)}</div>`,
@@ -368,7 +369,7 @@ const R=/*RACES*/[{"name": "2026 모악트레일런", "date": "2026-12-05", "dat
 const TODAY=(()=>{const n=new Date(),z=x=>String(x).padStart(2,"0");return new Date(`${n.getFullYear()}-${z(n.getMonth()+1)}-${z(n.getDate())}`)})(); /* 보는 사람의 오늘 — 날짜 바뀌면 D-day·지난 대회 자동 */
 const dday=r=>{if(!r.date)return "";const d=Math.round((new Date(r.date)-TODAY)/864e5);return d>0?`D-${d}`:d===0?"D-DAY":"지난 대회"};
 const upcoming=()=>R.filter(r=>!r.date||new Date(r.date)>=TODAY);
-const go_=r=>r.url?`<a class="rgo${r.status==="마감"?" done":""}" href="${esc(r.url)}" target="_blank" rel="noopener"${r.frame?` data-frame="${esc(r.name)}"`:""}>${r.status==="마감"?"공식 페이지 보기":"접수하러 가기"} ↗</a>`:`<span class="rgo off">공식 페이지 확인 중</span>`;
+const go_=r=>r.url?`<a class="rgo${r.status==="마감"?" done":""}" href="${esc(r.url)}" target="_blank" rel="noopener"${r.frame?` data-frame="${esc(r.name)}"`:""}>${r.status==="마감"?"공식 페이지 보기":"접수하러 가기"}</a>`:`<span class="rgo off">공식 페이지 확인 중</span>`;
 const raceCard=r=>`<div class="item race"><div class="rcard"><p class="rk">대회 <b>${esc(dday(r))}</b></p><h3>${esc(r.name)}</h3><p class="rd">${esc(r.dateText||r.date||"날짜 미정")}<br>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}</p>`:""}${go_(r)}</div></div>`;
 const raceRow=r=>{const d=r.date?new Date(r.date):null;return `<li class="rrow"><div class="rdate">${d?`<b>${d.getMonth()+1}.${d.getDate()}</b><span>${"일월화수목금토"[d.getDay()]}</span>`:"<b>미정</b>"}</div><div class="rinfo"><h3>${esc(r.name)} <small>${esc(dday(r))}</small></h3><p>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}${r.status?` · ${esc(r.status)}`:""}</p>`:""}${r.note?`<p class="rn">${esc(r.note)}</p>`:""}</div>${go_(r)}</li>`};
 const drawRaces=k=>{const r=upcoming().filter(x=>!k||(x.name+x.region+x.place+(x.courses||[]).join("")).includes(k));
@@ -395,7 +396,7 @@ const YT=[{img:"yt1.jpg",h:"달릴 때 몸속에선<br>무슨 일이?",t:"심장
  {img:"yt2.jpg",h:"카드로 읽었다면<br>영상으로 봐요",t:"트레일러닝부터 마라톤까지, 몸속 변화를 눈으로."},
  {img:"yt3.jpg",h:"수영·자전거·달리기<br>몸은 어떻게 다를까",t:"운동마다 달라지는 몸속을 영상으로 정리해요."}];
 const ytCard=i=>{const y=YT[i%YT.length];const src=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+y.img;
- return `<div class="item ytc"><a class="ycard" href="${YT_URL}" target="_blank" rel="noopener"><img src="${src}" alt="이거알아? 채널 캐릭터" loading="lazy" width="800" height="600"><div class="yin"><p class="yk">유튜브 · 이거알아?</p><h3>${y.h}</h3><p>${esc(y.t)}</p><span class="ygo">유튜브 채널 가기 ↗</span></div></a></div>`};
+ return `<div class="item ytc"><a class="ycard" href="${YT_URL}" target="_blank" rel="noopener"><img src="${src}" alt="이거알아? 채널 캐릭터" loading="lazy" width="800" height="600"><div class="yin"><p class="yk">유튜브 · 이거알아?</p><h3>${y.h}</h3><p>${esc(y.t)}</p><span class="ygo">유튜브 채널 가기</span></div></a></div>`};
 /* 퀴즈 카드 — 피드에 끼우는 것(qzCard)·글 안 퀴즈 칸(qzBox) 같은 모양 (2026-11-27 Ray) */
 const qzHTML=(p,feed)=>{const z=p.qz;return `<p class="qk">${feed?"달려달려 퀴즈":"이 글 퀴즈"}</p><h3>${esc(z.q)}</h3><div class="qa">${z.a.map((a,i)=>`<button type="button" data-i="${i}">${esc(a)}</button>`).join("")}</div><p class="qw" hidden></p>${feed?`<a class="qgo" href="${BASE}p/${p.id}/" hidden>이 글 읽어 보기 →</a>`:""}`};
 const qzCard=p=>`<div class="item qz" data-id="${esc(p.id)}"><div class="qcard">${qzHTML(p,1)}</div></div>`;
