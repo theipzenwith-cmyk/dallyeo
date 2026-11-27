@@ -306,6 +306,18 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 @media(max-width:600px){.pgrid{margin-inline:calc(50% - 50vw)}.ptop{gap:18px}}
 .sl.txt:not(.sum):not(.end)>.no{visibility:hidden}.sl.pic .cart .no{display:none} /* 오른쪽 위 1/7 이 있어서 왼쪽 위 번호는 숨김 */
 .rfeed{max-width:none}@media(min-width:761px){.rfeed{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:start}.rfeed .rtitle,.rfeed .rhead,.rfeed .empty{grid-column:1/-1}.rfeed .item{margin:0}}.rfeed .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.rfeed .rhead{margin-bottom:20px}.rfeed .item{margin-bottom:18px}
+
+/* 퀴즈 = 카드 한 장 (2026-11-27 Ray 「카드 디자인 안에」) */
+.sl.qzs{background:var(--yellow);color:#141414;display:flex;flex-direction:column;justify-content:center;gap:4cqw;padding:10% 9%}
+.sl.qzs .qk{font:400 4.6cqw "Jua",sans-serif;opacity:.75;margin:0}
+.sl.qzs h3{font:400 9.5cqw/1.15 "Do Hyeon",sans-serif;margin:0 0 3cqw;letter-spacing:-.02em;word-break:keep-all}
+.sl.qzs .qa{display:grid;grid-template-columns:1fr;gap:2.6cqw}
+.sl.qzs .qa button{height:13.5cqw;border-radius:3.4cqw;border:.6cqw solid #141414;background:#fff;color:#141414;font:400 5.6cqw "Jua",sans-serif;cursor:pointer}
+.sl.qzs .qa button.pick{background:var(--red);border-color:var(--red);color:#fff}
+.sl.qzs .qa button.ok:not(.pick){border-color:var(--red);color:var(--red)}
+.sl.qzs .qa button.ok:not(.pick)::after{content:" ← 정답";font-size:4.4cqw}
+.sl.qzs .qa button:disabled:not(.ok):not(.pick){opacity:.45}
+.sl.qzs .qw{font-size:4.6cqw;line-height:1.5;margin:2cqw 0 0}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -391,13 +403,13 @@ const item=p=>`<article class="item fp" data-id="${esc(p.id)}">
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}</button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}</button><button class="ib shb" type="button" aria-label="친구에게 공유하기">${SV('<path d="M21.5 3 10.2 14.3M21.5 3 14.6 21l-3.9-8.4L2.5 8.9z"/>')}</button><div class="dots" aria-hidden="true">${Array.from({length:N(p)},(_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div><span class="views" aria-label="조회수">${SV('<path d="M1.5 12S5.3 5 12 5s10.5 7 10.5 7-3.8 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/>')}<b>·</b></span></div>
 <p class="likes">좋아요 ·</p>
 <h2 class="ftitle"><b>${esc(CH(p.cat).n)}</b>${esc(p.cap)}</h2>
-${p.qz?`<div class="qbox">${qzHTML(p,0)}</div>`:""}
 <div class="cmts"></div>
 <form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form>
 </div></article>`;
-const N=p=>p.k?p.k.length+3:5;
+const N=p=>p.k?p.k.length+3+(p.qz?1:0):5;
 const slides=p=>p.k?[`<div class="sl" aria-label="1 / ${N(p)}">${poster(p,.82)}</div>`,
  ...p.k.map(([big,h,t,src,im],i)=>im&&CART[im]?`<div class="sl txt pic" aria-label="${i+2} / ${N(p)}"><div class="cart">${CART[im]()}<span class="no">${String(i+2).padStart(2,"0")}</span></div><div class="ctx"><div class="big">${esc(big)}</div><h3 class="sm">${esc(h)}</h3><p>${esc(t)}</p></div><div class="sf"><span>${esc(src)}</span><span>넘겨봐 →</span></div></div>`:`<div class="sl txt" aria-label="${i+2} / ${N(p)}"><span class="no">${String(i+2).padStart(2,"0")}</span><div><div class="big">${esc(big)}</div><h3 class="sm">${esc(h)}</h3><p>${esc(t)}</p></div><div class="sf"><span>${esc(src)}</span><span>넘겨봐 →</span></div></div>`),
+ ...(p.qz?[`<div class="sl qzs" aria-label="${p.k.length+2} / ${N(p)} · 퀴즈">${qzHTML(p,0)}</div>`]:[]),
  `<div class="sl txt sum" aria-label="${N(p)-1} / ${N(p)}"><span class="no">한 장 요약</span><ol>${p.sum.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><div class="sf"><span>달려달려</span><span>저장해 두기</span></div></div>`,
  `<div class="sl txt end" aria-label="${N(p)} / ${N(p)}"><span class="no">참고 자료</span><ul class="refs">${p.refs.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="disc">공개된 연구와 자료를 정리한 내용이에요. 사람마다 다를 수 있고, 의학적 조언이 아니에요. 통증이 계속되면 전문가에게 확인하세요.</p></div>`].join("")
 :[`<div class="sl" aria-label="1 / 5">${poster(p,.82)}</div>`,
@@ -435,7 +447,7 @@ const YT=[{img:"yt1.jpg",h:"달릴 때 몸속에선<br>무슨 일이?",t:"심장
 const ytCard=i=>{const y=YT[i%YT.length];const src=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+y.img;
  return `<div class="item ytc"><a class="ycard" href="${YT_URL}" target="_blank" rel="noopener"><img src="${src}" alt="이거알아? 채널 캐릭터" loading="lazy" width="800" height="600"><div class="yin"><p class="yk">유튜브 · 이거알아?</p><h3>${y.h}</h3><p>${esc(y.t)}</p><span class="ygo">유튜브 채널 가기</span></div></a></div>`};
 /* 퀴즈 카드 — 피드에 끼우는 것(qzCard)·글 안 퀴즈 칸(qzBox) 같은 모양 (2026-11-27 Ray) */
-const qzHTML=(p,feed)=>{const z=p.qz;return `<p class="qk">${feed?"달려달려 퀴즈":"이 글 퀴즈"}</p><h3>${esc(z.q)}</h3><div class="qa">${z.a.map((a,i)=>`<button type="button" data-i="${i}">${esc(a)}</button>`).join("")}</div><p class="qw" hidden></p>${feed?`<a class="qgo" href="${BASE}p/${p.id}/" hidden>이 글 읽어 보기 →</a>`:""}`};
+const qzHTML=(p,feed)=>{const z=p.qz;return `<p class="qk">${feed?"달려달려 퀴즈":"QUIZ · 맞혀 봐!"}</p><h3>${esc(z.q)}</h3><div class="qa">${z.a.map((a,i)=>`<button type="button" data-i="${i}">${esc(a)}</button>`).join("")}</div><p class="qw" hidden></p>${feed?`<a class="qgo" href="${BASE}p/${p.id}/" hidden>이 글 읽어 보기 →</a>`:""}`};
 const qzCard=p=>`<div class="item qz" data-id="${esc(p.id)}"><div class="qcard">${qzHTML(p,1)}</div></div>`;
 const qzAnswer=(box,p,i)=>{const z=p.qz;if(box.dataset.done)return;box.dataset.done=1;
  box.querySelectorAll(".qa button").forEach((b,j)=>{b.disabled=true;if(j===i)b.classList.add("pick");if(j===z.ans)b.classList.add("ok")});
@@ -517,7 +529,7 @@ function fpInit(el){el.dataset.on=1;const id=el.dataset.id,p=P.find(x=>x.id===id
  deck.addEventListener("dblclick",()=>{like(true);const h=document.createElementNS("http://www.w3.org/2000/svg","svg");h.setAttribute("viewBox","0 0 24 24");h.setAttribute("class","dheart");h.innerHTML=+HEART+r;deck.parentNode.appendChild(h);setTimeout(()=>h.remove(),900)});
  q(".cmtb").onclick=()=>inp.focus();
  q(".shb").onclick=async()=>{const u=urlOf(p);if(navigator.share){try{await navigator.share({title:p.cap,text:p.fine||p.cap,url:u})}catch(e){}}else copyTxt(u)};
- const qb=q(".qbox");if(qb)qb.addEventListener("click",e=>{const b=e.target.closest(".qa button");if(b)qzAnswer(qb,p,+b.dataset.i)});
+ const qb=q(".sl.qzs");if(qb)qb.addEventListener("click",e=>{const b=e.target.closest(".qa button");if(b)qzAnswer(qb,p,+b.dataset.i)});
  const draw=()=>{const list=open?all:all.slice(0,2);
   box.innerHTML=(p.oc?`<p class="cmt pin"><b>달려달려<span class="op">운영자</span></b>${esc(p.oc)}</p>`:"")+(all.length>2&&!open?`<button type="button" class="cmall">댓글 ${all.length}개 모두 보기</button>`:"")+list.map(c=>`<p class="cmt"><b>${esc(c.name)}</b>${esc(c.text)}<small>${esc(ago(c.at))}</small></p>`).join("");
   const m=box.querySelector(".cmall");if(m)m.onclick=()=>{open=true;draw()}};
