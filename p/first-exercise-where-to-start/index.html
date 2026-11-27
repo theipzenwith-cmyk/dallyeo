@@ -366,11 +366,11 @@ cup:()=>`<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hi
 shirt:()=>`<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="225" fill="#F6D43A"/><path d="M150 30l-56 34 22 40 30-14v110h108V90l30 14 22-40-56-34q-20 22-50 22t-50-22z" fill="#141414"/><g fill="#2E7DF2"><path d="M180 120q8 14 0 22q-8-8 0-22z"/><path d="M220 140q8 14 0 22q-8-8 0-22z"/><path d="M200 100q7 12 0 19q-7-7 0-19z"/></g><circle cx="300" cy="180" r="8" fill="#E2492F"/></svg>`
 };
 const poster=(p,k=1)=>p.img?`<div class="poster pic"><div class="art">${ART[p.img]()}</div><div class="tx"><div class="words">${p.w.map(l=>`<b style="font-size:${(Math.min(fit(l)*.62,14)*k).toFixed(1)}cqw">${esc(l)}</b>`).join("")}</div>
-<div class="fine"><strong>${esc(p.cap)}</strong>${p.fine?`<span>${esc(p.fine)}</span>`:""}<span>${esc(p.cat)} · 카드 ${N(p)}장</span></div></div></div>`:textPoster(p,k);
+<div class="fine"><strong>${esc(p.cap)}</strong>${p.fine?`<span>${esc(p.fine)}</span>`:""}</div></div></div>`:textPoster(p,k);
 const textPoster=(p,k=1)=>`<div class="poster t-${p.tone}">${p.vert
  ?`<div class="words vert">${p.vert.map(l=>`<b>${esc(l)}</b>`).join("")}</div>`
  :`<div class="words">${p.w.map(l=>`<b style="font-size:${(fit(l)*k).toFixed(1)}cqw">${esc(l)}</b>`).join("")}</div>`}
-<div class="fine"><strong>${esc(p.cap)}</strong>${p.fine?`<span>${esc(p.fine)}</span>`:""}<span>${esc(p.cat)} · 카드 ${N(p)}장</span></div></div>`;
+<div class="fine"><strong>${esc(p.cap)}</strong>${p.fine?`<span>${esc(p.fine)}</span>`:""}</div></div>`;
 const item=p=>`<div class="item"><a class="card" href="${BASE}p/${p.id}/" aria-label="${esc(p.cap)}">${poster(p)}</a><div class="cap"><span>${esc(p.cap)}</span><span>${esc(p.cat)}</span></div></div>`;
 const N=p=>p.k?p.k.length+3:5;
 const slides=p=>p.k?[`<div class="sl" aria-label="1 / ${N(p)}">${poster(p,.82)}</div>`,
