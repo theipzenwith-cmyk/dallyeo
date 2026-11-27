@@ -440,7 +440,7 @@ drawChips();drawBoard();route();
 }
 </script>
 <script>
-(()=>{const K="dd_inst_off";const off=()=>{try{return localStorage.getItem(K)}catch(e){return 1}};
+(()=>{const BASE="/dallyeo/";const K="dd_inst_off";const off=()=>{try{return localStorage.getItem(K)}catch(e){return 1}};
  if("serviceWorker" in navigator)navigator.serviceWorker.register(BASE+"sw.js",{scope:BASE}).catch(()=>{});
  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;if(standalone||off())return;
  const bar=(msg,btn,fn)=>{const d=document.createElement("div");d.className="inst";d.innerHTML=`<img src="${BASE}icons/icon-192.png" alt=""><p><b>홈 화면에 달려달려</b>${msg}</p>${btn?`<button type="button" class="go">${btn}</button>`:""}<button type="button" class="x" aria-label="닫기">×</button>`;
