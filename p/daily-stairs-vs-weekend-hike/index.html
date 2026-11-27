@@ -2,6 +2,14 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<link rel="manifest" href="/dallyeo/manifest.webmanifest">
+<meta name="theme-color" content="#141414">
+<link rel="icon" type="image/png" href="/dallyeo/icons/favicon.png">
+<link rel="apple-touch-icon" href="/dallyeo/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="달려달려">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="canonical" href="https://theipzenwith-cmyk.github.io/dallyeo/p/daily-stairs-vs-weekend-hike/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="매일 계단 15분 vs 주말 등산 3시간, 뭐가 나을까 | 달려달려">
@@ -166,6 +174,7 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 @media (max-width:860px){.post{grid-template-columns:minmax(0,1fr)}.deckbox{max-width:520px;width:100%;margin-inline:auto}}
 @media (max-width:600px){.board{columns:2;column-gap:10px}.item{margin-bottom:16px}.card{border-radius:16px}.cap{font-size:13px;padding-inline:3px}.yt{display:none}.logo{font-size:22px}.search{height:46px;padding-left:16px}.chip{height:48px;font-size:17px;border-radius:15px}.chip i{width:38px;height:38px;font-size:17px;border-radius:11px}.nav{display:none}.deck{border-radius:16px}}
 .cm{display:none}
+.inst{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:9;display:flex;align-items:center;gap:12px;max-width:calc(100% - 32px);padding:10px 10px 10px 14px;border-radius:18px;background:#F6D43A;color:#141414;box-shadow:0 6px 24px rgba(0,0,0,.35)}.inst img{width:40px;height:40px;border-radius:10px;flex:none}.inst p{margin:0;font-size:14px;line-height:1.35}.inst b{font:400 17px "Do Hyeon",sans-serif;display:block}.inst button{flex:none;height:40px;border:0;border-radius:999px;padding:0 14px;font-weight:700;cursor:pointer;background:#141414;color:#fff}.inst .x{background:none;color:#141414;padding:0 6px;font-size:20px}
 .seo{padding-block:8px 40px;color:var(--soft);font-size:15px}.seo h2{font:400 24px "Do Hyeon",sans-serif;color:var(--ink);margin:0 0 6px}.seo h3{font:400 18px "Do Hyeon",sans-serif;color:var(--ink);margin:18px 0 2px}.seo p{margin:2px 0}
 </style>
 </head>
@@ -429,6 +438,17 @@ const route=()=>{const id=window.INIT_POST;const p=id&&P.find(x=>x.id===id);if(p
 drawChips();drawBoard();route();
 
 }
+</script>
+<script>
+(()=>{const K="dd_inst_off";const off=()=>{try{return localStorage.getItem(K)}catch(e){return 1}};
+ if("serviceWorker" in navigator)navigator.serviceWorker.register(BASE+"sw.js",{scope:BASE}).catch(()=>{});
+ const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;if(standalone||off())return;
+ const bar=(msg,btn,fn)=>{const d=document.createElement("div");d.className="inst";d.innerHTML=`<img src="${BASE}icons/icon-192.png" alt=""><p><b>홈 화면에 달려달려</b>${msg}</p>${btn?`<button type="button" class="go">${btn}</button>`:""}<button type="button" class="x" aria-label="닫기">×</button>`;
+  d.querySelector(".x").onclick=()=>{d.remove();try{localStorage.setItem(K,1)}catch(e){}};if(btn)d.querySelector(".go").onclick=()=>fn(d);document.body.appendChild(d)};
+ let ev=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();ev=e;setTimeout(()=>bar("앱처럼 바로 열어 봐요","추가",async d=>{ev.prompt();await ev.userChoice;d.remove()}),2500)});
+ const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!/crios|fxios/i.test(navigator.userAgent);
+ if(ios)setTimeout(()=>bar("아래 공유 버튼 → 「홈 화면에 추가」",null),2500);
+})();
 </script>
 </body>
 </html>
