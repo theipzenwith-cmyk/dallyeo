@@ -135,6 +135,7 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .likes{margin:0 0 6px;font:700 15px system-ui,sans-serif}
 .cmt{margin:5px 0;font-size:15px;line-height:1.5;word-break:break-word}.cmt b{margin-right:7px;font-weight:700}.cmt small{color:var(--soft);margin-left:7px;font-size:12px}
 .cmall{border:0;background:none;color:var(--soft);font:15px system-ui,sans-serif;padding:2px 0;cursor:pointer}
+.cmt.pin b{display:inline-flex;align-items:center;gap:4px}.op{font:700 11px system-ui,sans-serif;background:var(--red);color:#fff;border-radius:6px;padding:2px 6px;margin-right:6px}
 .cin{display:grid;gap:6px;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
 .cin .me{font:600 12px system-ui,sans-serif;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:18px}
 .cbox{display:flex;align-items:center;gap:6px;height:48px;border-radius:999px;background:var(--fill);padding:0 6px 0 18px}
@@ -298,7 +299,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=1a7b29ac"></script>
+<script src="/posts.js?v=a991e75f"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -449,7 +450,7 @@ function igInit(p,toast){
  const deck=$("deck");deck.addEventListener("dblclick",e=>{like(true);const h=document.createElementNS("http://www.w3.org/2000/svg","svg");h.setAttribute("viewBox","0 0 24 24");h.setAttribute("class","dheart");h.innerHTML='<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>';deck.parentNode.appendChild(h);setTimeout(()=>h.remove(),900)});
  $("cmtBtn").onclick=()=>inp.focus();
  const draw=()=>{const list=open?all:all.slice(0,2);
-  box.innerHTML=(all.length>2&&!open?`<button type="button" class="cmall">댓글 ${all.length}개 모두 보기</button>`:"")+list.map(c=>`<p class="cmt"><b>${esc(c.name)}</b>${esc(c.text)}<small>${esc(ago(c.at))}</small></p>`).join("");
+  box.innerHTML=(p.oc?`<p class="cmt pin"><b>달려달려<span class="op">운영자</span></b>${esc(p.oc)}<small>고정됨</small></p>`:"")+(all.length>2&&!open?`<button type="button" class="cmall">댓글 ${all.length}개 모두 보기</button>`:"")+list.map(c=>`<p class="cmt"><b>${esc(c.name)}</b>${esc(c.text)}<small>${esc(ago(c.at))}</small></p>`).join("");
   const m=box.querySelector(".cmall");if(m)m.onclick=()=>{open=true;draw()}};
  fetch(FB.base+":runQuery?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"comments"}],where:{fieldFilter:{field:{fieldPath:"post"},op:"EQUAL",value:{stringValue:id}}},limit:200}})})
   .then(r=>r.json()).then(rows=>{all=(rows||[]).filter(x=>x.document).map(x=>{const F=x.document.fields;return{name:F.name.stringValue,text:F.text.stringValue,at:F.at.timestampValue}}).sort((a,b)=>new Date(b.at)-new Date(a.at));draw()}).catch(()=>{});
