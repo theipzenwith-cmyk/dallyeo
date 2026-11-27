@@ -416,7 +416,7 @@ header.sopen .search{flex:1}
 .fab{position:fixed;right:18px;bottom:22px;z-index:60;width:58px;height:58px;border:0;border-radius:50%;padding:0;margin:0;background:var(--red);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer}.fab svg{position:absolute;left:50%;top:50%;translate:-50% -50%;width:26px;height:26px;margin:0}
 .tsheet{position:fixed;inset:0;z-index:110}.tsheet[hidden]{display:none}
 .tform{position:absolute;inset:0;height:100dvh;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);padding:16px max(18px,calc(50% - 280px)) 32px;display:flex;flex-direction:column;gap:12px} /* 글쓰기 = 전체 화면 + 스크롤 + 아래 떠 있는 올리기 (2026-11-27 Ray) */
-.tme{margin:0;color:var(--soft);font-size:13px}
+.tme{margin:0;color:var(--soft);font-size:13px}.tnew{display:flex;gap:12px;padding-top:6px}.tnew .tav{width:38px;height:38px;flex:none;border-radius:50%;background:var(--fill);display:grid;place-items:center;font:700 15px system-ui,sans-serif}.tnb{flex:1;display:grid;gap:4px}.tnb b{font-size:15px}.tnb textarea{width:100%;border:0;background:none;color:var(--ink);font:16px/1.55 "Noto Sans KR",system-ui,sans-serif;resize:none;outline:none;min-height:96px;field-sizing:content}.tnb small{color:var(--soft);font-size:12px;text-align:right}
 .tprev{flex:none;border-radius:16px;padding:10%;overflow:hidden;aspect-ratio:4/5;display:flex;align-items:center;container-type:inline-size}
 .tprev textarea{position:relative;touch-action:none;cursor:grab;width:100%;border:0;background:transparent;color:inherit;font:400 7.4cqw/1.3 "Do Hyeon",sans-serif;resize:none;outline:none}
 .thint{margin:-4px 0 0;font-size:13px;color:var(--soft);text-align:center}.tprev textarea::placeholder{color:inherit;opacity:.55}
@@ -428,7 +428,7 @@ header.sopen .search{flex:1}
 .tbar{position:sticky;top:-16px;z-index:2;display:flex;align-items:center;gap:8px;margin:-16px calc(-1 * max(18px,calc(50% - 280px))) 0;padding:10px max(12px,calc(50% - 286px));background:var(--bg);border-bottom:1px solid var(--line)}.tbar b{flex:1;font:400 22px "Do Hyeon",sans-serif}.tclose{width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer}.tsend{height:38px;padding:0 18px;border:0;border-radius:10px;background:var(--red);color:#fff;font:700 15px system-ui,sans-serif;cursor:pointer}.tsend:disabled{opacity:.4;cursor:default}
 .talk .tav{background:var(--fill)!important;color:var(--ink);display:grid;place-items:center;font:700 15px system-ui,sans-serif}
 .trep{margin-left:auto;border:0;background:none;color:var(--soft);font-size:12px;cursor:pointer;position:relative;z-index:1}
-.tcardx{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;border-radius:14px;display:flex;align-items:center;padding:10%;container-type:inline-size}
+.talk.th .cin{display:none}.talk.th.cop .cin{display:block}.talk.th>.tav{align-self:flex-start;margin-top:2px}.talk.th{display:flex!important;align-items:flex-start!important;gap:12px;padding:14px 4px 6px;border-bottom:1px solid var(--line)}.talk.th .tav{width:38px;height:38px;flex:none;border-radius:50%;font-size:15px}.thb{flex:1;min-width:0}.thh{display:flex;align-items:baseline;gap:8px}.thh b{font-size:15px}.thh small{color:var(--soft);font-size:13px}.thh .trep{margin-left:auto}.tht{margin:4px 0 2px;font-size:16px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.talk.th .ig{padding:0}.talk.th .igbar{gap:14px;margin-left:-8px}.talk.th .shb{width:auto}.board.tlist{max-width:640px;margin-inline:auto}.board.tlist .talk.th{padding-inline:2px}.tcardx{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;border-radius:14px;display:flex;align-items:center;padding:10%;container-type:inline-size}
 .tcardx p{position:relative;margin:0;font:400 9cqw/1.3 "Do Hyeon",sans-serif;word-break:keep-all;overflow-wrap:anywhere;white-space:pre-wrap}
 @media(max-width:600px){.tcardx{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 #fab.fab{background:#E2492F!important;width:58px;height:58px;padding:0;border-radius:50%;display:grid;gap:0;z-index:60;aspect-ratio:1}
@@ -455,12 +455,8 @@ html,body{overflow-x:clip}
 <button type="button" class="fab" id="fab" aria-label="헉헉 수다 글쓰기"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.25 4.75l4 4L8.75 19.25h-4v-4z"/><path d="m13.25 6.75 4 4"/></svg></button>
 <div class="tsheet" id="tsheet" hidden><div class="mback" data-tclose></div><form class="tform" id="tform" autocomplete="off">
  <div class="tbar"><button type="button" class="tclose" data-tclose aria-label="닫기"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><b>헉헉수다</b><button type="submit" class="tsend" id="tsend" disabled>올리기</button></div>
- <p class="tme"><span id="tname"></span>(으)로 올라가요 · 짧게, 고운 말로</p>
- <div class="tprev" id="tprev"><textarea id="ttext" maxlength="80" rows="4" placeholder="오늘 몇 km 뛰었어? 러닝하다 생긴 일, 한마디 남겨 봐!"></textarea></div>
- <p class="thint">글자를 손가락으로 끌면 자리를 옮길 수 있어요</p>
- <div class="tcols" id="tcols"><button type="button" data-c="y" aria-label="노랑" aria-pressed="true"></button><button type="button" data-c="r" aria-label="빨강"></button><button type="button" data-c="b" aria-label="파랑"></button><button type="button" data-c="g" aria-label="초록"></button><button type="button" data-c="k" aria-label="검정"></button><button type="button" data-c="w" aria-label="흰색"></button><small id="tlen">0 / 80</small></div>
- <div class="talign" id="talign"><button type="button" data-a="l" aria-pressed="true" aria-label="왼쪽 정렬"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></button><button type="button" data-a="c" aria-label="가운데 정렬"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></button><button type="button" data-a="r" aria-label="오른쪽 정렬"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></button></div>
- <label class="tsize"><span style="font-size:13px">가</span><input type="range" id="tsz" min="4" max="22" step="1" value="9" aria-label="글자 크기"><span style="font-size:22px">가</span></label>
+ <div class="tnew"><span class="av tav" id="tav">?</span><div class="tnb"><b id="tname"></b><textarea id="ttext" maxlength="300" rows="3" placeholder="오늘 러닝 어땠어? 한마디 남겨 봐!"></textarea><small id="tlen">0 / 300</small></div></div>
+ <p class="tme">링크는 넣을 수 없어요 · 고운 말로 써 주세요</p>
 </form></div>
 <div class="mdrawer" id="mdrawer" hidden><div class="mback" data-close></div><nav class="mpanel" aria-label="사이트 메뉴">
  <div class="mtop"><b>달려달려</b><button type="button" class="mx" data-close aria-label="메뉴 닫기">✕</button></div>
@@ -487,7 +483,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=8c27ae1b"></script>
+<script src="/posts.js?v=0e22341e"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -592,7 +588,7 @@ const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filt
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
-const ncol=()=>innerWidth<=760?1:Math.max(1,Math.min(4,Math.floor((board.clientWidth+24)/344)));
+const ncol=()=>board.classList.contains("tlist")||innerWidth<=760?1:Math.max(1,Math.min(4,Math.floor((board.clientWidth+24)/344)));
 const sent=document.createElement("div");sent.className="loadmore";sent.hidden=true;sent.innerHTML="<span></span>";board.after(sent);
 const put=html=>{const t=document.createElement("template");t.innerHTML=html;[...t.content.children].forEach(el=>{let m=cols[0];for(const c of cols)if(c.offsetHeight<m.offsetHeight||(c.offsetHeight===m.offsetHeight&&c.childElementCount<m.childElementCount))m=c;m.appendChild(el)})};
 const makeCols=()=>{board.innerHTML="";cols=Array.from({length:ncol()},()=>board.appendChild(Object.assign(document.createElement("div"),{className:"col"})))};
@@ -679,20 +675,22 @@ board.addEventListener("click",e=>{const b=e.target.closest(".ytp");if(b){ytSeen
  const sb=e.target.closest(".ytm");if(!sb)return;const w=sb.previousElementSibling;if(!w||!w.classList.contains("ytw"))return;const m=w.dataset.mute==="1";ytCmd(w,m?"unMute":"mute");if(m)ytCmd(w,"playVideo");w.dataset.mute=m?0:1;sb.innerHTML=m?SPK_ON+"<span>소리 끄기</span>":SPK_OFF+"<span>소리 켜기</span>"});
 /* 「헉헉 수다」 커뮤니티 (2026-11-27 Ray 「연필 아이콘 · 카드 안에 짧은 글 · 웃긴 탭 이름 · 전체에도」) — Firestore talk/{id} · 신고 3번이면 숨김 */
 let TALK=[];const TCOL={w:["#ffffff","#141414"],y:["#F6D43A","#141414"],r:["#E2492F","#fff"],b:["#2F6FE2","#fff"],g:["#22A06B","#fff"],k:["#141414","#fff"]};
-const talkItem=t=>{const [bg,fg]=TCOL[t.color]||TCOL.y;return `<article class="item fp talk" data-id="t-${esc(t.id)}"><div class="fph"><span class="av tav">${esc([...t.name][0]||"?")}</span><div><b>${esc(t.name)}</b><small>헉헉 수다 · ${esc(ago(t.at))}</small></div><button type="button" class="trep" data-t="${esc(t.id)}" aria-label="신고">신고</button></div>
-<div class="tcardx" style="background:${bg};color:${fg}"><p style="font-size:${Math.min(22,Math.max(4,t.s||9))}cqw;text-align:${({l:"left",c:"center",r:"right"})[t.al]||"left"};width:100%;left:${+t.x||0}cqw;top:${+t.y||0}cqw">${esc(t.text)}</p></div>
-<div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><button class="shb shbtn" type="button">친구에게 공유</button></div>
-<div class="cmts"></div><form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form></div></article>`};
+const talkItem=t=>`<article class="item fp talk th" data-id="t-${esc(t.id)}"><span class="av tav">${esc([...t.name][0]||"?")}</span><div class="thb">
+<div class="thh"><b>${esc(t.name)}</b><small>${esc(ago(t.at))}</small><button type="button" class="trep" data-t="${esc(t.id)}" aria-label="신고">신고</button></div>
+<p class="tht">${esc(t.text)}</p>
+<div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><button class="ib shb" type="button" aria-label="친구에게 공유">${SV('<path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/>')}</button></div>
+<div class="cmts"></div><form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="답글 달기…" aria-label="답글 내용"><button type="submit" disabled aria-label="답글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form></div></div></article>`;
 const talkLoad=()=>Promise.all([
  fetch(FB.base+":runQuery?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"talk"}],orderBy:[{field:{fieldPath:"at"},direction:"DESCENDING"}],limit:100}})}).then(r=>r.json()),
  fetch(FB.base+"/report?pageSize=300&key="+FB.key).then(r=>r.json())]).then(([rows,rep])=>{
  const bad=new Set((rep.documents||[]).filter(d=>iv(d.fields&&d.fields.n)>=3).map(d=>d.name.split("/").pop()));
  TALK=(rows||[]).filter(x=>x.document).map(x=>{const F=x.document.fields;return{id:x.document.name.split("/").pop(),name:F.name.stringValue,text:F.text.stringValue,color:F.color.stringValue,s:F.s?iv(F.s):9,al:F.al?F.al.stringValue:"l",x:F.x?iv(F.x):0,y:F.y?iv(F.y):0,at:F.at.timestampValue}}).filter(t=>!bad.has(t.id));
  if(TALK.length&&(cat==="헉헉 수다"||(cat==="전체"&&!cur&&scrollY<300)))drawBoard()}).catch(()=>{});
+board.addEventListener("click",e=>{const c=e.target.closest(".talk.th .cmtb");if(!c)return;const a=c.closest(".talk.th");a.classList.add("cop");setTimeout(()=>{const i=a.querySelector(".cin input");i&&i.focus()},30)});
 board.addEventListener("click",e=>{const b=e.target.closest(".trep");if(!b)return;const id=b.dataset.t;const R0=ls.get("dd_rep",[]);if(R0.includes(id))return toast("이미 신고했어요");
  if(!confirm("이 글을 신고할까요? 신고가 3번 쌓이면 숨겨져요."))return;R0.push(id);ls.set("dd_rep",R0);
  fbCommit([{transform:{document:FBDOC+"/report/"+id,fieldTransforms:[{fieldPath:"n",increment:{integerValue:"1"}}]}}]).then(()=>toast("신고했어요. 고마워요!")).catch(()=>{})});
-const CHEAD={"헉헉 수다":["헉헉수다","러너들이 남긴 짧은 한마디예요. 오른쪽 아래 연필을 눌러 오늘 뛴 이야기를 남겨 봐요."],
+const CHEAD={"헉헉 수다":["헉헉수다","러너들끼리 편하게 나누는 이야기예요. 오른쪽 아래 연필을 눌러 오늘 뛴 이야기를 남겨 봐요."],
  "몸속 이야기":["몸속 이야기","달리면 몸속에서 무슨 일이 일어나는지, 연구로 확인한 내용을 쉽게 풀었어요."],
  "비교·대결":["비교·대결","러닝 vs 걷기, 아침 vs 저녁처럼 둘 중 뭐가 나은지 하나씩 비교해 봐요."],
  "런린이 가이드":["런린이 가이드","러닝을 막 시작했다면 여기부터 봐요. 처음 뛸 때 궁금한 것들을 모았어요."],
@@ -702,7 +700,7 @@ const CHEAD={"헉헉 수다":["헉헉수다","러너들이 남긴 짧은 한마�
 let chead=null;const drawHead=k=>{if(!chead){chead=document.createElement("section");chead.className="chead";board.before(chead)}const h=!prof&&!k&&CHEAD[cat];chead.hidden=!h;if(h)chead.innerHTML=`<h2 class="rtitle">${esc(h[0])}</h2><p class="rhead">${esc(h[1])}</p>`};
 const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");drawHead(k);if(prof)return drawProfile();board.classList.toggle("rlist",cat==="대회 일정");
  if(cat==="대회 일정"){board.classList.remove("mason");sent.hidden=true;return drawRaces(k)}
- if(cat==="헉헉 수다"){feed=TALK.filter(t=>!k||t.text.includes(k)).map(talkItem);board.classList.add("mason");makeCols();shown=0;if(!feed.length){board.innerHTML=`<p class="empty">아직 수다가 없어요. 오른쪽 아래 연필을 눌러 첫 글을 남겨 봐요!</p>`;sent.hidden=true;return}return more()}
+ board.classList.toggle("tlist",cat==="헉헉 수다");if(cat==="헉헉 수다"){feed=TALK.filter(t=>!k||t.text.includes(k)).map(talkItem);board.classList.add("mason");makeCols();shown=0;if(!feed.length){board.innerHTML=`<p class="empty">아직 수다가 없어요. 오른쪽 아래 연필을 눌러 첫 글을 남겨 봐요!</p>`;sent.hidden=true;return}return more()}
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k))&&!(cur&&p.id===cur.id));const up=upcoming();let tn=0;
  const ad=cat==="전체"&&!k&&up.length;
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
@@ -719,24 +717,18 @@ board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대�
 chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
 qi.addEventListener("input",()=>{q=qi.value;cur=null;prof=null;drawBoard()});
 /* 헉헉 수다 글쓰기 */
-const ts=$("tsheet"),tt=$("ttext"),tp=$("tprev");let tc="y",ta="l",tx=0,ty=0;const TAL={l:"left",c:"center",r:"right"};
-const tPaint=()=>{const [bg,fg]=TCOL[tc];tp.style.background=bg;tp.style.color=fg;tt.style.fontSize=(+$("tsz").value*.82)+"cqw";tt.style.textAlign=TAL[ta];tt.style.left=(tx*.82)+"cqw";tt.style.top=(ty*.82)+"cqw";$("tlen").textContent=tt.value.length+" / 80";$("tsend").disabled=tt.value.trim().length<2};
-const tOpen=o=>{ts.hidden=!o;document.body.style.overflow=o?"hidden":"";if(o){$("tname").textContent=nick();tPaint();setTimeout(()=>tt.focus(),50)}};
+const ts=$("tsheet"),tt=$("ttext");
+const tPaint=()=>{$("tlen").textContent=tt.value.length+" / 300";$("tsend").disabled=tt.value.trim().length<2};
+const tOpen=o=>{ts.hidden=!o;document.body.style.overflow=o?"hidden":"";if(o){const n=nick();$("tname").textContent=n;$("tav").textContent=[...n][0]||"?";tPaint();setTimeout(()=>tt.focus(),50)}};
 $("fab").addEventListener("click",()=>tOpen(true));
-ts.addEventListener("click",e=>{if(e.target.closest("[data-tclose]"))tOpen(false);const c=e.target.closest(".tcols button");if(c){tc=c.dataset.c;ts.querySelectorAll(".tcols button").forEach(b=>b.setAttribute("aria-pressed",b===c));tPaint()}});
+ts.addEventListener("click",e=>{if(e.target.closest("[data-tclose]"))tOpen(false)});
 tt.addEventListener("input",tPaint);
-{const fm=$("tform");const mid=()=>{const vv=window.visualViewport,h=vv?vv.height:innerHeight,top=vv?vv.offsetTop:0,r=tt.getBoundingClientRect();fm.scrollBy({top:(r.top+r.height/2)-(top+h/2),behavior:"smooth"})};
- const go=()=>{mid();setTimeout(mid,350)};tt.addEventListener("focus",go);tt.addEventListener("click",()=>{if(document.activeElement===tt)go()});
- if(window.visualViewport)visualViewport.addEventListener("resize",()=>{if(document.activeElement===tt)mid()})}
-{let d=null;tt.addEventListener("pointerdown",e=>{d={sx:e.clientX,sy:e.clientY,x0:tx,y0:ty,m:false}});
- window.addEventListener("pointermove",e=>{if(!d)return;const dx=e.clientX-d.sx,dy=e.clientY-d.sy;if(!d.m&&Math.hypot(dx,dy)<8)return;if(!d.m){d.m=true;tt.blur();tt.style.cursor="grabbing"}e.preventDefault();const u=tp.clientWidth*.82/100;tx=Math.round(Math.max(-45,Math.min(45,d.x0+dx/u)));ty=Math.round(Math.max(-60,Math.min(60,d.y0+dy/u)));tPaint()},{passive:false});
- const up=e=>{if(!d)return;if(d.m){e.preventDefault();tt.blur()}tt.style.cursor="";d=null};window.addEventListener("pointerup",up);window.addEventListener("pointercancel",up)}$("talign").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;ta=b.dataset.a;$("talign").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));tPaint()});$("tsz").addEventListener("input",tPaint);
 $("tform").addEventListener("submit",async e=>{e.preventDefault();const t=tt.value.trim();if(t.length<2)return;
  if(/https?:\/\/|www\./i.test(t))return toast("링크는 넣을 수 없어요");if(BADW.test(t))return toast("고운 말로 써 주세요");
  const last=+(ls.get("dd_lastt",0));if(Date.now()-last<60000)return toast("1분 뒤에 다시 쓸 수 있어요");
  $("tsend").disabled=true;const rid=Date.now().toString(36)+Math.random().toString(36).slice(2,8);
- try{const r=await fbCommit([{update:{name:FBDOC+"/talk/"+rid,fields:{name:{stringValue:nick()},text:{stringValue:t},color:{stringValue:tc},s:{integerValue:String(+$("tsz").value)},al:{stringValue:ta},...(tx?{x:{integerValue:String(tx)}}:{}),...(ty?{y:{integerValue:String(ty)}}:{})}},updateTransforms:[{fieldPath:"at",setToServerValue:"REQUEST_TIME"}],currentDocument:{exists:false}}]);
-  if(!r.ok)throw 0;ls.set("dd_lastt",Date.now());TALK.unshift({id:rid,name:nick(),text:t,color:tc,s:+$("tsz").value,al:ta,x:tx,y:ty,at:new Date().toISOString()});tt.value="";tx=ty=0;tOpen(false);toast("올렸어요!");
+ try{const r=await fbCommit([{update:{name:FBDOC+"/talk/"+rid,fields:{name:{stringValue:nick()},text:{stringValue:t},color:{stringValue:"w"}}},updateTransforms:[{fieldPath:"at",setToServerValue:"REQUEST_TIME"}],currentDocument:{exists:false}}]);
+  if(!r.ok)throw 0;ls.set("dd_lastt",Date.now());TALK.unshift({id:rid,name:nick(),text:t,at:new Date().toISOString()});tt.value="";tOpen(false);toast("올렸어요!");
   cat="헉헉 수다";prof=null;cur=null;drawChips();drawBoard();window.scrollTo(0,0)}catch(err){toast("못 올렸어요. 잠시 뒤 다시 해 주세요")}finally{tPaint()}});
 setTimeout(talkLoad,0); /* 스크립트가 다 읽힌 뒤에 (FB 등 준비 후) */
 /* 햄버거 메뉴 (2026-11-27 Ray) */

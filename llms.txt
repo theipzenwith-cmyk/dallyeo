@@ -4,8 +4,24 @@
 
 - 국내 달리기 대회 일정: https://runrun.co.kr/races/
 
+## 장비
+
+- [겨울 러닝 꼭 챙길 3가지 · 옷은 얇게 겹쳐](https://runrun.co.kr/p/winter-run-3-things/): 얇게 겹쳐 입고, 손·머리를 가리고, 체감온도를 먼저 보래요.
+- [러닝화 쿠션, 푹신한 게 부상에 나을까](https://runrun.co.kr/p/running-shoe-cushion-soft-vs-firm/): 딱딱한 신발 쪽이 더 다쳤지만, 가벼운 러너에게서만 뚜렷했대요.
+- [러닝화 두 켤레 번갈아 신으면 덜 다칠까](https://runrun.co.kr/p/two-pairs-running-shoes-rotation/): 신발을 번갈아 신은 사람이 덜 다쳤대요. 신발 덕인지는 아직 몰라요.
+- [러닝 양말, 면 양말 신으면 물집 잘 생길까](https://runrun.co.kr/p/running-socks-cotton-blisters/): 면보다 아크릴 양말에서 물집이 적고 작았대요. 대부분 발가락에 생겼어요.
+- [스마트워치 칼로리·걸음 수, 얼마나 맞을까](https://runrun.co.kr/p/smartwatch-steps-calories-accuracy/): 걸음 수와 심박은 꽤 맞는데, 칼로리는 가장 나은 기기도 27% 넘게 틀렸대요.
+- [러닝 전 줄넘기 5분, 기록에 도움 될까](https://runrun.co.kr/p/jump-rope-warmup-for-runners/): 몸풀기 5분을 줄넘기로 바꾸면 3km 기록이 빨라졌다는 연구가 있어요.
+- [마라톤 에너지 젤, 언제 얼마나 먹을까](https://runrun.co.kr/p/carbs-per-hour-energy-gel/): 1시간이면 헹구기만 해도, 2~3시간이면 한 시간 약 60g이 권장된대요.
+- [겨울 러닝 옷 몇 겹 입어야 할까 · 레이어드](https://runrun.co.kr/p/winter-running-layers/): 기본은 세 겹. 껴입고 출발하지 말고, 겉옷은 쉴 때 입으래요.
+- [등산 스틱, 내리막 무릎에 도움 될까](https://runrun.co.kr/p/trekking-poles-knee-downhill/): 내리막에서 무릎에 걸리는 힘이 12~25% 줄었다는 연구가 있어요.
+- [카본화 신으면 정말 빨라질까](https://runrun.co.kr/p/carbon-plate-shoes/): 탄소판 신발이 힘을 약 4% 아꼈대요. 다만 빠른 속도에서 잰 값이에요.
+- [압박 양말 신고 달리면 효과 있을까](https://runrun.co.kr/p/compression-socks-running/): 기록은 거의 그대로, 다 뛴 뒤 다리 뻐근함엔 도움이 된다는 분석이 있어요.
+- [러닝화는 왜 오후에 사라고 할까](https://runrun.co.kr/p/buy-running-shoes-afternoon/): 앉아 있어도, 뛰고 나도 발이 부어요. 신발은 부은 발에 맞추기.
+
 ## 런린이 가이드
 
+- [여름 더운 날 러닝, 꼭 지킬 3가지](https://runrun.co.kr/p/hot-day-run-3-things/): 가장 더운 때는 피하고, 물은 미리, 모자와 밝은 옷이래요.
 - [러닝 쉬면 체력 얼마나 빠질까](https://runrun.co.kr/p/running-break-fitness-loss/): 3주 쉬면 조금, 8주면 꽤 빠져요. 그래도 실핏줄은 남는대요.
 - [러닝 거리 늘리기, 10% 규칙 지켜야 할까](https://runrun.co.kr/p/weekly-mileage-10-percent-rule/): 10%를 넘겨도 부상률은 비슷했지만, 30% 넘게 늘리면 조심하래요.
 - [러닝 케이던스 올리면 무릎이 편해질까](https://runrun.co.kr/p/running-cadence-step-rate-knee/): 같은 속도에서 걸음 수를 5~10% 늘리면 무릎 부담이 줄었대요.
@@ -87,20 +103,6 @@
 - [매일 계단 15분 vs 주말 등산 3시간, 뭐가 나을까](https://runrun.co.kr/p/daily-stairs-vs-weekend-hike/): 체력은 몰아서 해도 나눠 해도 비슷하게 오른대요.
 - [하루 만 보 vs 30분 빠르게 걷기, 뭐가 나을까](https://runrun.co.kr/p/10000-steps-vs-brisk-30min/): 만 보는 하루를 고르게 채우고, 빠른 30분은 따로 챙기면 좋대요.
 - [무겁게 7번 vs 가볍게 20번, 근육은 어느 쪽이 클까](https://runrun.co.kr/p/heavy-7-vs-light-20/): 무겁게 들면 끝까지 안 가도 되고, 가볍게 들면 끝까지 가야 컸대요.
-
-## 장비
-
-- [러닝화 쿠션, 푹신한 게 부상에 나을까](https://runrun.co.kr/p/running-shoe-cushion-soft-vs-firm/): 딱딱한 신발 쪽이 더 다쳤지만, 가벼운 러너에게서만 뚜렷했대요.
-- [러닝화 두 켤레 번갈아 신으면 덜 다칠까](https://runrun.co.kr/p/two-pairs-running-shoes-rotation/): 신발을 번갈아 신은 사람이 덜 다쳤대요. 신발 덕인지는 아직 몰라요.
-- [러닝 양말, 면 양말 신으면 물집 잘 생길까](https://runrun.co.kr/p/running-socks-cotton-blisters/): 면보다 아크릴 양말에서 물집이 적고 작았대요. 대부분 발가락에 생겼어요.
-- [스마트워치 칼로리·걸음 수, 얼마나 맞을까](https://runrun.co.kr/p/smartwatch-steps-calories-accuracy/): 걸음 수와 심박은 꽤 맞는데, 칼로리는 가장 나은 기기도 27% 넘게 틀렸대요.
-- [러닝 전 줄넘기 5분, 기록에 도움 될까](https://runrun.co.kr/p/jump-rope-warmup-for-runners/): 몸풀기 5분을 줄넘기로 바꾸면 3km 기록이 빨라졌다는 연구가 있어요.
-- [마라톤 에너지 젤, 언제 얼마나 먹을까](https://runrun.co.kr/p/carbs-per-hour-energy-gel/): 1시간이면 헹구기만 해도, 2~3시간이면 한 시간 약 60g이 권장된대요.
-- [겨울 러닝 옷 몇 겹 입어야 할까 · 레이어드](https://runrun.co.kr/p/winter-running-layers/): 기본은 세 겹. 껴입고 출발하지 말고, 겉옷은 쉴 때 입으래요.
-- [등산 스틱, 내리막 무릎에 도움 될까](https://runrun.co.kr/p/trekking-poles-knee-downhill/): 내리막에서 무릎에 걸리는 힘이 12~25% 줄었다는 연구가 있어요.
-- [카본화 신으면 정말 빨라질까](https://runrun.co.kr/p/carbon-plate-shoes/): 탄소판 신발이 힘을 약 4% 아꼈대요. 다만 빠른 속도에서 잰 값이에요.
-- [압박 양말 신고 달리면 효과 있을까](https://runrun.co.kr/p/compression-socks-running/): 기록은 거의 그대로, 다 뛴 뒤 다리 뻐근함엔 도움이 된다는 분석이 있어요.
-- [러닝화는 왜 오후에 사라고 할까](https://runrun.co.kr/p/buy-running-shoes-afternoon/): 앉아 있어도, 뛰고 나도 발이 부어요. 신발은 부은 발에 맞추기.
 
 ## 러닝 연애
 
