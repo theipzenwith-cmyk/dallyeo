@@ -468,7 +468,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=cde60e13"></script>
+<script src="/posts.js?v=ee3a36b3"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -572,6 +572,9 @@ const dday=r=>{if(!r.date)return "";const d=Math.round((new Date(r.date)-TODAY)/
 const upcoming=()=>R.filter(r=>!r.date||new Date(r.date)>=TODAY);
 const go_=r=>r.url?`<a class="rgo${r.status==="마감"?" done":""}" href="${esc(r.url)}" target="_blank" rel="noopener"${r.frame?` data-frame="${esc(r.name)}"`:""}>${r.status==="마감"?"공식 페이지 보기":"접수하러 가기"}</a>`:`<span class="rgo off">공식 페이지 확인 중</span>`;
 const THW=(ico,bg,name,small,body)=>`<span class="thav"><span class="av avi" style="background:${bg}">${ico}</span></span><div class="thb"><div class="thh"><b>${esc(name)}</b><small>${esc(small)}</small></div>${body}</div>`;
+const CRS=(window.DD_CRS||[]).map(c=>[Math.random(),c]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const courseCard=c=>`<div class="item race crs th2">${THW("📍","#3E9B63","달려달려","러닝 코스 · "+c.r,`<div class="rcard"><p class="rk">러닝 코스 <b>${esc(c.km?c.km+"km":"거리 현장 안내")}</b></p><h3>${esc(c.n)}</h3><p class="rd">${esc(c.r+" · "+c.a)}${c.st?"<br>출발: "+esc(c.st):""}</p><a class="rgo" href="${typeof BASE!=="undefined"?BASE:"/"}course/${esc(c.id)}/">코스 보기</a></div>`)}</div>`;
+let RND=null;
 const raceCard=r=>`<div class="item race th2">${THW("🏁","#F6D43A","달려달려","다가오는 대회 · "+dday(r),`<div class="rcard"><p class="rk">다가오는 대회 <b>${esc(dday(r))}</b></p><h3>${esc(r.name)}</h3><p class="rd">${esc(r.dateText||r.date||"날짜 미정")}<br>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}</p>`:""}${go_(r)}</div>`)}</div>`;
 const raceRow=r=>{const d=r.date?new Date(r.date):null;return `<li class="rrow"><div class="rdate">${d?`<b>${d.getMonth()+1}.${d.getDate()}</b><span>${"일월화수목금토"[d.getDay()]}</span>`:"<b>미정</b>"}</div><div class="rinfo"><h3>${esc(r.name)} <small>${esc(dday(r))}</small></h3><p>${esc([r.region,r.place].filter(Boolean).join(" · "))}</p><div class="rc">${(r.courses||[]).map(c=>`<span>${esc(c)}</span>`).join("")}</div>${r.signup?`<p class="rs">접수 ${esc(r.signup)}${r.status?` · ${esc(r.status)}`:""}</p>`:""}${r.note?`<p class="rn">${esc(r.note)}</p>`:""}</div>${go_(r)}</li>`};
 const drawRaces=k=>{const r=upcoming().filter(x=>!k||(x.name+x.region+x.place+(x.courses||[]).join("")).includes(k));
@@ -580,7 +583,7 @@ let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
 let chipFirst=true;const chipCenter=()=>{const b=chips.querySelector('[aria-pressed="true"]');if(!b)return;const cr=chips.getBoundingClientRect(),br=b.getBoundingClientRect();chips.scrollBy({left:(br.left+br.width/2)-(cr.left+cr.width/2),behavior:chipFirst?"auto":"smooth"});chipFirst=false};
-const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="대회 일정"||n==="헉헉 수다"||n==="러닝 코스"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
+const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="헉헉 수다"||n==="대회 일정"||n==="러닝 코스").map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
@@ -705,14 +708,15 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  feed=[];const home=cat==="전체"&&!k;let qn=0;
  if(qonly){const qi0=Math.max(0,QP.findIndex(x=>x.id===qonly));feed=QP.slice(qi0).concat(QP.slice(0,qi0)).map(item);board.classList.add("mason");makeCols();shown=0;return more()}
  if(home&&!cur)feed.push('<div class="item wx th2" hidden></div>');if(cur)feed.push(item(cur));if(home&&!cur)feed.push(ytVid(0));let yn=1,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
- r.forEach((p,i)=>{feed.push(item(p));if(ad&&i%12===8)feed.push(raceCard(up[Math.floor(i/12)%up.length]));
+ let rr=r,cn=0;if(home){if(!RND)RND=new Map(P.map(p=>[p.id,Math.random()]));rr=[...r].sort((a,b)=>RND.get(a.id)-RND.get(b.id))}
+ rr.forEach((p,i)=>{feed.push(item(p));if(ad&&i%10===6)feed.push(raceCard(up[Math.floor(i/10)%up.length]));if(home&&CRS.length&&i%10===9)feed.push(courseCard(CRS[cn++%CRS.length]));
   if(home&&i===yAt){feed.push(ytVid(yn++));yGap+=5;yAt+=yGap}
   if(home&&i===(cur?5:4))feed.push(topCard());
   if(home&&i%6===2&&qn<QP.length)feed.push(item(QP[qn++]));
-  if(home&&i%4===1&&tn<TALK.length)feed.push(talkItem(TALK[tn++]));});
+  if(home&&i%3===1&&tn<TALK.length)feed.push(talkItem(TALK[tn++]));});
  board.classList.add("mason");makeCols();shown=0;more()};
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
-chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
+chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=cat===b.dataset.c?"전체":b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
 qi.addEventListener("input",()=>{q=qi.value;cur=null;prof=null;drawBoard()});
 /* 헉헉 수다 글쓰기 */
 const ts=$("tsheet"),tt=$("ttext");
