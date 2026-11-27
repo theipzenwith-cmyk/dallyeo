@@ -59,7 +59,7 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 
 .search button{display:grid;place-items:center;padding:0;color:var(--ink);width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;font-size:22px;line-height:1}
 .search:focus-within{outline:2px solid var(--ink)}
 .yt{flex:none;height:44px;padding:0 16px;border-radius:14px;background:var(--ink);color:var(--bg);display:inline-flex;align-items:center;text-decoration:none;font-weight:700;font-size:14px}
-.chips{display:flex;gap:10px;overflow-x:auto;padding-block:14px 10px;scrollbar-width:none}
+.chips{display:flex;gap:10px;overflow-x:auto;padding-block:14px 10px;scrollbar-width:none;margin-inline:calc(50% - 50vw);padding-inline:max(16px,calc(50vw - 50%));scroll-padding-inline:max(16px,calc(50vw - 50%))} /* 탭 줄은 화면 끝까지 스와이프 · 첫 칸은 여백 맞춤 (2026-11-27 Ray) */
 .chip{flex:none;display:flex;align-items:center;gap:10px;height:56px;padding:0 20px;border-radius:18px;border:0;cursor:pointer;font:400 19px "Jua",sans-serif;background:var(--fill);color:var(--ink)}
 .chip i{font:normal 400 20px/1 "Do Hyeon",sans-serif;width:44px;height:44px;border-radius:13px;background:var(--bg);display:grid;place-items:center;border:1px solid var(--line)}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--bg)}
@@ -469,10 +469,10 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=5212350e"></script>
+<script src="/posts.js?v=e085ac56"></script>
 <script>
 {
-const CATS=[["전체","全"],["대회 일정","대"],["헉헉 수다","✎"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
+const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
 const P=window.DD_P;
 for(const p of P)p.c=[];
 const BASE="/";
@@ -569,7 +569,7 @@ const drawRaces=k=>{const r=upcoming().filter(x=>!k||(x.name+x.region+x.place+(x
 let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
-const drawChips=()=>{chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="대회 일정"||n==="헉헉 수다"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
+const drawChips=()=>{chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="대회 일정"||n==="헉헉 수다"||n==="러닝 코스"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
@@ -629,7 +629,7 @@ const drawProfile=()=>{if(prof==="이거알아")return drawYTProfile();const h=C
 board.addEventListener("click",e=>{const a=e.target.closest(".fph");if(a&&a.closest(".yv")){e.preventDefault();prof="이거알아";window.scrollTo(0,0);drawBoard();return}if(a){const el=a.closest(".fp");const p=el&&(P.find(x=>x.id===el.dataset.id)||QP.find(x=>x.id===el.dataset.id));if(p){e.preventDefault();prof=p.cat;window.scrollTo(0,0);drawBoard()}return}
  const g=e.target.closest(".pg");if(g&&g.dataset.id.startsWith("quiz-")){prof=null;qonly=g.dataset.id;window.scrollTo(0,0);drawBoard();return}if(g){const p=P.find(x=>x.id===g.dataset.id);prof=null;cat=p.cat;drawChips();show(p);return}
  if(e.target.closest(".pback")){prof=null;qonly=null;window.scrollTo(0,0);drawBoard()}});
-chips.addEventListener("click",()=>{prof=null;qonly=null},true);qi.addEventListener("input",()=>{qonly=null},true);
+chips.addEventListener("click",e=>{const b=e.target.closest("button");if(b&&b.dataset.c==="러닝 코스"){e.stopImmediatePropagation();location.href=(typeof BASE!=="undefined"?BASE:"/")+"course/";return}prof=null;qonly=null},true);qi.addEventListener("input",()=>{qonly=null},true);
 /* 「이거알아?」 유튜브 영상 — 피드에서 바로 재생 + 채널 가기 (2026-11-27 Ray) */
 const YTV=window.DD_YT||[];
 const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+"yt1.jpg";
