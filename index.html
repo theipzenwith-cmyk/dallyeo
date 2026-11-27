@@ -475,29 +475,7 @@ document.addEventListener("click",e=>{const a=e.target.closest("a[data-frame]");
 <script>
 (()=>{const BASE="/dallyeo/";const K="dd_installed";
  if("serviceWorker" in navigator)navigator.serviceWorker.register(BASE+"sw.js",{scope:BASE}).catch(()=>{});
- const done=()=>{try{return localStorage.getItem(K)}catch(e){return 0}};
- if(matchMedia("(display-mode: standalone)").matches||navigator.standalone||done())return;
- const ua=navigator.userAgent,ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),and=/android/i.test(ua);
- const kakao=/KAKAOTALK/i.test(ua),inapp=kakao||/NAVER\(|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp/i.test(ua);
- let ev=null,fab=null,tip=null;
- const mark=()=>{try{localStorage.setItem(K,1)}catch(e){}};
- const hide=()=>{fab&&fab.remove();tip&&tip.remove();fab=tip=null};
- const url=location.href;
- const guide=()=>{
-  if(inapp){
-   const open=kakao?"kakaotalk://web/openExternal?url="+encodeURIComponent(url):and?"intent://"+url.replace(/^https?:\/\//,"")+"#Intent;scheme=https;package=com.android.chrome;end":"";
-   return `<b>앱 안에서는 추가가 안 돼요</b><ol>${open?`<li>아래 <em>브라우저로 열기</em>를 눌러 주세요</li>`:`<li>오른쪽 위(또는 아래) <em>⋯</em> 메뉴에서 <em>${ios?"Safari로 열기":"다른 브라우저로 열기"}</em></li>`}<li>열린 화면에서 이 버튼을 다시 눌러 주세요</li></ol><div class="tb">${open?`<a class="y" href="${open}">브라우저로 열기</a>`:""}<button class="g" data-x>닫기</button></div>`}
-  if(ios)return `<b>홈 화면에 추가 (3초)</b><ol><li><em>공유 버튼 □↑</em> 누르기<br><small>Safari는 화면 아래 · 크롬은 주소창 옆</small></li><li>목록을 올려 <em>홈 화면에 추가</em></li><li>오른쪽 위 <em>추가</em></li></ol><div class="tb"><button class="y" data-ok>추가했어요</button><button class="g" data-x>닫기</button></div>`;
-  return `<b>홈 화면에 추가</b><ol><li>오른쪽 위 <em>⋮</em> 메뉴</li><li><em>홈 화면에 추가</em> 또는 <em>앱 설치</em></li><li><em>설치</em> / <em>추가</em></li></ol><div class="tb"><button class="y" data-ok>추가했어요</button><button class="g" data-x>닫기</button></div>`};
- const show=()=>{if(fab)return;fab=document.createElement("button");fab.type="button";fab.className="fab";fab.setAttribute("aria-label","홈 화면에 추가");
-  fab.innerHTML=`<img src="${BASE}icons/icon-192.png" alt="">홈 화면에 추가`;document.body.appendChild(fab);
-  fab.onclick=async()=>{if(ev&&!inapp){ev.prompt();const c=await ev.userChoice;if(c.outcome==="accepted"){mark();hide()}ev=null;return}
-   if(tip){tip.remove();tip=null;return}tip=document.createElement("div");tip.className="tip";tip.innerHTML=guide();
-   tip.onclick=e=>{if(e.target.closest("[data-ok]")){mark();hide()}else if(e.target.closest("[data-x]")){tip.remove();tip=null}};
-   document.body.appendChild(tip)}};
- addEventListener("beforeinstallprompt",e=>{e.preventDefault();ev=e;show()});
- addEventListener("appinstalled",()=>{mark();hide()});
- if(ios||and)show();
+ /* 홈 화면 버튼은 뺌 (2026-11-27 Ray 「알 수 없으면 그냥 없앨까」) — 앱 설치 설정(manifest·아이콘·sw)만 남겨 브라우저 메뉴로 추가 가능 */
 })();
 </script>
 </body>
