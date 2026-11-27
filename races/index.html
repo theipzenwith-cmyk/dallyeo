@@ -228,7 +228,7 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 
 .sl .disc{font-size:3.9cqw;opacity:.75;margin-top:4cqw}
 .sl .sf span:first-child{font-family:"Noto Sans KR",sans-serif;font-size:3.4cqw;opacity:.9}
 
-.nav{position:absolute;top:50%;translate:0 -50%;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:#111;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;font-size:20px;display:grid;place-items:center}
+.nav{position:absolute;top:50%;translate:0 -50%;width:57px;height:57px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:#111;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;font-size:30px;line-height:1;display:grid;place-items:center}
 .nav.p{left:10px}.nav.n{right:10px}
 .nav[disabled]{opacity:0;pointer-events:none}
 .count{position:absolute;top:12px;right:12px;background:rgba(17,17,17,.72);color:#fff;font:400 14px "Jua",sans-serif;padding:3px 10px;border-radius:999px;pointer-events:none}
@@ -341,7 +341,7 @@ header.sopen .search{flex:1}
 .search:has(input:placeholder-shown) button{display:grid}
 
 /* 이거알아 유튜브 영상 */
-.yv .fph{cursor:default}.yv .av img{width:100%;height:100%;object-fit:cover;display:block}
+.yv .fph{cursor:pointer}.yv .av img{width:100%;height:100%;object-fit:cover;display:block}
 .ytp{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;cursor:pointer;background:#000}
 .ytp img{width:100%;height:100%;object-fit:cover;display:block}
 .ytp .pl{position:absolute;left:50%;top:50%;translate:-50% -50%;width:64px;height:46px;border-radius:12px;background:#E2492F;display:grid;place-items:center}.ytp .pl svg{width:26px;height:26px}
@@ -350,9 +350,16 @@ header.sopen .search{flex:1}
 @media(max-width:600px){.ytp,.ytf{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 
 .ytw{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;cursor:pointer}
-.ytw iframe{position:absolute;left:0;top:-12%;width:100%;height:124%;border:0;pointer-events:none}
+.ytw iframe{position:absolute;left:0;top:-30%;width:100%;height:160%;border:0;pointer-events:none}
 .ytm{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.6);display:grid;place-items:center;pointer-events:none}.ytm svg{width:18px;height:18px}
 @media(max-width:600px){.ytw{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
+
+.pav img{width:100%;height:100%;object-fit:cover;display:block}
+.pbtns{display:flex;gap:8px;margin-bottom:16px}.pbtns .pback{margin:0;flex:1;display:grid;place-items:center;text-decoration:none}.pbtns .pyt{background:#E2492F;color:#fff}
+.yfeed{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px 16px}
+.yrow .ytp,.yrow .ytw{width:100%;margin:0;border-radius:12px}
+.yrt{font:600 15px/1.4 system-ui,sans-serif;margin:8px 2px 0}
+@media(max-width:600px){.yfeed{grid-template-columns:1fr}.yrow .ytp,.yrow .ytw{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}.yrt{margin:8px 0 0}}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -384,7 +391,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=55a0b54e"></script>
+<script src="/posts.js?v=d9572f8f"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -510,12 +517,18 @@ const topCard=()=>`<div class="item top"${topHTML()?"":" hidden"}>${topHTML()}</
 board.addEventListener("click",e=>{const b=e.target.closest(".qz .qa button");if(!b)return;e.preventDefault();const box=b.closest(".item.qz");const p=P.find(x=>x.id===box.dataset.id);if(p)qzAnswer(box,p,+b.dataset.i)});
 /* 캐릭터 프로필 (인스타 계정 화면처럼) — 프사·이름 누르면 열림 · 칸 누르면 그 주제 피드로 */
 let prof=null,qonly=null;
-const drawProfile=()=>{const h=CH(prof),L=prof==="퀴즈"?QP:P.filter(p=>p.cat===prof);board.classList.remove("mason","rlist");board.classList.add("plist");sent.hidden=true;
+const ytRow=i=>{const v=YTV[i];return `<div class="yrow"><button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hq720.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg'" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button><h3 class="yrt">${esc(v.t)}</h3></div>`};
+const drawYTProfile=()=>{const av=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+"yt1.jpg";board.classList.remove("mason","rlist");board.classList.add("plist");sent.hidden=true;
+ board.innerHTML=`<section class="prof"><div class="ptop"><span class="pav"><img src="${av}" alt=""></span><div class="pst"><div><b>${YTV.length}</b><span>영상</span></div><div><b>3D</b><span>몸속 영상</span></div><div><b>매주</b><span>새 영상</span></div></div></div>
+ <h2 class="pname">이거알아? <small>유튜브 채널 · 달려달려와 같은 팀</small></h2><p class="pbio">달릴 때 몸속에서 무슨 일이 생길까? 심장·근육·숨이 바뀌는 모습을 3D 영상으로 보여 줘요.</p>
+ <div class="pbtns"><a class="pback pyt" href="${YT_URL}" target="_blank" rel="noopener">유튜브 채널 가기</a><button type="button" class="pback">피드로 돌아가기</button></div>
+ <div class="yfeed">${YTV.map((v,i)=>ytRow(i)).join("")}</div></section>`};
+const drawProfile=()=>{if(prof==="이거알아")return drawYTProfile();const h=CH(prof),L=prof==="퀴즈"?QP:P.filter(p=>p.cat===prof);board.classList.remove("mason","rlist");board.classList.add("plist");sent.hidden=true;
  board.innerHTML=`<section class="prof"><div class="ptop"><span class="pav" style="background:${h.b}">${AVS(prof)}</span><div class="pst"><div><b>${L.length}</b><span>게시물</span></div><div><b>${L.reduce((a,p)=>a+N(p),0)}</b><span>카드</span></div><div><b>${prof==="퀴즈"?L.reduce((a,p)=>a+p.items.length,0):L.filter(p=>p.qz).length}</b><span>퀴즈</span></div></div></div>
  <h2 class="pname">${esc(h.n)} <small>${esc(prof)} · 달려달려 캐릭터</small></h2><p class="pbio">${esc(h.t||"")}</p>
  <button type="button" class="pback">피드로 돌아가기</button>
  <div class="pgrid">${L.map(p=>`<button type="button" class="pg" data-id="${esc(p.id)}" aria-label="${esc(p.cap)}">${p.items?`<div class="qtile"><small>딩동이 퀴즈</small><b>${p.n}탄</b><span>${p.items.length}문제</span></div>`:poster(p,.5)}</button>`).join("")}</div></section>`};
-board.addEventListener("click",e=>{const a=e.target.closest(".fph");if(a){const el=a.closest(".fp");const p=el&&(P.find(x=>x.id===el.dataset.id)||QP.find(x=>x.id===el.dataset.id));if(p){e.preventDefault();prof=p.cat;window.scrollTo(0,0);drawBoard()}return}
+board.addEventListener("click",e=>{const a=e.target.closest(".fph");if(a&&a.closest(".yv")){e.preventDefault();prof="이거알아";window.scrollTo(0,0);drawBoard();return}if(a){const el=a.closest(".fp");const p=el&&(P.find(x=>x.id===el.dataset.id)||QP.find(x=>x.id===el.dataset.id));if(p){e.preventDefault();prof=p.cat;window.scrollTo(0,0);drawBoard()}return}
  const g=e.target.closest(".pg");if(g&&g.dataset.id.startsWith("quiz-")){prof=null;qonly=g.dataset.id;window.scrollTo(0,0);drawBoard();return}if(g){const p=P.find(x=>x.id===g.dataset.id);prof=null;cat=p.cat;drawChips();show(p);return}
  if(e.target.closest(".pback")){prof=null;qonly=null;window.scrollTo(0,0);drawBoard()}});
 chips.addEventListener("click",()=>{prof=null;qonly=null},true);qi.addEventListener("input",()=>{qonly=null},true);
