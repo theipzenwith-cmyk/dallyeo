@@ -368,7 +368,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=7984a003"></script>
+<script src="/posts.js?v=8ab986c8"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -507,7 +507,7 @@ chips.addEventListener("click",()=>{prof=null;qonly=null},true);qi.addEventListe
 const YTV=window.DD_YT||[];
 const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+"yt1.jpg";
  return `<article class="item fp yv"><div class="fph"><span class="av"><img src="${av}" alt="" width="34" height="34" loading="lazy"></span><div><b>이거알아?</b><small>유튜브 · 몸속 이야기 영상</small></div></div>
- <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
+ <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hq720.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg'" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
  <div class="ig"><div class="igbar"><h2 class="ftitle yt-t">${esc(v.t)}</h2><a class="shbtn" href="${YT_URL}" target="_blank" rel="noopener">채널 가기</a></div></div></article>`};
 /* 화면에 60% 넘게 보이면 소리 끄고 자동 재생, 벗어나면 멈춤 · 누르면 소리 켜고 재생 */
 const ytMake=(b,mute)=>{const f=document.createElement("iframe");f.className="ytf";f.dataset.v=b.dataset.v;f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.v+"?autoplay=1&playsinline=1&rel=0&enablejsapi=1"+(mute?"&mute=1":"");f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="유튜브 영상";b.replaceWith(f);ytSeen.observe(f);return f};
