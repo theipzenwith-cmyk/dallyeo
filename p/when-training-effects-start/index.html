@@ -403,7 +403,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=4ee4f5b7"></script>
+<script src="/posts.js?v=b320cb7e"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -482,10 +482,10 @@ const item=p=>p.src?pollItem(p):`<article class="item fp" data-id="${esc(p.id)}"
 <div class="cmts"></div>
 <form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form>
 </div></article>`;
-const N=p=>p.items?p.items.length+2:p.k?p.k.length+3:5;
+const N=p=>p.items?p.items.length+2:p.k?p.k.length+2+(p.sum&&p.sum.length?1:0):5; /* 카드 1장부터 · 요약은 있을 때만 */
 const slides=p=>p.items?qslides(p):p.k?[`<div class="sl" aria-label="1 / ${N(p)}">${poster(p,.82)}</div>`,
  ...p.k.map(([big,h,t,src,im],i)=>im&&CART[im]?`<div class="sl txt pic" aria-label="${i+2} / ${N(p)}"><div class="cart">${CART[im]()}<span class="no">${String(i+2).padStart(2,"0")}</span></div><div class="ctx"><div class="big">${esc(big)}</div><h3 class="sm">${esc(h)}</h3><p>${esc(t)}</p></div><div class="sf"><span>${esc(src)}</span><span>넘겨봐 →</span></div></div>`:`<div class="sl txt" aria-label="${i+2} / ${N(p)}"><span class="no">${String(i+2).padStart(2,"0")}</span><div><div class="big">${esc(big)}</div><h3 class="sm">${esc(h)}</h3><p>${esc(t)}</p></div><div class="sf"><span>${esc(src)}</span><span>넘겨봐 →</span></div></div>`),
- `<div class="sl txt sum" aria-label="${N(p)-1} / ${N(p)}"><span class="no">한 장 요약</span><ol>${p.sum.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><div class="sf"><span>달려달려</span><span>저장해 두기</span></div></div>`,
+ ...(p.sum&&p.sum.length?[`<div class="sl txt sum" aria-label="${N(p)-1} / ${N(p)}"><span class="no">한 장 요약</span><ol>${p.sum.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><div class="sf"><span>달려달려</span><span>저장해 두기</span></div></div>`]:[]),
  `<div class="sl txt end" aria-label="${N(p)} / ${N(p)}"><span class="no">참고 자료</span><ul class="refs">${p.refs.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="disc">공개된 연구와 자료를 정리한 내용이에요. 사람마다 다를 수 있고, 의학적 조언이 아니에요. 통증이 계속되면 전문가에게 확인하세요.</p></div>`].join("")
 :[`<div class="sl" aria-label="1 / 5">${poster(p,.82)}</div>`,
  ...p.b.map(([h,t],i)=>`<div class="sl txt" aria-label="${i+2} / 5"><span class="no">0${i+2}</span><div><h3>${esc(h)}</h3><p>${esc(t)}</p></div><div class="sf"><span>달려달려</span><span>넘겨봐 →</span></div></div>`),
