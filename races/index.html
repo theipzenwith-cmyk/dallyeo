@@ -275,8 +275,8 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 .board.mason{max-width:560px;margin-inline:auto;display:block}.board.mason .col{width:100%}
 .fp{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 .fph{display:flex;align-items:center;gap:10px;padding:0 2px 12px;position:relative}
-.fph .av{flex:none;width:34px;height:34px;border-radius:50%;background:var(--yellow);color:#141414;display:grid;place-items:center;font:400 17px "Do Hyeon",sans-serif;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--red)}
-.fph b{display:block;font:700 14px/1.2 system-ui,sans-serif}.fph small{display:block;color:var(--soft);font-size:12px;line-height:1.3}
+.fph .av{flex:none;width:34px;height:34px;border-radius:50%;background:var(--yellow);color:#141414;display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--red)}
+.fph .av svg{width:100%;height:100%}.fph b{display:block;font:700 14px/1.2 system-ui,sans-serif}.fph small{display:block;color:var(--soft);font-size:12px;line-height:1.3}
 .fph .plink{position:absolute;inset:0;opacity:0;pointer-events:none}
 .fp .deck{border-radius:14px}
 .fp .igbar{position:relative}
@@ -358,8 +358,16 @@ const textPoster=(p,k=1)=>`<div class="poster t-${p.tone}">${p.vert
 <div class="fine"><strong>${esc(p.cap)}</strong>${p.fine?`<span>${esc(p.fine)}</span>`:""}</div></div>`;
 /* 한 줄 피드 — 상세 없이 피드에서 넘기기·좋아요·퀴즈·댓글 (2026-11-27 Ray 「인스타·유튜브처럼 · 깔끔하게」) */
 const SV=(d,x="")=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"${x}>${d}</svg>`;
+/* 프로필 = 주제마다 캐릭터 하나 (2026-11-27 Ray 「랜덤으로 · 캐릭터를 부여」 · 사이트 캐릭터라 가짜 사람 아님) */
+const CHR={"몸속 이야기":{n:"콩닥이",b:"#E2492F",f:"#fff",x:'<path d="M12 6.2c-1-1.6-3.6-1.6-4.3.4" />'},
+ "비교·대결":{n:"저울이",b:"#2F6FE2",f:"#fff",x:'<path d="M6 6.5h12M12 4.5v2"/>'},
+ "런린이 가이드":{n:"새싹러너",b:"#22A06B",f:"#fff",x:'<path d="M12 6.5c0-2 1.5-3 3.5-3-.2 2-1.5 3-3.5 3zM12 6.5c0-1.6-1.2-2.4-2.8-2.4.2 1.6 1.2 2.4 2.8 2.4z"/>'},
+ "장비":{n:"끈이",b:"#8A5CF6",f:"#fff",x:'<path d="M9 5.5l3 1.5 3-1.5M10 4l2 1 2-1"/>'},
+ "러닝 잡지식":{n:"궁금이",b:"#F6D43A",f:"#141414",x:'<path d="M10.6 4.2c.4-1 2.8-1 2.8.4 0 .9-1.4 1-1.4 2"/>'}};
+const CH=c=>CHR[c]||{n:"달려달려",b:"#444",f:"#fff",x:""};
+const AVS=c=>{const h=CH(c);return `<svg viewBox="0 0 24 24" fill="none" stroke="${h.f}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.3" cy="11.5" r="1.1" fill="${h.f}" stroke="none"/><circle cx="14.7" cy="11.5" r="1.1" fill="${h.f}" stroke="none"/><path d="M9.2 15.2c1.6 1.4 4 1.4 5.6 0"/>${h.x}</svg>`};
 const item=p=>`<article class="item fp" data-id="${esc(p.id)}">
-<div class="fph"><span class="av" aria-hidden="true">달</span><div><b>달려달려</b><small>${esc(p.cat)}</small></div><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></div>
+<div class="fph"><span class="av" aria-hidden="true" style="background:${CH(p.cat).b}">${AVS(p.cat)}</span><div><b>${esc(CH(p.cat).n)}</b><small>${esc(p.cat)} · 달려달려</small></div><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></div>
 <div class="deckbox"><div class="deck" tabindex="0" aria-label="${esc(p.cap)} · 카드 넘기기">${slides(p)}</div><span class="count">1 / ${N(p)}</span><button class="nav p" type="button" aria-label="이전 카드" disabled>‹</button><button class="nav n" type="button" aria-label="다음 카드">›</button></div>
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}</button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}</button><button class="ib shb" type="button" aria-label="친구에게 공유하기">${SV('<path d="M21.5 3 10.2 14.3M21.5 3 14.6 21l-3.9-8.4L2.5 8.9z"/>')}</button><div class="dots" aria-hidden="true">${Array.from({length:N(p)},(_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div><span class="views" aria-label="조회수">${SV('<path d="M1.5 12S5.3 5 12 5s10.5 7 10.5 7-3.8 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/>')}<b>·</b></span></div>
 <p class="likes">좋아요 ·</p>
