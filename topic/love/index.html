@@ -470,7 +470,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=c92dd980"></script>
+<script src="/posts.js?v=7f7a8e7d"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -689,6 +689,9 @@ const tOpen=o=>{ts.hidden=!o;document.body.style.overflow=o?"hidden":"";if(o){$(
 $("fab").addEventListener("click",()=>tOpen(true));
 ts.addEventListener("click",e=>{if(e.target.closest("[data-tclose]"))tOpen(false);const c=e.target.closest(".tcols button");if(c){tc=c.dataset.c;ts.querySelectorAll(".tcols button").forEach(b=>b.setAttribute("aria-pressed",b===c));tPaint()}});
 tt.addEventListener("input",tPaint);
+{const fm=$("tform");const mid=()=>{const vv=window.visualViewport,h=vv?vv.height:innerHeight,top=vv?vv.offsetTop:0,r=tt.getBoundingClientRect();fm.scrollBy({top:(r.top+r.height/2)-(top+h/2),behavior:"smooth"})};
+ const go=()=>{mid();setTimeout(mid,350)};tt.addEventListener("focus",go);tt.addEventListener("click",()=>{if(document.activeElement===tt)go()});
+ if(window.visualViewport)visualViewport.addEventListener("resize",()=>{if(document.activeElement===tt)mid()})}
 {let d=null;tt.addEventListener("pointerdown",e=>{d={sx:e.clientX,sy:e.clientY,x0:tx,y0:ty,m:false}});
  window.addEventListener("pointermove",e=>{if(!d)return;const dx=e.clientX-d.sx,dy=e.clientY-d.sy;if(!d.m&&Math.hypot(dx,dy)<8)return;if(!d.m){d.m=true;tt.blur();tt.style.cursor="grabbing"}e.preventDefault();const u=tp.clientWidth*.82/100;tx=Math.round(Math.max(-45,Math.min(45,d.x0+dx/u)));ty=Math.round(Math.max(-60,Math.min(60,d.y0+dy/u)));tPaint()},{passive:false});
  const up=e=>{if(!d)return;if(d.m){e.preventDefault();tt.blur()}tt.style.cursor="";d=null};window.addEventListener("pointerup",up);window.addEventListener("pointercancel",up)}$("talign").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;ta=b.dataset.a;$("talign").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));tPaint()});$("tsz").addEventListener("input",tPaint);
