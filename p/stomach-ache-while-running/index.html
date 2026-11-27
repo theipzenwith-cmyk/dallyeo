@@ -341,7 +341,7 @@ const show=p=>{cur=p;idx=0;
   <button class="nav p" id="prev" type="button" aria-label="이전 카드">‹</button>
   <button class="nav n" id="next" type="button" aria-label="다음 카드">›</button>
   <div class="dots" id="dots">${Array.from({length:N(p)},(_,i)=>`<button type="button" aria-label="${i+1}번 카드"></button>`).join("")}</div>
-  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
+  <div class="share"><button class="k" id="shareBtn" type="button">친구 공유하기</button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
  </div>
  <div class="side">
   <h1 class="sr">${esc(p.cap)}</h1>
