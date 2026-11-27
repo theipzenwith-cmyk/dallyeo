@@ -330,6 +330,15 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 /* 하트·댓글 숫자 + 친구에게 공유 (2026-11-27) */
 .fp .ib{display:inline-flex;align-items:center;gap:5px;width:auto;padding:0 6px 0 0}.fp .ib b{font:700 15px system-ui,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
 .shbtn{margin-left:auto;height:36px;padding:0 14px;border:1px solid color-mix(in srgb,var(--ink) 28%,transparent);border-radius:10px;background:transparent;color:var(--ink);font:600 14px system-ui,sans-serif;cursor:pointer}
+
+/* 검색 아이콘 (2026-11-27) */
+.bar>.logo{margin-right:auto}
+header .yt{display:none!important} /* 칩에 대회 일정이 있어 중복 — 2026-11-27 Ray */
+.sbtn{flex:none;width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer}.sbtn svg{width:24px;height:24px}
+header:not(.sopen) .search{display:none}
+header.sopen .logo,header.sopen .sbtn,header.sopen .yt{display:none}
+header.sopen .search{flex:1}
+.search:has(input:placeholder-shown) button{display:grid}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -343,6 +352,7 @@ html,body{overflow-x:clip}
       <a class="logo" href="/">달려달려</a>
       <label class="search"><input id="q" type="search" placeholder="러닝 궁금한 거 검색" aria-label="글 검색"><button type="button" id="clear" aria-label="검색어 지우기">×</button></label>
       <a class="yt" href="/races/">대회 일정</a>
+      <button type="button" class="sbtn" id="sbtn" aria-label="검색 열기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
     </div>
     <div class="chips" id="chips" role="group" aria-label="카테고리"></div>
   </div>
@@ -511,7 +521,12 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
 chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
 qi.addEventListener("input",()=>{q=qi.value;cur=null;prof=null;drawBoard()});
-$("clear").addEventListener("click",()=>{qi.value="";q="";drawBoard();qi.focus()});
+/* 검색은 아이콘으로 (2026-11-27 Ray) — 누르면 입력창이 열리고, X 는 지우기·닫기 */
+const hdr=document.querySelector("header");
+$("sbtn").addEventListener("click",()=>{hdr.classList.add("sopen");qi.focus()});
+qi.addEventListener("blur",()=>{if(!qi.value.trim())setTimeout(()=>hdr.classList.remove("sopen"),150)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&hdr.classList.contains("sopen")){qi.value="";qi.dispatchEvent(new Event("input"));hdr.classList.remove("sopen")}});
+$("clear").addEventListener("click",()=>{hdr.classList.remove("sopen");qi.value="";q="";drawBoard();qi.focus()});
 /* 좋아요·조회수·댓글 — 파이어베이스(Firestore REST) · 2026-11-27 Ray 「인스타 구조」 */
 const FB={key:"AIzaSyDaQ23BiDahetmivUex9qZPfCRdJgmW-l0",base:"https://firestore.googleapis.com/v1/projects/dallyeo-85c6b/databases/(default)/documents"};
 const FBDOC="projects/dallyeo-85c6b/databases/(default)/documents";
