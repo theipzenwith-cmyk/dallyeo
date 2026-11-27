@@ -124,6 +124,11 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .race .cap{cursor:pointer}
 .race .rcard{overflow:hidden}.race h3{font-size:clamp(20px,7cqw,30px);overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
+.ytc .ycard{display:block;border-radius:20px;overflow:hidden;background:#141414;border:1px solid #2c2c2c;color:#f4f3ee;text-decoration:none}
+.ytc img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.ytc .yin{padding:16px 18px 18px}.ytc .yk{margin:0 0 6px;font:400 14px "Jua",sans-serif;color:#ff5a4e}
+.ytc h3{margin:0 0 8px;font:400 clamp(20px,5.4cqw,26px)/1.15 "Do Hyeon",sans-serif}.ytc .yin p{margin:0 0 14px;font-size:14px;line-height:1.5;opacity:.8}
+.ytc .ygo{display:inline-block;padding:10px 14px;border-radius:999px;background:#E2492F;color:#fff;font:400 15px "Jua",sans-serif;white-space:nowrap}
 .share{display:flex;gap:8px;margin:16px 0 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .post{grid-template-columns:minmax(0,1fr)!important}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
@@ -325,12 +330,22 @@ const more=()=>{if(shown>=feed.length){sent.hidden=true;return}feed.slice(shown,
  if(!sent.hidden&&!list.hidden&&sent.getBoundingClientRect().top<innerHeight+800)requestAnimationFrame(more)};
 new IntersectionObserver(e=>{if(e[0].isIntersecting)more()},{rootMargin:"800px"}).observe(sent);
 addEventListener("resize",()=>{if(board.classList.contains("mason")&&ncol()!==cols.length){makeCols();feed.slice(0,shown).forEach(put)}});
+/* 유튜브 채널 배너 — 보드 첫 줄·조금 아래·상세 아래 피드에 서로 다른 것 하나씩 (2026-11-27 Ray) */
+const YT_URL="https://www.youtube.com/@%EC%9D%B4%EA%B1%B0%EC%95%8C%EC%95%84oo";
+const YT=[{img:"yt1.jpg",h:"달릴 때 몸속에선<br>무슨 일이?",t:"심장·근육·숨이 바뀌는 모습을 3D 영상으로 봐요."},
+ {img:"yt2.jpg",h:"카드로 읽었다면<br>영상으로 봐요",t:"트레일러닝부터 마라톤까지, 몸속 변화를 눈으로."},
+ {img:"yt3.jpg",h:"수영·자전거·달리기<br>몸은 어떻게 다를까",t:"운동마다 달라지는 몸속을 영상으로 정리해요."}];
+const ytCard=i=>{const y=YT[i%YT.length];const src=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+y.img;
+ return `<div class="item ytc"><a class="ycard" href="${YT_URL}" target="_blank" rel="noopener"><img src="${src}" alt="이거알아? 채널 캐릭터" loading="lazy" width="800" height="600"><div class="yin"><p class="yk">유튜브 · 이거알아?</p><h3>${y.h}</h3><p>${esc(y.t)}</p><span class="ygo">유튜브 채널 가기 ↗</span></div></a></div>`};
 const drawBoard=()=>{const k=q.trim();board.classList.toggle("rlist",cat==="대회 일정");
  if(cat==="대회 일정"){board.classList.remove("mason");sent.hidden=true;return drawRaces(k)}
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k))&&!(cur&&p.id===cur.id));const up=upcoming();
  const ad=cat==="전체"&&!k&&up.length;
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
- feed=[];if(ad)feed.push(raceCard(up[0]));r.forEach((p,i)=>{feed.push(item(p));if(ad&&i%5===4)feed.push(raceCard(up[(Math.floor(i/5)+1)%up.length]))});
+ feed=[];const home=cat==="전체"&&!k;
+ if(ad)feed.push(raceCard(up[0]));if(home&&!cur)feed.push(ytCard(0));
+ r.forEach((p,i)=>{feed.push(item(p));if(ad&&i%5===4)feed.push(raceCard(up[(Math.floor(i/5)+1)%up.length]));
+  if(home&&!cur&&i===13)feed.push(ytCard(1));if(home&&cur&&i===2)feed.push(ytCard(2))});
  board.classList.add("mason");makeCols();shown=0;more()};
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
 chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(window.INIT_POST){location.href=BASE+"?c="+encodeURIComponent(b.dataset.c);return}cat=b.dataset.c;drawChips();drawBoard()});
