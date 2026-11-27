@@ -71,7 +71,7 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .search:focus-within{outline:2px solid var(--ink)}
 .yt{flex:none;height:44px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--bg);display:inline-flex;align-items:center;text-decoration:none;font-weight:700;font-size:14px}
 .chips{display:flex;gap:10px;overflow-x:auto;padding-block:14px 10px;scrollbar-width:none}
-.chip{flex:none;display:flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 6px;border-radius:18px;border:0;cursor:pointer;font:400 19px "Jua",sans-serif;background:var(--fill);color:var(--ink)}
+.chip{flex:none;display:flex;align-items:center;gap:10px;height:56px;padding:0 20px;border-radius:18px;border:0;cursor:pointer;font:400 19px "Jua",sans-serif;background:var(--fill);color:var(--ink)}
 .chip i{font:normal 400 20px/1 "Do Hyeon",sans-serif;width:44px;height:44px;border-radius:13px;background:var(--bg);display:grid;place-items:center;border:1px solid var(--line)}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 .chip[aria-pressed=true] i{color:var(--ink);border-color:transparent}
@@ -414,7 +414,7 @@ const drawRaces=k=>{const r=upcoming().filter(x=>!k||(x.name+x.region+x.place+(x
 let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
-const drawChips=()=>{chips.innerHTML=CATS.map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}"><i>${esc(g)}</i>${esc(n)}</button>`).join("")};
+const drawChips=()=>{chips.innerHTML=CATS.map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n)}</button>`).join("")};
 const txt=p=>p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 const drawBoard=()=>{const k=q.trim();board.classList.toggle("rlist",cat==="대회 일정");if(cat==="대회 일정")return drawRaces(k);
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k)));const up=upcoming();
