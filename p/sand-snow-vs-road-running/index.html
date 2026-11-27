@@ -113,7 +113,9 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .race .cap{cursor:pointer}
 .race .rcard{overflow:hidden}.race h3{font-size:clamp(20px,7cqw,30px);overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
-.share{display:flex;gap:8px;margin:0 0 20px}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.share{display:flex;gap:8px;margin:16px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.post{grid-template-columns:minmax(0,1fr)!important}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 .share .k{background:var(--yellow);color:#141414}.share .k small{font:500 12px system-ui,sans-serif;opacity:.7}.share .c{background:var(--fill);color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#fff;color:#141414;padding:12px 20px;border-radius:999px;font:700 15px system-ui,sans-serif;z-index:9998;box-shadow:0 6px 22px rgba(0,0,0,.4)}
 .morehead{font:400 26px "Do Hyeon",sans-serif;margin:40px 0 14px}
@@ -231,7 +233,7 @@ html,body{overflow-x:clip}
 <main class="wrap">
   <section id="list"><div class="board" id="board"></div></section>
   <section id="view" hidden></section>
-<article class="seo wrap"><h2>모래사장·눈길 달리기, 얼마나 더 힘들까</h2><p>모래 위 달리기는 약 1.6배 힘이 들고, 새 눈길은 다져진 길보다 느려진대요.</p><h3>1.6배 · 모래 위 달리기</h3><p>같은 속도로 모래 위를 달리면 단단한 땅보다 에너지가 1.6배 들었대요. 발이 모래를 밀어내는 일과 근육·힘줄 효율이 떨어지는 탓이래요. <small>(Lejeune 1998)</small></p><h3>2.1~2.7배 · 걷기는 더 손해</h3><p>모래 위 걷기는 단단한 땅보다 에너지가 2.1~2.7배 들어 달리기보다 손해가 컸대요. 달릴 땐 몸이 하는 일이 1.15배만 늘었대요. <small>(Lejeune 1998)</small></p><h3>256 vs 225초 · 새 눈 vs 발자국 난 길</h3><p>산악인 15명이 눈 덮인 오르막을 오르자 아무도 안 밟은 새 눈에선 256초, 발자국 난 길에선 225초가 걸렸대요. 숨도 더 가빠졌대요. <small>(Carceller 2019)</small></p><h3>1.26배~ · 눈이 깊을수록 늘어요</h3><p>눈 위 걷기 에너지를 계산하는 식에선 아주 얕은 눈도 단단한 땅의 약 1.26배에서 시작해, 발이 빠지는 깊이만큼 커진대요. 걷기용 계산 모델이에요. <small>(Richmond 2019)</small></p><h3>한 장 요약</h3><ul><li>모래에선 걷기보다 달리기가 덜 손해</li><li>눈길은 발자국 난 길로</li><li>같은 속도 말고 같은 숨으로</li></ul><h3>참고 자료</h3><ul><li>Lejeune 외 1998, J Exp Biol</li><li>Carceller 외 2019, High Alt Med Biol</li><li>Richmond 외 2019, Appl Ergon</li></ul><p><small>발행 2026-11-27 · 수정 2026-11-27 · 공개된 연구를 정리한 내용이며 의학적 조언이 아니에요.</small></p></article></main>
+<article class="seo wrap"><h2>모래사장·눈길 달리기, 얼마나 더 힘들까</h2><p>모래 위 달리기는 약 1.6배 힘이 들고, 새 눈길은 다져진 길보다 느려진대요.</p><h3>1.6배 · 모래 위 달리기</h3><p>모래 위를 달리면 단단한 땅보다 힘이 1.6배 든대요. 발이 모래를 밀어내야 하거든요. <small>(Lejeune 1998)</small></p><h3>2.1~2.7배 · 걷기는 더 손해</h3><p>그런데 모래 위 걷기는 2.1~2.7배나 들었대요. 달리기보다 손해가 커요. <small>(Lejeune 1998)</small></p><h3>256초 · 새 눈은 더 느려</h3><p>눈 덮인 오르막을 새 눈에선 256초, 발자국 난 길에선 225초 걸려 올랐대요. <small>(Carceller 2019)</small></p><h3>1.26배~ · 눈이 깊을수록 더</h3><p>눈 위 걷기는 얕은 눈도 땅의 약 1.26배부터, 발이 빠질수록 힘이 더 든대요. <small>(Richmond 2019)</small></p><h3>한 장 요약</h3><ul><li>모래에선 걷기보다 달리기가 덜 손해</li><li>눈길은 발자국 난 길로</li><li>같은 속도 말고 같은 숨으로</li></ul><h3>참고 자료</h3><ul><li>Lejeune 외 1998, J Exp Biol</li><li>Carceller 외 2019, High Alt Med Biol</li><li>Richmond 외 2019, Appl Ergon</li></ul><p><small>발행 2026-11-27 · 수정 2026-11-27 · 공개된 연구를 정리한 내용이며 의학적 조언이 아니에요.</small></p></article></main>
 
 <footer id="about">
   <div class="wrap cols">
@@ -240,7 +242,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/dallyeo/posts.js?v=090d57d3"></script>
+<script src="/dallyeo/posts.js?v=80d0e261"></script>
 <script>
 {
 const CATS=[["전체","全"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["대회 일정","대"]];
@@ -339,12 +341,10 @@ const show=p=>{cur=p;idx=0;
   <button class="nav p" id="prev" type="button" aria-label="이전 카드">‹</button>
   <button class="nav n" id="next" type="button" aria-label="다음 카드">›</button>
   <div class="dots" id="dots">${Array.from({length:N(p)},(_,i)=>`<button type="button" aria-label="${i+1}번 카드"></button>`).join("")}</div>
+  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
  </div>
  <div class="side">
-  <p class="kicker">${esc(p.cat)} · ${p.min}분</p>
-  <h1>${esc(p.cap)}</h1>
-  ${p.fine?`<p class="sum">${esc(p.fine)}</p>`:""}
-  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
+  <h1 class="sr">${esc(p.cap)}</h1>
   <section class="cm" aria-label="댓글">
    <h2>댓글 <small id="ccount"></small></h2>
    <form class="cform" id="cform">

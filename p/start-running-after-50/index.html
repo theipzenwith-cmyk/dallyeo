@@ -113,7 +113,9 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .race .cap{cursor:pointer}
 .race .rcard{overflow:hidden}.race h3{font-size:clamp(20px,7cqw,30px);overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
-.share{display:flex;gap:8px;margin:0 0 20px}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.share{display:flex;gap:8px;margin:16px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.post{grid-template-columns:minmax(0,1fr)!important}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 .share .k{background:var(--yellow);color:#141414}.share .k small{font:500 12px system-ui,sans-serif;opacity:.7}.share .c{background:var(--fill);color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#fff;color:#141414;padding:12px 20px;border-radius:999px;font:700 15px system-ui,sans-serif;z-index:9998;box-shadow:0 6px 22px rgba(0,0,0,.4)}
 .morehead{font:400 26px "Do Hyeon",sans-serif;margin:40px 0 14px}
@@ -231,7 +233,7 @@ html,body{overflow-x:clip}
 <main class="wrap">
   <section id="list"><div class="board" id="board"></div></section>
   <section id="view" hidden></section>
-<article class="seo wrap"><h2>50대·60대 러닝 시작, 늦은 걸까</h2><p>60대도 좋아지는 비율은 젊은 쪽과 비슷하고, 혈관은 석 달이면 반응한대요.</p><h3>주 3.9일·45분 · 60대가 한 운동량</h3><p>60~71세 110명이 주로 걷기와 달리기를 주 평균 3.9일, 하루 45분씩 9~12개월 했대요. 최대 심박의 80% 정도 강도였어요. <small>(Kohrt 1991)</small></p><h3>나이 차이 없음 · 60·63·67세 묶음 비교</h3><p>60~62세, 63~66세, 67~71세로 나눠 봐도 산소 쓰는 힘이 늘어난 비율이 21%·19%·18%로 뚜렷한 차이가 없었대요. 처음 체력과도 상관없었고요. <small>(Kohrt 1991)</small></p><h3>17~65세 · 633명의 같은 훈련</h3><p>17~65세 633명을 똑같은 자전거 훈련으로 운동시키니, 나이 든 쪽은 늘어난 &#x27;양&#x27;은 적었지만 늘어난 &#x27;비율&#x27;은 비슷했대요. <small>(Skinner 2001)</small></p><h3>3개월 · 큰 혈관이 말랑해져요</h3><p>앉아 지내던 53세 전후 남성 20명이 3개월 동안 주로 걷기 운동을 하자, 큰 동맥의 탄력이 꾸준히 운동해 온 또래 수준까지 올라왔대요. <small>(Tanaka 2000)</small></p><h3>+6% · 74세 허벅지도 커져요</h3><p>74세 전후 남성 6명이 12주 자전거 유산소를 하자 허벅지 앞 근육 부피가 6% 늘었대요(20세 쪽 7명은 5%). 인원이 아주 적은 연구예요. <small>(Harber 2012)</small></p><h3>한 장 요약</h3><ul><li>좋아지는 비율은 나이 영향이 적어요</li><li>걷기 위주 석 달에도 혈관이 반응</li><li>늘어난 양 말고 비율로 보기</li></ul><h3>참고 자료</h3><ul><li>Kohrt 외 1991, J Appl Physiol</li><li>Skinner 외 2001, J Appl Physiol</li><li>Tanaka 외 2000, Circulation</li><li>Harber 외 2012, J Appl Physiol</li></ul><p><small>발행 2026-11-27 · 수정 2026-11-27 · 공개된 연구를 정리한 내용이며 의학적 조언이 아니에요.</small></p></article></main>
+<article class="seo wrap"><h2>50대·60대 러닝 시작, 늦은 걸까</h2><p>60대도 좋아지는 비율은 젊은 쪽과 비슷하고, 혈관은 석 달이면 반응한대요.</p><h3>나이 차이 없음 · 60대끼리 나눠 봐도</h3><p>60~71세를 세 묶음으로 나눠도 좋아진 비율이 21%·19%·18%로 비슷했대요. <small>(Kohrt 1991)</small></p><h3>17~65세 · 같은 운동 633명</h3><p>17~65세가 똑같이 운동하니 나이 든 쪽은 는 양은 적어도, 는 비율은 비슷했대요. <small>(Skinner 2001)</small></p><h3>3개월 · 큰 혈관이 말랑해져요</h3><p>게다가 앉아 지내던 50대가 석 달 걷자 큰 혈관이 운동해 온 또래만큼 말랑해졌대요. <small>(Tanaka 2000)</small></p><h3>+6% · 74세 허벅지도 커져요</h3><p>74세쯤 남성들이 12주 자전거를 타자 허벅지 근육이 6% 커졌대요(작은 연구). <small>(Harber 2012)</small></p><h3>한 장 요약</h3><ul><li>좋아지는 비율은 나이와 별로</li><li>걷기 석 달에도 혈관이 반응</li><li>는 양 말고 비율로 보기</li></ul><h3>참고 자료</h3><ul><li>Kohrt 외 1991, J Appl Physiol</li><li>Skinner 외 2001, J Appl Physiol</li><li>Tanaka 외 2000, Circulation</li><li>Harber 외 2012, J Appl Physiol</li></ul><p><small>발행 2026-11-27 · 수정 2026-11-27 · 공개된 연구를 정리한 내용이며 의학적 조언이 아니에요.</small></p></article></main>
 
 <footer id="about">
   <div class="wrap cols">
@@ -240,7 +242,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/dallyeo/posts.js?v=090d57d3"></script>
+<script src="/dallyeo/posts.js?v=80d0e261"></script>
 <script>
 {
 const CATS=[["전체","全"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["대회 일정","대"]];
@@ -339,12 +341,10 @@ const show=p=>{cur=p;idx=0;
   <button class="nav p" id="prev" type="button" aria-label="이전 카드">‹</button>
   <button class="nav n" id="next" type="button" aria-label="다음 카드">›</button>
   <div class="dots" id="dots">${Array.from({length:N(p)},(_,i)=>`<button type="button" aria-label="${i+1}번 카드"></button>`).join("")}</div>
+  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
  </div>
  <div class="side">
-  <p class="kicker">${esc(p.cat)} · ${p.min}분</p>
-  <h1>${esc(p.cap)}</h1>
-  ${p.fine?`<p class="sum">${esc(p.fine)}</p>`:""}
-  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
+  <h1 class="sr">${esc(p.cap)}</h1>
   <section class="cm" aria-label="댓글">
    <h2>댓글 <small id="ccount"></small></h2>
    <form class="cform" id="cform">

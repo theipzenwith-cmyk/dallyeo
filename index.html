@@ -108,7 +108,9 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:14px 4
 .race .cap{cursor:pointer}
 .race .rcard{overflow:hidden}.race h3{font-size:clamp(20px,7cqw,30px);overflow-wrap:anywhere}.race .rgo{width:100%;padding:0 10px;font-size:14px;white-space:nowrap}.race .rcard{container-type:inline-size}
 .board.rlist{columns:auto}
-.share{display:flex;gap:8px;margin:0 0 20px}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.share{display:flex;gap:8px;margin:16px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.post{grid-template-columns:minmax(0,1fr)!important}.share button{flex:1;height:50px;border:0;border-radius:14px;font:400 18px "Jua",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 .share .k{background:var(--yellow);color:#141414}.share .k small{font:500 12px system-ui,sans-serif;opacity:.7}.share .c{background:var(--fill);color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#fff;color:#141414;padding:12px 20px;border-radius:999px;font:700 15px system-ui,sans-serif;z-index:9998;box-shadow:0 6px 22px rgba(0,0,0,.4)}
 .morehead{font:400 26px "Do Hyeon",sans-serif;margin:40px 0 14px}
@@ -235,7 +237,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/dallyeo/posts.js?v=090d57d3"></script>
+<script src="/dallyeo/posts.js?v=80d0e261"></script>
 <script>
 {
 const CATS=[["전체","全"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["대회 일정","대"]];
@@ -334,12 +336,10 @@ const show=p=>{cur=p;idx=0;
   <button class="nav p" id="prev" type="button" aria-label="이전 카드">‹</button>
   <button class="nav n" id="next" type="button" aria-label="다음 카드">›</button>
   <div class="dots" id="dots">${Array.from({length:N(p)},(_,i)=>`<button type="button" aria-label="${i+1}번 카드"></button>`).join("")}</div>
+  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
  </div>
  <div class="side">
-  <p class="kicker">${esc(p.cat)} · ${p.min}분</p>
-  <h1>${esc(p.cap)}</h1>
-  ${p.fine?`<p class="sum">${esc(p.fine)}</p>`:""}
-  <div class="share"><button class="k" id="shareBtn" type="button">공유하기 <small>카톡·문자</small></button><button class="c" id="copyBtn" type="button">링크 복사</button></div>
+  <h1 class="sr">${esc(p.cap)}</h1>
   <section class="cm" aria-label="댓글">
    <h2>댓글 <small id="ccount"></small></h2>
    <form class="cform" id="cform">
