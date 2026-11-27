@@ -398,7 +398,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=5d2e85cb"></script>
+<script src="/posts.js?v=4ee4f5b7"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -458,13 +458,13 @@ const pollItem=p=>`<article class="item fp poll" data-id="${esc(p.id)}">
 <div class="fph"><span class="av" aria-hidden="true" style="background:${CH("퀴즈").b}">${AVS("퀴즈")}</span><div><b>${esc(CH("퀴즈").n)}</b><small>퀴즈 · ${esc(CH(p.src.cat).n)} 글에서</small></div></div>
 <h2 class="pq">${esc(p.qz.q)}</h2>
 <div class="popts">${p.qz.a.map((a,j)=>`<button type="button" class="po" data-i="${j}"><span class="pbar"></span><span class="ptx">${esc(a)}</span><span class="ppc"></span><i class="prd"></i></button>`).join("")}</div>
-<p class="pmeta"><span class="pn">맞혀 봐!</span></p><p class="pwhy" hidden></p><a class="pgo" href="#post-${p.src.id}" hidden>이 글 보기 →</a>
+<p class="pmeta"><span class="pn">맞혀 봐!</span></p><p class="pwhy" hidden></p>
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><button class="shb shbtn" type="button">친구에게 공유</button></div>
 <div class="cmts"></div><form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form></div></article>`;
 function pollInit(el,p){const id=p.id,z=p.qz,bs=[...el.querySelectorAll(".po")],pn=el.querySelector(".pn");let v=[0,0,0];
  const S=ls.get("dd_poll",{});
  const show=me=>{const tot=v.reduce((a,b)=>a+b,0)||1;bs.forEach((b,j)=>{const pc=Math.round(v[j]/tot*100);b.disabled=true;b.classList.toggle("ok",j===z.ans);b.classList.toggle("pick",j===me);b.querySelector(".pbar").style.width=pc+"%";b.querySelector(".ppc").textContent=pc+"%"});
-  pn.textContent=v.reduce((a,b)=>a+b,0).toLocaleString()+"명 참여";const w=el.querySelector(".pwhy");w.innerHTML=`<b>${me===z.ans?"정답!":"아쉬워!"}</b> ${esc(z.why)}`;w.hidden=false;el.querySelector(".pgo").hidden=false};
+  pn.textContent=v.reduce((a,b)=>a+b,0).toLocaleString()+"명 참여";const w=el.querySelector(".pwhy");w.innerHTML=`<b>${me===z.ans?"정답!":"아쉬워!"}</b> ${esc(z.why)}`;w.hidden=false};
  const load=()=>fetch(FB.base+"/vote/"+id+"?key="+FB.key).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.fields)v=[0,1,2].map(i=>iv(j.fields["o"+i]));if(S[id]!=null)show(S[id]);else{const t=v.reduce((a,b)=>a+b,0);if(t)pn.textContent=t.toLocaleString()+"명 참여 · 맞혀 봐!"}}).catch(()=>{if(S[id]!=null)show(S[id])});
  if(S[id]!=null)show(S[id]);load();
  bs.forEach((b,j)=>b.onclick=()=>{if(ls.get("dd_poll",{})[id]!=null)return;const T=ls.get("dd_poll",{});T[id]=j;ls.set("dd_poll",T);v[j]++;show(j);
