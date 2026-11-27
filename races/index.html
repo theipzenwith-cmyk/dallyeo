@@ -383,6 +383,19 @@ header.sopen .search{flex:1}
 .po.pick{outline:2px solid var(--ink)}.po.ok .ptx::after{content:" ✓";color:var(--red);font-weight:800}
 .pmeta{margin:10px 0 0;color:var(--soft);font-size:14px}.pwhy{margin:6px 0 0;font-size:15px;line-height:1.5}.pwhy b{color:var(--red)}.pgo{display:inline-block;margin-top:6px;font:700 14px system-ui,sans-serif;color:var(--ink)}
 .pgo[hidden],.pwhy[hidden]{display:none}
+
+/* 딩동이 퀴즈 = 다른 글과 같은 4:5 카드 · 글씨는 카드 폭 비율(cqw) */
+.pcard{aspect-ratio:4/5;container-type:inline-size;background:#FF8A00;color:#141414;border-radius:14px;padding:9% 8%;display:flex;flex-direction:column;justify-content:center;gap:3cqw}
+.pcard .pk{font:400 4.6cqw "Jua",sans-serif;margin:0;opacity:.8}
+.poll .pcard .pq{font:400 9.5cqw/1.2 "Do Hyeon",sans-serif;margin:0 0 2cqw;letter-spacing:-.02em;word-break:keep-all}
+.pcard .popts{gap:2.6cqw}
+.pcard .po{min-height:13.5cqw;padding:0 5cqw;border-radius:3.4cqw;background:#fff;color:#141414;font:400 5.6cqw "Jua",sans-serif}
+.pcard .po .pbar{background:rgba(20,20,20,.12)}.pcard .po.ok .pbar{background:rgba(226,73,47,.28)}
+.pcard .po .prd{width:5.4cqw;height:5.4cqw;border:.5cqw solid rgba(20,20,20,.4)}
+.pcard .po.pick{outline:.7cqw solid #141414}
+.pcard .pmeta{margin:1cqw 0 0;color:#141414;opacity:.75;font-size:4cqw}
+.pcard .pwhy{font-size:4.4cqw;margin:0}.pcard .pwhy b{color:#141414}
+@media(max-width:600px){.pcard{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -414,7 +427,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=b320cb7e"></script>
+<script src="/posts.js?v=56fb9b20"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"]];
@@ -472,9 +485,9 @@ const AVS=c=>`<svg viewBox="0 0 24 24">${CH(c).d}</svg>`;
 /* 딩동이 투표형 퀴즈 (2026-11-27 Ray 래퍼런스 IMG_1523 구조) — 보기 누르면 정답·몇 %·참여 수 · 투표는 파이어베이스 vote/{글} */
 const pollItem=p=>`<article class="item fp poll" data-id="${esc(p.id)}">
 <div class="fph"><span class="av" aria-hidden="true" style="background:${CH("퀴즈").b}">${AVS("퀴즈")}</span><div><b>${esc(CH("퀴즈").n)}</b><small>퀴즈 · ${esc(CH(p.src.cat).n)} 글에서</small></div></div>
-<h2 class="pq">${esc(p.qz.q)}</h2>
+<div class="pcard"><p class="pk">QUIZ · 맞혀 봐!</p><h2 class="pq">${esc(p.qz.q)}</h2>
 <div class="popts">${p.qz.a.map((a,j)=>`<button type="button" class="po" data-i="${j}"><span class="pbar"></span><span class="ptx">${esc(a)}</span><span class="ppc"></span><i class="prd"></i></button>`).join("")}</div>
-<p class="pmeta"><span class="pn">맞혀 봐!</span></p><p class="pwhy" hidden></p>
+<p class="pmeta"><span class="pn">맞혀 봐!</span></p><p class="pwhy" hidden></p></div>
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><button class="shb shbtn" type="button">친구에게 공유</button></div>
 <div class="cmts"></div><form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="댓글 달기…" aria-label="댓글 내용"><button type="submit" disabled aria-label="댓글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form></div></article>`;
 function pollInit(el,p){const id=p.id,z=p.qz,bs=[...el.querySelectorAll(".po")],pn=el.querySelector(".pn");let v=[0,0,0];
