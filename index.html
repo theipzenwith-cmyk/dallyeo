@@ -380,6 +380,20 @@ header.sopen .search{flex:1}
 .pcard .pmeta{margin:1cqw 0 0;color:#141414;opacity:.75;font-size:4cqw}
 .pcard .pwhy{font-size:4.4cqw;margin:0}.pcard .pwhy b{color:#141414}
 @media(max-width:600px){.pcard{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
+
+/* 햄버거 메뉴 */
+.mbtn{flex:none;width:40px;height:40px;margin-left:-8px;border:0;border-radius:10px;background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer}.mbtn svg{width:24px;height:24px}
+.bar>.mbtn+.logo{margin-right:auto}
+.mdrawer{position:fixed;inset:0;z-index:100}.mdrawer[hidden]{display:none}
+.mback{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.mpanel{position:absolute;left:0;top:0;bottom:0;width:min(300px,82vw);background:var(--bg);padding:16px 20px 32px;overflow-y:auto;display:flex;flex-direction:column;box-shadow:4px 0 24px rgba(0,0,0,.3)}
+.mtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.mtop b{font:400 24px "Do Hyeon",sans-serif}
+.mx{width:40px;height:40px;border:0;border-radius:10px;background:var(--fill);color:var(--ink);font-size:18px;cursor:pointer}
+.mh{margin:18px 0 4px;font-size:12px;color:var(--soft);font-weight:700}
+.mpanel a,.mpanel .mchar{display:block;padding:11px 0;border:0;background:none;text-align:left;color:var(--ink);text-decoration:none;font:500 16px system-ui,sans-serif;cursor:pointer;border-bottom:1px solid var(--line)}
+.mchars{display:grid;gap:6px;margin-top:8px}.mchars[hidden]{display:none}
+.mcb{display:flex;align-items:center;gap:10px;padding:8px 10px;border:0;border-radius:12px;background:var(--fill);color:var(--ink);font:600 14px system-ui,sans-serif;cursor:pointer;text-align:left}
+.mcb small{margin-left:auto;color:var(--soft);font-weight:400}.mcb .av{width:30px;height:30px;border-radius:50%;overflow:hidden;flex:none}.mcb .av svg,.mcb .av img{width:100%;height:100%;object-fit:cover;display:block}
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -390,6 +404,7 @@ html,body{overflow-x:clip}
 <header>
   <div class="wrap">
     <div class="bar">
+      <button type="button" class="mbtn" id="mbtn" aria-label="메뉴 열기" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <a class="logo" href="/">달려달려</a>
       <label class="search"><input id="q" type="search" placeholder="러닝 궁금한 거 검색" aria-label="글 검색"><button type="button" id="clear" aria-label="검색어 지우기">×</button></label>
       <a class="yt" href="/races/">대회 일정</a>
@@ -398,6 +413,15 @@ html,body{overflow-x:clip}
     <div class="chips" id="chips" role="group" aria-label="카테고리"></div>
   </div>
 </header>
+<div class="mdrawer" id="mdrawer" hidden><div class="mback" data-close></div><nav class="mpanel" aria-label="사이트 메뉴">
+ <div class="mtop"><b>달려달려</b><button type="button" class="mx" data-close aria-label="메뉴 닫기">✕</button></div>
+ <p class="mh">주제별 모음</p>
+ <a href="/topic/body/">몸속 이야기</a><a href="/topic/compare/">비교·대결</a><a href="/topic/beginner/">런린이 가이드</a><a href="/topic/gear/">장비</a><a href="/topic/trivia/">러닝 잡지식</a><a href="/topic/love/">러닝 연애</a>
+ <p class="mh">더 보기</p>
+ <a href="/races/">국내 대회 일정</a><button type="button" class="mchar">캐릭터 친구들</button><div class="mchars" hidden></div><a href="https://www.youtube.com/@%EC%9D%B4%EA%B1%B0%EC%95%8C%EC%95%84oo" target="_blank" rel="noopener">이거알아? 유튜브</a>
+ <p class="mh">달려달려</p>
+ <a href="/about/">달려달려 소개</a><a href="mailto:theipzenwith@gmail.com?subject=%5B%EB%8B%AC%EB%A0%A4%EB%8B%AC%EB%A0%A4%5D%20%EB%AC%B8%EC%9D%98">문의하기</a><a href="/privacy/">개인정보처리방침</a>
+</nav></div>
 
 <main class="wrap">
   <section id="list"><div class="board" id="board"></div></section>
@@ -411,7 +435,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=7f7a8e7d"></script>
+<script src="/posts.js?v=641b0635"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -606,6 +630,15 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
 chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
 qi.addEventListener("input",()=>{q=qi.value;cur=null;prof=null;drawBoard()});
+/* 햄버거 메뉴 (2026-11-27 Ray) */
+const md=$("mdrawer"),mb=$("mbtn");
+const mOpen=o=>{md.hidden=!o;mb.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":""};
+mb.addEventListener("click",()=>mOpen(true));
+md.addEventListener("click",e=>{if(e.target.closest("[data-close]"))return mOpen(false);
+ if(e.target.closest(".mchar")){const c=md.querySelector(".mchars");c.hidden=!c.hidden;if(!c.innerHTML)c.innerHTML=Object.keys(CHR).map(k=>`<button type="button" class="mcb" data-c="${esc(k)}"><span class="av" style="background:${CHR[k].b}">${AVS(k)}</span>${esc(CHR[k].n)}<small>${esc(k)}</small></button>`).join("")+`<button type="button" class="mcb" data-c="이거알아"><span class="av"><img src="${(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")}yt1.jpg" alt=""></span>이거알아?<small>유튜브</small></button>`;return}
+ const b=e.target.closest(".mcb");if(b){mOpen(false);prof=b.dataset.c;cur=null;window.scrollTo(0,0);drawBoard();return}
+ if(e.target.closest("a"))mOpen(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!md.hidden)mOpen(false)});
 /* 검색은 아이콘으로 (2026-11-27 Ray) — 누르면 입력창이 열리고, X 는 지우기·닫기 */
 const hdr=document.querySelector("header");
 $("sbtn").addEventListener("click",()=>{hdr.classList.add("sopen");qi.focus()});
