@@ -417,7 +417,7 @@ header.sopen .search{flex:1}
 .tbar{position:sticky;top:-16px;z-index:2;display:flex;align-items:center;gap:8px;margin:-16px calc(-1 * max(18px,calc(50% - 280px))) 0;padding:10px max(12px,calc(50% - 286px));background:var(--bg);border-bottom:1px solid var(--line)}.tbar b{flex:1;font:400 22px "Do Hyeon",sans-serif}.tclose{width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer}.tsend{height:38px;padding:0 18px;border:0;border-radius:10px;background:var(--red);color:#fff;font:700 15px system-ui,sans-serif;cursor:pointer}.tsend:disabled{opacity:.4;cursor:default}
 .talk .tav{background:var(--fill)!important;color:var(--ink);display:grid;place-items:center;font:700 15px system-ui,sans-serif}
 .trep{margin-left:auto;border:0;background:none;color:var(--soft);font-size:12px;cursor:pointer;position:relative;z-index:1}
-.talk.th .cin{display:none}.talk.th.cop .cin{display:block}.talk.th>.tav{align-self:flex-start;margin-top:2px}.talk.th{display:flex!important;align-items:flex-start!important;gap:12px;padding:14px 4px 6px;border-bottom:1px solid var(--line)}.talk.th .tav{width:38px;height:38px;flex:none;border-radius:50%;font-size:15px}.thb{flex:1;min-width:0}.thh{display:flex;align-items:baseline;gap:8px}.thh b{font-size:15px}.thh small{color:var(--soft);font-size:13px}.thh .trep{margin-left:auto}.tht{margin:4px 0 2px;font-size:16px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.talk.th .ig{padding:0}.talk.th .igbar{gap:14px;margin-left:-8px}.talk.th .shb{width:auto}.board.tlist{max-width:640px;margin-inline:auto}.board.tlist .talk.th{padding-inline:2px}.tcardx{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;border-radius:14px;display:flex;align-items:center;padding:10%;container-type:inline-size}
+.talk.th .cin{display:none}.talk.th.cop .cin{display:block}.talk.th>.tav{align-self:flex-start;margin-top:2px}.talk.th{display:flex!important;align-items:flex-start!important;gap:12px;padding:14px 4px 6px;border-bottom:1px solid var(--line)}.talk.th .tav{width:38px;height:38px;flex:none;border-radius:50%;font-size:15px}.thb{flex:1;min-width:0}.thh{display:flex;align-items:baseline;gap:8px}.thh b{font-size:15px}.thh small{color:var(--soft);font-size:13px}.thh .trep{margin-left:auto}.tht{margin:4px 0 2px;font-size:16px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.talk.th .ig{padding:0}.talk.th .igbar{gap:14px;margin-left:-8px}.talk.th .shb{width:auto}.board.tlist{max-width:640px;margin-inline:auto}.th2{display:flex!important;align-items:flex-start;gap:12px;padding:14px 0 8px;border-bottom:1px solid var(--line)}.th2>.thav{padding:0;flex:none;cursor:pointer}.th2>.thav .av{width:38px;height:38px}.th2 .thb{flex:1;min-width:0}.th2 .thh{padding:0 0 2px;display:flex;align-items:baseline;gap:8px}.th2 .thh b{display:inline;font-size:15px}.th2 .thh small{display:inline;font-size:13px}.th2 .ftitle{font:700 16px/1.45 system-ui,sans-serif;margin:0 0 2px}.th2 .tsum{margin:0 0 10px;font-size:15px;line-height:1.55;color:var(--ink);opacity:.85}.th2 .deckbox{width:100%!important;max-width:300px!important;margin:0!important}.th2 .deck{border-radius:14px!important;border:1px solid var(--line)!important}.th2 .ig{padding:0}.th2 .igbar{gap:14px;margin-left:-8px;margin-top:4px}.th2 .cin{display:none}.th2.cop .cin{display:block}.board.tlist .item:not(.th2):not(.talk){margin-block:14px}.board.tlist .talk.th{padding-inline:2px}.tcardx{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;border-radius:14px;display:flex;align-items:center;padding:10%;container-type:inline-size}
 .tcardx p{position:relative;margin:0;font:400 9cqw/1.3 "Do Hyeon",sans-serif;word-break:keep-all;overflow-wrap:anywhere;white-space:pre-wrap}
 @media(max-width:600px){.tcardx{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 #fab.fab{background:#E2492F!important;width:58px;height:58px;padding:0;border-radius:50%;display:grid;gap:0;z-index:60;aspect-ratio:1}
@@ -472,10 +472,10 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=0e22341e"></script>
+<script src="/posts.js?v=419a097a"></script>
 <script>
 {
-const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
+const CATS=[["전체","全"],["헉헉 수다","✎"],["카드뉴스","▦"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
 const P=window.DD_P;
 for(const p of P)p.c=[];
 const BASE="/";
@@ -544,7 +544,16 @@ function pollInit(el,p){const id=p.id,z=p.qz,bs=[...el.querySelectorAll(".po")],
  if(S[id]!=null)show(S[id]);load();
  bs.forEach((b,j)=>b.onclick=()=>{if(ls.get("dd_poll",{})[id]!=null)return;const T=ls.get("dd_poll",{});T[id]=j;ls.set("dd_poll",T);v[j]++;show(j);
   fbCommit([{transform:{document:FBDOC+"/vote/"+id,fieldTransforms:[{fieldPath:"o"+j,increment:{integerValue:"1"}}]}}]).catch(()=>{})})}
-const item=p=>p.src?pollItem(p):`<article class="item fp" data-id="${esc(p.id)}">
+const item=p=>p.src?pollItem(p):`<article class="item fp th2" data-id="${esc(p.id)}">
+<span class="fph thav"><span class="av" aria-hidden="true" style="background:${CH(p.cat).b}">${AVS(p.cat)}</span></span><div class="thb">
+<div class="fph thh"><b>${esc(CH(p.cat).n)}</b><small>${esc(p.cat)}</small><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></div>
+<h2 class="ftitle">${esc(p.cap)}</h2>${p.fine?`<p class="tsum">${esc(p.fine)}</p>`:""}
+<div class="deckbox"><div class="deck" tabindex="0" aria-label="${esc(p.cap)} · 카드 넘기기">${slides(p)}</div><span class="count">1 / ${N(p)}</span><button class="nav p" type="button" aria-label="이전 카드" disabled>‹</button><button class="nav n" type="button" aria-label="다음 카드">›</button></div>
+<div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><button class="ib shb" type="button" aria-label="친구에게 공유">${SV('<path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/>')}</button><div class="dots" aria-hidden="true">${Array.from({length:N(p)},(_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div></div>
+<div class="cmts"></div>
+<form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="답글 달기…" aria-label="답글 내용"><button type="submit" disabled aria-label="답글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form>
+</div></div></article>`;
+const itemC=p=>`<article class="item fp" data-id="${esc(p.id)}">
 <div class="fph"><span class="av" aria-hidden="true" style="background:${CH(p.cat).b}">${AVS(p.cat)}</span><div><b>${esc(CH(p.cat).n)}</b><small>${esc(p.cat)} · 달려달려</small></div><a class="plink" href="${BASE}p/${p.id}/" aria-label="이 글 주소"></a></div>
 <div class="deckbox"><div class="deck" tabindex="0" aria-label="${esc(p.cap)} · 카드 넘기기">${slides(p)}</div><span class="count">1 / ${N(p)}</span><button class="nav p" type="button" aria-label="이전 카드" disabled>‹</button><button class="nav n" type="button" aria-label="다음 카드">›</button></div>
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="cc">0</b></button><div class="dots" aria-hidden="true">${Array.from({length:N(p)},(_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</div><button class="shb shbtn" type="button">친구에게 공유</button></div>
@@ -573,7 +582,7 @@ let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
 let chipFirst=true;const chipCenter=()=>{const b=chips.querySelector('[aria-pressed="true"]');if(!b)return;const cr=chips.getBoundingClientRect(),br=b.getBoundingClientRect();chips.scrollBy({left:(br.left+br.width/2)-(cr.left+cr.width/2),behavior:chipFirst?"auto":"smooth"});chipFirst=false};
-const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="대회 일정"||n==="헉헉 수다"||n==="러닝 코스"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
+const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="카드뉴스"||n==="대회 일정"||n==="헉헉 수다"||n==="러닝 코스"||P.some(p=>p.cat===n)).map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}">${esc(n.replace(/\s+/g,""))}</button>`).join("")};
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
@@ -675,11 +684,12 @@ const talkLoad=()=>Promise.all([
  const bad=new Set((rep.documents||[]).filter(d=>iv(d.fields&&d.fields.n)>=3).map(d=>d.name.split("/").pop()));
  TALK=(rows||[]).filter(x=>x.document).map(x=>{const F=x.document.fields;return{id:x.document.name.split("/").pop(),name:F.name.stringValue,text:F.text.stringValue,color:F.color.stringValue,s:F.s?iv(F.s):9,al:F.al?F.al.stringValue:"l",x:F.x?iv(F.x):0,y:F.y?iv(F.y):0,at:F.at.timestampValue}}).filter(t=>!bad.has(t.id));
  if(TALK.length&&(cat==="헉헉 수다"||(cat==="전체"&&!cur&&scrollY<300)))drawBoard()}).catch(()=>{});
-board.addEventListener("click",e=>{const c=e.target.closest(".talk.th .cmtb");if(!c)return;const a=c.closest(".talk.th");a.classList.add("cop");setTimeout(()=>{const i=a.querySelector(".cin input");i&&i.focus()},30)});
+board.addEventListener("click",e=>{const c=e.target.closest(".talk.th .cmtb,.th2 .cmtb");if(!c)return;const a=c.closest(".talk.th,.th2");a.classList.add("cop");setTimeout(()=>{const i=a.querySelector(".cin input");i&&i.focus()},30)});
 board.addEventListener("click",e=>{const b=e.target.closest(".trep");if(!b)return;const id=b.dataset.t;const R0=ls.get("dd_rep",[]);if(R0.includes(id))return toast("이미 신고했어요");
  if(!confirm("이 글을 신고할까요? 신고가 3번 쌓이면 숨겨져요."))return;R0.push(id);ls.set("dd_rep",R0);
  fbCommit([{transform:{document:FBDOC+"/report/"+id,fieldTransforms:[{fieldPath:"n",increment:{integerValue:"1"}}]}}]).then(()=>toast("신고했어요. 고마워요!")).catch(()=>{})});
 const CHEAD={"헉헉 수다":["헉헉수다","러너들끼리 편하게 나누는 이야기예요. 오른쪽 아래 연필을 눌러 오늘 뛴 이야기를 남겨 봐요."],
+ "카드뉴스":["카드뉴스","러닝 궁금증을 카드 한 장씩 넘겨 보며 봐요. 옆으로 밀면 다음 카드예요."],
  "몸속 이야기":["몸속 이야기","달리면 몸속에서 무슨 일이 일어나는지, 연구로 확인한 내용을 쉽게 풀었어요."],
  "비교·대결":["비교·대결","러닝 vs 걷기, 아침 vs 저녁처럼 둘 중 뭐가 나은지 하나씩 비교해 봐요."],
  "런린이 가이드":["런린이 가이드","러닝을 막 시작했다면 여기부터 봐요. 처음 뛸 때 궁금한 것들을 모았어요."],
@@ -687,9 +697,10 @@ const CHEAD={"헉헉 수다":["헉헉수다","러너들끼리 편하게 나누�
  "러닝 잡지식":["러닝 잡지식","몰라도 되지만 알면 재밌는 러닝 이야기들이에요."],
  "러닝 연애":["러닝 연애","러닝크루, 썸, 데이트까지. 달리다 생기는 설렘 이야기예요."]};
 let chead=null;const drawHead=k=>{if(!chead){chead=document.createElement("section");chead.className="chead";board.before(chead)}const h=!prof&&!k&&CHEAD[cat];chead.hidden=!h;if(h)chead.innerHTML=`<h2 class="rtitle">${esc(h[0])}</h2><p class="rhead">${esc(h[1])}</p>`};
-const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");drawHead(k);if(prof)return drawProfile();board.classList.toggle("rlist",cat==="대회 일정");
+const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");board.classList.toggle("tlist",!prof&&cat!=="대회 일정"&&cat!=="카드뉴스");drawHead(k);if(prof)return drawProfile();board.classList.toggle("rlist",cat==="대회 일정");
  if(cat==="대회 일정"){board.classList.remove("mason");sent.hidden=true;return drawRaces(k)}
- board.classList.toggle("tlist",cat==="헉헉 수다");if(cat==="헉헉 수다"){feed=TALK.filter(t=>!k||t.text.includes(k)).map(talkItem);board.classList.add("mason");makeCols();shown=0;if(!feed.length){board.innerHTML=`<p class="empty">아직 수다가 없어요. 오른쪽 아래 연필을 눌러 첫 글을 남겨 봐요!</p>`;sent.hidden=true;return}return more()}
+ if(cat==="헉헉 수다"){feed=TALK.filter(t=>!k||t.text.includes(k)).map(talkItem);board.classList.add("mason");makeCols();shown=0;if(!feed.length){board.innerHTML=`<p class="empty">아직 수다가 없어요. 오른쪽 아래 연필을 눌러 첫 글을 남겨 봐요!</p>`;sent.hidden=true;return}return more()}
+ if(cat==="카드뉴스"){feed=P.filter(p=>!k||txt(p).includes(k)).map(itemC);board.classList.add("mason");makeCols();shown=0;if(!feed.length){board.innerHTML=`<p class="empty">"${esc(k)}" 관련 카드뉴스가 아직 없어요.</p>`;sent.hidden=true;return}return more()}
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k))&&!(cur&&p.id===cur.id));const up=upcoming();let tn=0;
  const ad=cat==="전체"&&!k&&up.length;
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
