@@ -392,7 +392,8 @@ const drawChips=()=>{chips.innerHTML=CATS.map(([n,g])=>`<button class="chip" typ
 const txt=p=>p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 const drawBoard=()=>{const k=q.trim();board.classList.toggle("rlist",cat==="대회 일정");if(cat==="대회 일정")return drawRaces(k);
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k)));const up=upcoming();
- board.innerHTML=r.length?r.map((p,i)=>item(p)+(cat==="전체"&&!k&&up.length&&i%5===4?raceCard(up[Math.floor(i/5)%up.length]):"")).join(""):`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`};
+ const ad=cat==="전체"&&!k&&up.length;
+ board.innerHTML=r.length?(ad?raceCard(up[0]):"")+r.map((p,i)=>item(p)+(ad&&i%5===4?raceCard(up[(Math.floor(i/5)+1)%up.length]):"")).join(""):`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`};
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
 chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(window.INIT_POST){location.href=BASE+"?c="+encodeURIComponent(b.dataset.c);return}cat=b.dataset.c;drawChips();drawBoard()});
 qi.addEventListener("input",()=>{if(window.INIT_POST)return;q=qi.value;drawBoard()});qi.addEventListener("keydown",e=>{if(e.key==="Enter"&&window.INIT_POST)location.href=BASE+"?q="+encodeURIComponent(qi.value)});
