@@ -55,7 +55,7 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);padding-block:14px 
 .search{flex:1;display:flex;align-items:center;gap:8px;height:52px;border-radius:999px;background:var(--fill);padding:0 8px 0 22px}
 .search input{flex:1;border:0;background:none;font-size:16px;height:100%;outline:none}
 .search:has(input:placeholder-shown) button{display:none}.search input::-webkit-search-cancel-button{display:none}
-.search button{width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;font-size:22px;line-height:1}
+.search button{display:grid;place-items:center;padding:0;color:var(--ink);width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;font-size:22px;line-height:1}
 .search:focus-within{outline:2px solid var(--ink)}
 .yt{flex:none;height:44px;padding:0 16px;border-radius:14px;background:var(--ink);color:var(--bg);display:inline-flex;align-items:center;text-decoration:none;font-weight:700;font-size:14px}
 .chips{display:flex;gap:10px;overflow-x:auto;padding-block:14px 10px;scrollbar-width:none}
@@ -425,7 +425,7 @@ html,body{overflow-x:clip}
     <div class="bar">
       <button type="button" class="mbtn" id="mbtn" aria-label="메뉴 열기" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <a class="logo" href="/">달려달려</a>
-      <label class="search"><input id="q" type="search" placeholder="러닝 궁금한 거 검색" aria-label="글 검색"><button type="button" id="clear" aria-label="검색어 지우기">×</button></label>
+      <label class="search"><input id="q" type="search" placeholder="러닝 궁금한 거 검색" aria-label="글 검색"><button type="button" id="clear" aria-label="검색어 지우기"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></label>
       <a class="yt" href="/races/">대회 일정</a>
       <button type="button" class="sbtn" id="sbtn" aria-label="검색 열기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
     </div>
@@ -463,7 +463,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=d67650d6"></script>
+<script src="/posts.js?v=0c583399"></script>
 <script>
 {
 const CATS=[["전체","全"],["대회 일정","대"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"],["헉헉 수다","✎"]];
