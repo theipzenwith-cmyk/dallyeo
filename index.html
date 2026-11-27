@@ -289,7 +289,7 @@ footer b{color:var(--ink);font:400 22px "Do Hyeon",sans-serif;display:block;marg
 .pg .poster{height:100%;pointer-events:none}
 @media(max-width:600px){.pgrid{margin-inline:calc(50% - 50vw)}.ptop{gap:18px}}
 .sl.txt:not(.sum):not(.end)>.no{visibility:hidden}.sl.pic .cart .no{display:none} /* 오른쪽 위 1/7 이 있어서 왼쪽 위 번호는 숨김 */
-.chead{padding-top:12px}.chead .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.chead .rhead{color:var(--soft);font-size:14px;margin:0 0 20px}.chead[hidden]{display:none}.rfeed{max-width:none}@media(min-width:761px){.rfeed{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:start}.rfeed .rtitle,.rfeed .rhead,.rfeed .empty{grid-column:1/-1}.rfeed .item{margin:0}}.rfeed .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.rfeed .rhead{margin-bottom:20px}.rfeed .item{margin-bottom:18px}
+.wx .wcard{border-radius:20px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:8px;container-type:inline-size}.wcard.good{background:#3E9B63;color:#fff}.wcard.mid{background:var(--yellow);color:#141414}.wcard.bad{background:#E2492F;color:#fff}.wcard .rk{margin:0;font:400 15px "Jua",sans-serif;display:flex;align-items:center;gap:6px}.wsel{font:400 15px "Jua",sans-serif;background:#141414;color:#fff;border:0;border-radius:99px;padding:3px 26px 3px 11px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);background-position:calc(100% - 13px) 55%,calc(100% - 8px) 55%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}.wcard h3{margin:0;font:400 clamp(31px,10.5cqw,45px)/1.12 "Do Hyeon",sans-serif;letter-spacing:-.02em;word-break:keep-all}.wcard .wsub{margin:0;font:400 18px "Jua",sans-serif}.wcard .rd{margin:0;font-size:14px;line-height:1.55}.whrs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0}.whrs span{flex:1 0 auto;min-width:48px;display:grid;justify-items:center;gap:1px;padding:7px 4px;border-radius:12px;background:rgba(0,0,0,.14);font:400 14px "Jua",sans-serif}.whrs i{font-style:normal;font-size:17px}.wcard .rgo{display:flex;align-items:center;justify-content:center;height:46px;border-radius:14px;background:#141414;color:#fff;text-decoration:none;font-weight:700;font-size:14px;margin-top:4px}.wcard .wsrc{margin:0;font-size:12px;opacity:.8}.chead{padding-top:12px}.chead .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.chead .rhead{color:var(--soft);font-size:14px;margin:0 0 20px}.chead[hidden]{display:none}.rfeed{max-width:none}@media(min-width:761px){.rfeed{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:start}.rfeed .rtitle,.rfeed .rhead,.rfeed .empty{grid-column:1/-1}.rfeed .item{margin:0}}.rfeed .rtitle{font:400 clamp(40px,11vw,56px)/1.05 "Do Hyeon",sans-serif;margin:8px 0 10px;letter-spacing:-.02em}.rfeed .rhead{margin-bottom:20px}.rfeed .item{margin-bottom:18px}
 
 /* 퀴즈 = 카드 한 장 (2026-11-27 Ray 「카드 디자인 안에」) */
 .sl.qzs{background:var(--yellow);color:#141414;display:flex;flex-direction:column;justify-content:center;gap:4cqw;padding:10% 9%}
@@ -450,6 +450,7 @@ html,body{overflow-x:clip}
  <div class="mtop"><b>달려달려</b><button type="button" class="mx" data-close aria-label="메뉴 닫기">✕</button></div>
  <a href="/races/" class="mrace">국내 대회 일정</a>
  <a href="/course/" class="mrace">전국 러닝 코스</a>
+ <a href="/weather/" class="mrace">오늘 뛰기 좋아? (날씨)</a>
  <p class="mh">주제별 모음</p>
  <a href="/topic/body/">몸속 이야기</a><a href="/topic/compare/">비교·대결</a><a href="/topic/beginner/">런린이 가이드</a><a href="/topic/gear/">장비</a><a href="/topic/trivia/">러닝 잡지식</a><a href="/topic/love/">러닝 연애</a>
  <p class="mh">더 보기</p>
@@ -470,7 +471,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=caf8bf80"></script>
+<script src="/posts.js?v=221c2d5c"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -578,7 +579,7 @@ const ncol=()=>innerWidth<=760?1:Math.max(1,Math.min(4,Math.floor((board.clientW
 const sent=document.createElement("div");sent.className="loadmore";sent.hidden=true;sent.innerHTML="<span></span>";board.after(sent);
 const put=html=>{const t=document.createElement("template");t.innerHTML=html;[...t.content.children].forEach(el=>{let m=cols[0];for(const c of cols)if(c.offsetHeight<m.offsetHeight||(c.offsetHeight===m.offsetHeight&&c.childElementCount<m.childElementCount))m=c;m.appendChild(el)})};
 const makeCols=()=>{board.innerHTML="";cols=Array.from({length:ncol()},()=>board.appendChild(Object.assign(document.createElement("div"),{className:"col"})))};
-const more=()=>{if(shown>=feed.length){sent.hidden=true;return}feed.slice(shown,shown+PAGE).forEach(put);board.querySelectorAll(".fp:not([data-on])").forEach(fpInit);if(TOP&&TOP.list.length>=3)topFill();shown=Math.min(shown+PAGE,feed.length);sent.hidden=shown>=feed.length;
+const more=()=>{if(shown>=feed.length){sent.hidden=true;return}feed.slice(shown,shown+PAGE).forEach(put);board.querySelectorAll(".fp:not([data-on])").forEach(fpInit);if(TOP&&TOP.list.length>=3)topFill();wxFill();shown=Math.min(shown+PAGE,feed.length);sent.hidden=shown>=feed.length;
  if(!sent.hidden&&!list.hidden&&sent.getBoundingClientRect().top<innerHeight+800)requestAnimationFrame(more)};
 new IntersectionObserver(e=>{if(e[0].isIntersecting)more()},{rootMargin:"800px"}).observe(sent);
 addEventListener("resize",()=>{if(board.classList.contains("mason")&&ncol()!==cols.length){makeCols();feed.slice(0,shown).forEach(put)}});
@@ -602,6 +603,16 @@ const dkey=()=>{const n=new Date(),z=x=>String(x).padStart(2,"0");return `${n.ge
 let TOP=null;
 const topHTML=()=>TOP&&TOP.list.length>=3?`<div class="tsec"><div class="th"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2.5c.6 3.2 4.8 5.3 4.8 10.2A4.8 4.8 0 0 1 12 17.5a4.8 4.8 0 0 1-4.8-4.8c0-2.3 1.4-3.6 2.4-4.9.3 1.6 1 2.4 1.9 2.8-.5-2.9.2-5.6.5-8.1z" fill="#fff"/></svg></span><div><b>${TOP.today?"오늘 많이 본 글":"많이 본 글"}</b><small>달려달려 · 매일 바뀌어요</small></div></div>
  <div class="trow">${TOP.list.slice(0,5).map((p,i)=>`<a class="tc" href="${BASE}p/${p.id}/" data-id="${esc(p.id)}"><div class="tch"><span class="av" style="background:${CH(p.cat).b}">${AVS(p.cat)}</span><div><b>${esc(CH(p.cat).n)}</b><small>${i+1}위 · ${esc(p.cat)}</small></div></div><h3>${esc(p.cap)}</h3><p>${esc(p.fine||"")}</p><div class="tm"><span>${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="tl">·</b></span><span>${SV('<path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.6z"/>')}<b class="tcm">·</b></span></div></a>`).join("")}</div></div>`:"";
+let WX=null,wxGo=false;const WXI=(h,sky,pty)=>pty?([3,7].includes(pty)?"❄️":"🌧️"):sky>=4?"☁️":sky>=3?"⛅":(h>=18||h<7)?"🌙":"☀️";
+const wxHTML=()=>{if(!WX)return"";let nm="서울";try{nm=localStorage.getItem("dd_wx")||"서울"}catch(e){}const r=WX.regions.find(x=>x.name===nm)||WX.regions[0];const [a,b]=r.msg.split(" · ");const B=(typeof BASE!=="undefined"?BASE:"/");
+ const pm=[r.pm10g?`미세먼지 ${r.pm10g}`:"",r.pm25g?`초미세먼지 ${r.pm25g}`:""].filter(Boolean).join(" · ");
+ return `<div class="wcard ${r.lv}"><p class="rk">오늘 뛰기 좋아? <select class="wsel" aria-label="지역 고르기">${WX.regions.map(x=>`<option${x.name===r.name?" selected":""}>${esc(x.name)}</option>`).join("")}</select></p><h3>${esc(a)}</h3>${b?`<p class="wsub">${esc(b)}</p>`:""}
+ <p class="rd">${r.t!=null?`${r.t}°C`:""}${r.wind!=null?` · 바람 ${r.wind}m/s`:""}${r.reh!=null?` · 습도 ${r.reh}%`:""}${pm?`<br>${esc(pm)}`:""}</p>
+ ${(r.next||[]).length?`<div class="whrs">${r.next.map(n=>`<span><b>${n.h}시</b><i>${WXI(n.h,n.sky,n.pty)}</i>${n.t!=null?Math.round(n.t)+"°":""}</span>`).join("")}</div>`:""}
+ <a class="rgo" href="${B}weather/">전국 17곳 보기</a><p class="wsrc">기상청·에어코리아 · ${esc(WX.obs)} 관측 기준</p></div>`};
+const wxFill=()=>{const els=document.querySelectorAll(".item.wx:not([data-f])");if(!els.length)return;if(!WX){if(wxGo)return;wxGo=true;fetch((typeof BASE!=="undefined"?BASE:"/")+"weather.json?t="+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{WX=d;wxFill()}).catch(()=>{});return}
+ els.forEach(el=>{el.dataset.f=1;el.innerHTML=wxHTML();el.hidden=false})};
+document.addEventListener("change",e=>{const s=e.target.closest(".wsel");if(!s)return;try{localStorage.setItem("dd_wx",s.value)}catch(x){}document.querySelectorAll(".item.wx[data-f]").forEach(el=>el.innerHTML=wxHTML())});
 const topFill=()=>document.querySelectorAll(".item.top:not([data-f])").forEach(el=>{const h=topHTML();if(!h)return;el.dataset.f=1;el.innerHTML=h;el.hidden=false;
  el.querySelectorAll(".tc").forEach(c=>{const id=c.dataset.id;fetch(FB.base+"/stats/"+id+"?key="+FB.key).then(r=>r.ok?r.json():null).then(j=>{c.querySelector(".tl").textContent=j&&j.fields?iv(j.fields.likes):0}).catch(()=>{});
   fetch(FB.base+":runAggregationQuery?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredAggregationQuery:{structuredQuery:{from:[{collectionId:"comments"}],where:{fieldFilter:{field:{fieldPath:"post"},op:"EQUAL",value:{stringValue:id}}}},aggregations:[{alias:"n",count:{}}]}})}).then(r=>r.json()).then(j=>{const n=j&&j[0]&&j[0].result&&j[0].result.aggregateFields.n;c.querySelector(".tcm").textContent=n?iv(n):0}).catch(()=>{})})});
@@ -680,7 +691,7 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
  feed=[];const home=cat==="전체"&&!k;let qn=0;
  if(qonly){const qi0=Math.max(0,QP.findIndex(x=>x.id===qonly));feed=QP.slice(qi0).concat(QP.slice(0,qi0)).map(item);board.classList.add("mason");makeCols();shown=0;return more()}
- if(cur)feed.push(item(cur));if(ad)feed.push(raceCard(up[0]));if(home&&!cur)feed.push(ytVid(0));let yn=1,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
+ if(cur)feed.push(item(cur));if(ad)feed.push(raceCard(up[0]));if(home&&!cur)feed.push('<div class="item wx" hidden></div>');if(home&&!cur)feed.push(ytVid(0));let yn=1,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
  r.forEach((p,i)=>{feed.push(item(p));if(ad&&i%5===4)feed.push(raceCard(up[(Math.floor(i/5)+1)%up.length]));
   if(home&&i===yAt){feed.push(ytVid(yn++));yGap+=5;yAt+=yGap}
   if(home&&i===(cur?5:4))feed.push(topCard());
