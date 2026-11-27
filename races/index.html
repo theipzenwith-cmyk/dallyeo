@@ -520,7 +520,12 @@ const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeo
  return `<article class="item fp yv"><div class="fph"><span class="av"><img src="${av}" alt="" width="34" height="34" loading="lazy"></span><div><b>이거알아?</b><small>유튜브 · 몸속 이야기 영상</small></div></div>
  <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
  <div class="ig"><div class="igbar"><h2 class="ftitle yt-t">${esc(v.t)}</h2><a class="shbtn" href="${YT_URL}" target="_blank" rel="noopener">채널 가기</a></div></div></article>`};
-board.addEventListener("click",e=>{const b=e.target.closest(".ytp");if(!b)return;const f=document.createElement("iframe");f.className="ytf";f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.v+"?autoplay=1&playsinline=1&rel=0";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="유튜브 영상";b.replaceWith(f)});
+/* 화면에 60% 넘게 보이면 소리 끄고 자동 재생, 벗어나면 멈춤 · 누르면 소리 켜고 재생 */
+const ytMake=(b,mute)=>{const f=document.createElement("iframe");f.className="ytf";f.dataset.v=b.dataset.v;f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.v+"?autoplay=1&playsinline=1&rel=0&enablejsapi=1"+(mute?"&mute=1":"");f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="유튜브 영상";b.replaceWith(f);ytSeen.observe(f);return f};
+const ytCmd=(f,c)=>{try{f.contentWindow.postMessage(JSON.stringify({event:"command",func:c,args:""}),"*")}catch(e){}};
+const ytSeen=new IntersectionObserver(es=>es.forEach(e=>{const t=e.target;if(t.tagName==="BUTTON"){if(e.intersectionRatio>=.6){ytSeen.unobserve(t);ytMake(t,true)}}else ytCmd(t,e.intersectionRatio>=.6?"playVideo":"pauseVideo")}),{threshold:[0,.6]});
+new MutationObserver(()=>board.querySelectorAll(".ytp:not([data-o])").forEach(b=>{b.dataset.o=1;ytSeen.observe(b)})).observe(board,{childList:true,subtree:true});
+board.addEventListener("click",e=>{const b=e.target.closest(".ytp");if(!b)return;ytSeen.unobserve(b);ytMake(b,false)});
 const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");if(prof)return drawProfile();board.classList.toggle("rlist",cat==="대회 일정");
  if(cat==="대회 일정"){board.classList.remove("mason");sent.hidden=true;return drawRaces(k)}
  const r=P.filter(p=>(cat==="전체"||p.cat===cat)&&(!k||txt(p).includes(k))&&!(cur&&p.id===cur.id));const up=upcoming();
