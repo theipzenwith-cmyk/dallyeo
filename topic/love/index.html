@@ -416,7 +416,8 @@ header.sopen .search{flex:1}
 .tcardx{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;border-radius:14px;display:flex;align-items:center;padding:10%;container-type:inline-size}
 .tcardx p{position:relative;margin:0;font:400 9cqw/1.3 "Do Hyeon",sans-serif;word-break:keep-all;overflow-wrap:anywhere;white-space:pre-wrap}
 @media(max-width:600px){.tcardx{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
-#fab.fab{background:#E2492F!important} /* 연필 버튼 빨강+흰 아이콘 (2026-11-27 Ray) */
+#fab.fab{background:#E2492F!important}
+@media(min-width:900px){.fab{width:70px;height:70px;right:28px;bottom:28px}.fab svg{width:31px;height:31px}} /* 연필 버튼 빨강+흰 아이콘 (2026-11-27 Ray) */
 .cm{display:none}
 html,body{overflow-x:clip}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 18px 0 8px;border:0;border-radius:999px;background:#F6D43A;color:#141414;box-shadow:0 6px 22px rgba(0,0,0,.4);cursor:pointer;font:400 17px "Do Hyeon",sans-serif}.fab img{width:40px;height:40px;border-radius:12px}.tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:10;max-width:420px;margin-left:auto;padding:18px 18px 14px;border-radius:18px;background:#fff;color:#141414;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:15px;line-height:1.55}.tip>b{font:400 20px "Do Hyeon",sans-serif;display:block;margin-bottom:8px}.tip ol{margin:0 0 12px;padding-left:22px}.tip li{margin:4px 0}.tip em{font-style:normal;font-weight:700;background:#F6D43A;padding:0 5px;border-radius:5px}.tip .tb{display:flex;gap:8px}.tip .tb a,.tip .tb button{flex:1;height:44px;border:0;border-radius:12px;font:700 15px system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}.tip .tb .y{background:#F6D43A;color:#141414}.tip .tb .g{background:#eee;color:#141414}
@@ -470,7 +471,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=7f7a8e7d"></script>
+<script src="/posts.js?v=8c27ae1b"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
