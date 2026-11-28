@@ -484,7 +484,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=f4c76ffd"></script>
+<script src="/posts.js?v=bbeca953"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["등산 코스","산"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -734,7 +734,7 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  rr.forEach((p,i)=>{feed.push(item(p));if(ad&&i%10===6)feed.push(raceCard(up[Math.floor(i/10)%up.length]));if(home&&CRS.length&&i%10===9)feed.push(courseCard(CRS[cn++%CRS.length]));if(home&&XYT.length&&i%14===11)feed.push(xVid());
   if(home&&i===yAt){feed.push(ytVid(yn++));yGap+=5;yAt+=yGap}
   if(home&&i===(cur?5:4))feed.push(topCard());
-  if(home&&i%6===2&&qn<QP.length)feed.push(item(QP[qn++]));
+  if(home&&i%5===2&&qn<QP.length)feed.push(item(QP[qn++]));
   if(home&&i%3===1&&tn<TALK.length)feed.push(talkItem(TALK[tn++]));});
  board.classList.add("mason");makeCols();shown=0;more()};
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
