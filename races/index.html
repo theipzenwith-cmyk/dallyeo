@@ -452,9 +452,9 @@ html,body{overflow-x:clip}
     <div class="chips" id="chips" role="group" aria-label="카테고리"></div>
   </div>
 </header>
-<button type="button" class="fab" id="fab" aria-label="헉헉 수다 글쓰기"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.25 4.75l4 4L8.75 19.25h-4v-4z"/><path d="m13.25 6.75 4 4"/></svg></button>
+<button type="button" class="fab" id="fab" aria-label="수다 글쓰기"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.25 4.75l4 4L8.75 19.25h-4v-4z"/><path d="m13.25 6.75 4 4"/></svg></button>
 <div class="tsheet" id="tsheet" hidden><div class="mback" data-tclose></div><form class="tform" id="tform" autocomplete="off">
- <div class="tbar"><button type="button" class="tclose" data-tclose aria-label="닫기"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><b>헉헉수다</b><button type="submit" class="tsend" id="tsend" disabled>올리기</button></div>
+ <div class="tbar"><button type="button" class="tclose" data-tclose aria-label="닫기"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><b>수다</b><button type="submit" class="tsend" id="tsend" disabled>올리기</button></div>
  <div class="tnew"><span class="av tav" id="tav">?</span><div class="tnb"><b id="tname"></b><textarea id="ttext" maxlength="300" rows="3" placeholder="오늘 러닝 어땠어? 한마디 남겨 봐!"></textarea><small id="tlen">0 / 300</small></div></div>
  <p class="tme">링크는 넣을 수 없어요 · 고운 말로 써 주세요</p>
 </form></div>
@@ -462,6 +462,7 @@ html,body{overflow-x:clip}
  <div class="mtop"><b>달려달려</b><button type="button" class="mx" data-close aria-label="메뉴 닫기">✕</button></div>
  <a href="/races/" class="mrace">국내 대회 일정</a>
  <a href="/course/" class="mrace">전국 러닝 코스</a>
+ <a href="/hike/" class="mrace">전국 등산 코스</a>
  <a href="/weather/" class="mrace">오늘 뛰기 좋아? (날씨)</a>
  <p class="mh">주제별 모음</p>
  <a href="/topic/body/">몸속 이야기</a><a href="/topic/compare/">비교·대결</a><a href="/topic/beginner/">런린이 가이드</a><a href="/topic/gear/">장비</a><a href="/topic/trivia/">러닝 잡지식</a><a href="/topic/love/">러닝 연애</a>
@@ -483,10 +484,10 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=f545f2fa"></script>
+<script src="/posts.js?v=6f1fca2f"></script>
 <script>
 {
-const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
+const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["등산 코스","산"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
 const P=window.DD_P;
 for(const p of P)p.c=[];
 const BASE="/";
@@ -598,7 +599,7 @@ let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
 let chipFirst=true;const chipCenter=()=>{const b=chips.querySelector('[aria-pressed="true"]');if(!b)return;const cr=chips.getBoundingClientRect(),br=b.getBoundingClientRect();const d=br.right>cr.right-16?br.right-cr.right+16:br.left<cr.left+16?br.left-cr.left-16:0;if(d)chips.scrollBy({left:d,behavior:chipFirst?"auto":"smooth"});chipFirst=false};
-const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="헉헉 수다"||n==="대회 일정"||n==="러닝 코스").map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}"${n==="전체"?' aria-label="전체"':""}>${n==="전체"?'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg>':esc(n.replace(/\s+/g,""))}</button>`).join("")};
+const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="헉헉 수다"||n==="대회 일정"||n==="러닝 코스"||n==="등산 코스").map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}"${n==="전체"?' aria-label="전체"':""}>${n==="전체"?'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg>':esc(n==="헉헉 수다"?"수다":n.replace(/\s+/g,""))}</button>`).join("")};
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
@@ -668,7 +669,7 @@ const drawProfile=()=>{if(prof==="이거알아")return drawYTProfile();const h=C
 board.addEventListener("click",e=>{const a=e.target.closest(".fph");if(a&&a.closest(".yv")){e.preventDefault();prof="이거알아";window.scrollTo(0,0);drawBoard();return}if(a){const el=a.closest(".fp");const p=el&&(P.find(x=>x.id===el.dataset.id)||QP.find(x=>x.id===el.dataset.id));if(p){e.preventDefault();prof=p.cat;window.scrollTo(0,0);drawBoard()}return}
  const g=e.target.closest(".pg");if(g&&g.dataset.id.startsWith("quiz-")){prof=null;qonly=g.dataset.id;window.scrollTo(0,0);drawBoard();return}if(g){const p=P.find(x=>x.id===g.dataset.id);prof=null;cat=p.cat;drawChips();show(p);return}
  if(e.target.closest(".pback")){prof=null;qonly=null;window.scrollTo(0,0);drawBoard()}});
-chips.addEventListener("click",e=>{const b=e.target.closest("button");if(b&&b.dataset.c==="러닝 코스"){e.stopImmediatePropagation();location.href=(typeof BASE!=="undefined"?BASE:"/")+"course/";return}prof=null;qonly=null},true);qi.addEventListener("input",()=>{qonly=null},true);
+chips.addEventListener("click",e=>{const b=e.target.closest("button");if(b&&(b.dataset.c==="러닝 코스"||b.dataset.c==="등산 코스")){e.stopImmediatePropagation();location.href=(typeof BASE!=="undefined"?BASE:"/")+(b.dataset.c==="등산 코스"?"hike/":"course/");return}prof=null;qonly=null},true);qi.addEventListener("input",()=>{qonly=null},true);
 /* 「이거알아?」 유튜브 영상 — 피드에서 바로 재생 + 채널 가기 (2026-11-27 Ray) */
 const YTV=window.DD_YT||[];
 const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+"yt1.jpg";
@@ -710,7 +711,7 @@ board.addEventListener("click",e=>{const c=e.target.closest(".talk.th .cmtb,.th2
 board.addEventListener("click",e=>{const b=e.target.closest(".trep");if(!b)return;const id=b.dataset.t;const R0=ls.get("dd_rep",[]);if(R0.includes(id))return toast("이미 신고했어요");
  if(!confirm("이 글을 신고할까요? 신고가 3번 쌓이면 숨겨져요."))return;R0.push(id);ls.set("dd_rep",R0);
  fbCommit([{transform:{document:FBDOC+"/report/"+id,fieldTransforms:[{fieldPath:"n",increment:{integerValue:"1"}}]}}]).then(()=>toast("신고했어요. 고마워요!")).catch(()=>{})});
-const CHEAD={"헉헉 수다":["헉헉수다","러너들끼리 편하게 나누는 이야기예요. 오른쪽 아래 연필을 눌러 오늘 뛴 이야기를 남겨 봐요."],
+const CHEAD={"헉헉 수다":["수다","러너들끼리 편하게 나누는 이야기예요. 오른쪽 아래 연필을 눌러 오늘 뛴 이야기를 남겨 봐요."],
  "카드뉴스":["카드뉴스","러닝 궁금증을 카드 한 장씩 넘겨 보며 봐요. 옆으로 밀면 다음 카드예요."],
  "몸속 이야기":["몸속 이야기","달리면 몸속에서 무슨 일이 일어나는지, 연구로 확인한 내용을 쉽게 풀었어요."],
  "비교·대결":["비교·대결","러닝 vs 걷기, 아침 vs 저녁처럼 둘 중 뭐가 나은지 하나씩 비교해 봐요."],
