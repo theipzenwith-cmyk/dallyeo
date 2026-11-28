@@ -468,7 +468,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=08705ed6"></script>
+<script src="/posts.js?v=f4c76ffd"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["등산 코스","산"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -583,7 +583,7 @@ let cat="전체",q="",cur=null,idx=0;
 const $=id=>document.getElementById(id);
 const chips=$("chips"),board=$("board"),qi=$("q"),list=$("list"),view=$("view");
 let chipFirst=true;const chipCenter=()=>{const b=chips.querySelector('[aria-pressed="true"]');if(!b)return;const cr=chips.getBoundingClientRect(),br=b.getBoundingClientRect();const d=br.right>cr.right-16?br.right-cr.right+16:br.left<cr.left+16?br.left-cr.left-16:0;if(d)chips.scrollBy({left:d,behavior:chipFirst?"auto":"smooth"});chipFirst=false};
-const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=CATS.filter(([n])=>n==="전체"||n==="헉헉 수다"||n==="대회 일정"||n==="러닝 코스"||n==="등산 코스").map(([n,g])=>`<button class="chip" type="button" aria-pressed="${n===cat}" data-c="${esc(n)}"${n==="전체"?' aria-label="전체"':n==="헉헉 수다"?' aria-label="수다"':""}>${n==="헉헉 수다"?'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4.5h12a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5h-6.5L7 21v-3.5H6A2.5 2.5 0 0 1 3.5 15V7A2.5 2.5 0 0 1 6 4.5z"/></svg>':n==="전체"?'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg>':esc(n==="헉헉 수다"?"수다":n.replace(/\s+/g,""))}</button>`).join("")};
+const drawChips=()=>{requestAnimationFrame(chipCenter);chips.innerHTML=(window.DD_TABS||[]).map(([c,n,ic])=>`<button class="chip" type="button" aria-pressed="${c===cat}" data-c="${esc(c)}"${ic?` aria-label="${esc(n)}"`:""}>${ic||esc(n)}</button>`).join("")};
 const txt=p=>p.cat+((CHR[p.cat]||{}).n||"")+p.cap+p.fine+(p.w||p.vert).join("")+(p.k||p.b||[]).flat().join("");
 /* 보드 = 핀터레스트처럼: 왼쪽부터 짧은 줄에 쌓고, 내리면 10장씩 더 (2026-11-27) */
 const PAGE=10;let feed=[],shown=0,cols=[];
