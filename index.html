@@ -467,7 +467,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=9f522e98"></script>
+<script src="/posts.js?v=f3cc1b4d"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -659,6 +659,12 @@ const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeo
  return `<article class="item fp yv th2"><span class="fph thav"><span class="av"><img src="${av}" alt="" width="36" height="36" loading="lazy"></span></span><div class="thb"><div class="fph thh"><b>이거알아?</b><small>유튜브</small></div><h2 class="ftitle">${esc(v.t)}</h2>
  <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hq720.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg'" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
  <div class="ig"><div class="igbar"><a class="ytgo" href="${YT_URL}" target="_blank" rel="noopener">채널 가기 ›</a></div></div></div></article>`};
+/* 다른 내 채널(디자이너 아빠·찐남…) 롱폼 — 피드에 가끔 (2026-11-28) */
+const XYT=Object.values(window.DD_XYT||{}).filter(c=>c.v&&c.v.length);let xn=0;
+const xVid=()=>{if(!XYT.length)return"";const c=XYT[xn%XYT.length],v=c.v[Math.floor(xn/XYT.length)%c.v.length];xn++;
+ return `<article class="item yv xv th2"><span class="thav"><span class="av">${c.av?`<img src="${esc(c.av.replace(/=s\d+[^/]*$/,"=s88-c-k-c0x00ffffff-no-rj"))}" alt="" width="36" height="36" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`:"▶"}</span></span><div class="thb"><div class="thh"><b>${esc(c.n)}</b><small>유튜브</small></div><h2 class="ftitle">${esc(v.t)}</h2>
+ <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hq720.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg'" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
+ <div class="ig"><div class="igbar"><a class="ytgo" href="${esc(c.url)}" target="_blank" rel="noopener">채널 가기 ›</a></div></div></div></article>`};
 /* 화면에 60% 넘게 보이면 소리 끄고 자동 재생, 벗어나면 멈춤 · 누르면 소리 켜고 재생 */
 const SPK_OFF='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="#fff"/><path d="m22 9-6 6M16 9l6 6"/></svg>',SPK_ON='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="#fff"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 /* 유튜브 — 재생바만 숨김(controls=0, 공식 설정) · 플레이어는 가리거나 덮지 않음(유튜브 퍼가기 규정) · 소리 버튼은 영상 아래 따로 · 화면에 보이면 소리 끄고 자동 재생 (2026-11-27) */
@@ -708,7 +714,7 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  if(qonly){const qi0=Math.max(0,QP.findIndex(x=>x.id===qonly));feed=QP.slice(qi0).concat(QP.slice(0,qi0)).map(item);board.classList.add("mason");makeCols();shown=0;return more()}
  if(home&&!cur)feed.push('<div class="item wx th2" hidden></div>');if(cur)feed.push(item(cur));if(home&&!cur)feed.push(ytVid(0));let yn=1,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
  let rr=r,cn=0;if(home){if(!RND)RND=new Map(P.map(p=>[p.id,Math.random()]));rr=[...r].sort((a,b)=>RND.get(a.id)-RND.get(b.id))}
- rr.forEach((p,i)=>{feed.push(item(p));if(ad&&i%10===6)feed.push(raceCard(up[Math.floor(i/10)%up.length]));if(home&&CRS.length&&i%10===9)feed.push(courseCard(CRS[cn++%CRS.length]));
+ rr.forEach((p,i)=>{feed.push(item(p));if(ad&&i%10===6)feed.push(raceCard(up[Math.floor(i/10)%up.length]));if(home&&CRS.length&&i%10===9)feed.push(courseCard(CRS[cn++%CRS.length]));if(home&&XYT.length&&i%14===11)feed.push(xVid());
   if(home&&i===yAt){feed.push(ytVid(yn++));yGap+=5;yAt+=yGap}
   if(home&&i===(cur?5:4))feed.push(topCard());
   if(home&&i%6===2&&qn<QP.length)feed.push(item(QP[qn++]));
