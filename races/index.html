@@ -484,7 +484,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=9c98630b"></script>
+<script src="/posts.js?v=e63528cd"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["등산 코스","산"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -849,6 +849,32 @@ document.addEventListener("click",e=>{const a=e.target.closest("a[data-frame]");
  e.preventDefault();t.textContent=a.dataset.frame;o.href=a.href;f.src=a.href;m.hidden=false;document.body.style.overflow="hidden"});
 })();
 </script>
+<script>/* 애널리틱스 행동 기록 — 어디까지 보고 어디서 그만두는지 (2026-11-28) */
+(()=>{const T=(n,p)=>{try{window.gtag&&gtag("event",n,p||{})}catch(e){}};
+const ART=e=>e.closest("[data-id],.cth,.item");const PID=e=>{const a=e&&e.closest("[data-id]");return a?a.dataset.id:""};
+const KIND=a=>!a?"":a.classList.contains("poll")?"퀴즈":a.classList.contains("talk")?"수다":a.classList.contains("yv")?"유튜브":a.classList.contains("crs")?"러닝코스카드":a.classList.contains("race")?"대회카드":a.classList.contains("wx")?"날씨":a.classList.contains("top")?"TOP5":a.classList.contains("cth")?"코스목록":"글";
+document.addEventListener("click",e=>{const t=e.target;let b;
+ if(b=t.closest("#chips button,.tabs a"))T("tab_select",{tab:b.getAttribute("aria-label")||b.textContent.trim()});
+ else if(b=t.closest(".like"))T("like",{item_id:PID(b),kind:KIND(ART(b))});
+ else if(b=t.closest(".cmtb"))T("comment_open",{item_id:PID(b),kind:KIND(ART(b))});
+ else if(b=t.closest(".shb,.rshare,.shr button"))T("share",{item_id:PID(b)||b.dataset.su||location.pathname,kind:KIND(ART(b))});
+ else if(b=t.closest(".po"))T("quiz_answer",{item_id:PID(b),choice:+b.dataset.i});
+ else if(b=t.closest(".ytp"))T("yt_play",{video:b.dataset.v});
+ else if(b=t.closest(".rgo"))T("card_button",{label:b.textContent.trim(),href:b.getAttribute("href")||""});
+ else if(b=t.closest("#fab"))T("talk_write_open");
+ else if(b=t.closest(".tsend"))T("talk_post");
+ else if(b=t.closest(".btns a"))T("course_map",{label:b.textContent.trim()});
+},true);
+document.addEventListener("change",e=>{if(e.target.closest(".wsel"))T("weather_region",{region:e.target.value})},true);
+/* 카드 넘김: 글마다 몇 번째 장까지 봤는지(새 최고 장에서만 기록) */
+const seen=new Map();document.addEventListener("scroll",e=>{const d=e.target;if(!(d instanceof Element)||!d.classList.contains("deck"))return;clearTimeout(d._gt);d._gt=setTimeout(()=>{const n=Math.round(d.scrollLeft/d.clientWidth)+1,tot=d.children.length,id=PID(d);if(n>(seen.get(id)||1)){seen.set(id,n);T("card_slide",{item_id:id,slide:n,total:tot,last:n===tot})}},250)},true);
+/* 피드 깊이: 몇 번째 항목까지 내려봤는지(5·10·20·30·50) */
+let maxi=0;const marks=[5,10,20,30,50];const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;const it=[...document.querySelectorAll(".board .item,.clist .cth")];const i=it.indexOf(x.target)+1;if(i>maxi){maxi=i;const m=marks.filter(k=>k<=i).pop();if(m&&!io["m"+m]){io["m"+m]=1;T("feed_depth",{depth:m,page:location.pathname})}}}),{threshold:.5});
+const watch=()=>document.querySelectorAll(".board .item:not([data-gw]),.clist .cth:not([data-gw])").forEach(el=>{el.dataset.gw=1;io.observe(el)});watch();new MutationObserver(watch).observe(document.body,{childList:true,subtree:true});
+/* 머문 시간: 떠날 때 몇 초 있었는지 + 마지막으로 보던 항목 종류 */
+const t0=Date.now();let sent=0;const bye=()=>{if(sent)return;sent=1;T("page_leave",{seconds:Math.round((Date.now()-t0)/1000),depth:maxi,page:location.pathname,transport_type:"beacon"})};
+addEventListener("pagehide",bye);document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")bye()});
+})();</script>
 <script>
 (()=>{const BASE="/";const K="dd_installed";
  if("serviceWorker" in navigator)navigator.serviceWorker.register(BASE+"sw.js",{scope:BASE}).catch(()=>{});
