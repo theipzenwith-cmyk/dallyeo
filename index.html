@@ -335,7 +335,7 @@ header.sopen .search{flex:1}
 @media(max-width:600px){.ytp,.ytf{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 
 .ytw{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
-.ytw iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ytw iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.ys.th2 .ytp,.ys.th2 .ytw{aspect-ratio:9/16;max-width:280px}.ys .sbadge{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:5px;background:#E2492F;color:#fff;font:700 11px system-ui,sans-serif;vertical-align:1px}
 .ytm{display:inline-flex;align-items:center;gap:6px;margin:8px 0 0;height:32px;padding:0 12px;border:1px solid color-mix(in srgb,var(--ink) 28%,transparent);border-radius:10px;background:transparent;color:var(--ink);font:600 13px system-ui,sans-serif;cursor:pointer}.ytm svg{width:16px;height:16px}.ytm svg path{stroke:currentColor}.ytm svg path[fill]{fill:currentColor}
 @media(max-width:600px){.ytw{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 
@@ -469,7 +469,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=aa9a0419"></script>
+<script src="/posts.js?v=873cde72"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["등산 코스","산"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -661,6 +661,12 @@ const ytVid=i=>{const v=YTV[i%YTV.length];if(!v)return ytCard(i);const av=(typeo
  return `<article class="item fp yv th2"><span class="fph thav"><span class="av"><img src="${av}" alt="" width="36" height="36" loading="lazy"></span></span><div class="thb"><div class="fph thh"><b>이거알아?</b><small>유튜브</small></div><h2 class="ftitle">${esc(v.t)}</h2>
  <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hq720.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg'" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
  <div class="ig"><div class="igbar"><a class="ytgo" href="${YT_URL}" target="_blank" rel="noopener">채널 가기 ›</a></div></div></div></article>`};
+/* 이거알아 숏츠 — 세로 카드 · 롱폼과 번갈아 (2026-11-28) */
+const YSV=window.DD_YS||[];
+const ytShort=i=>{const v=YSV[i%YSV.length];if(!v)return"";const av=(typeof BASE!=="undefined"?BASE+"icons/":"../아이콘/")+"yt1.jpg";
+ return `<article class="item fp yv ys th2"><span class="fph thav"><span class="av"><img src="${av}" alt="" width="36" height="36" loading="lazy"></span></span><div class="thb"><div class="fph thh"><b>이거알아?</b><small>숏츠</small></div><h2 class="ftitle">${esc(v.t)}</h2>
+ <button type="button" class="ytp" data-v="${esc(v.id)}" aria-label="${esc(v.t)} 재생"><img src="https://i.ytimg.com/vi/${esc(v.id)}/oardefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg'" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#fff"/></svg></span></button>
+ <div class="ig"><div class="igbar"><a class="ytgo" href="https://www.youtube.com/shorts/${esc(v.id)}" target="_blank" rel="noopener">유튜브에서 보기 ›</a></div></div></div></article>`};
 /* 다른 내 채널(디자이너 아빠·찐남…) 롱폼 — 피드에 가끔 (2026-11-28) */
 const XYT=Object.values(window.DD_XYT||{}).filter(c=>c.v&&c.v.length);let xn=0;
 const xVid=()=>{if(!XYT.length)return"";const c=XYT[xn%XYT.length],v=c.v[Math.floor(xn/XYT.length)%c.v.length];xn++;
@@ -714,10 +720,10 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
  feed=[];const home=cat==="전체"&&!k;let qn=0;
  if(qonly){const qi0=Math.max(0,QP.findIndex(x=>x.id===qonly));feed=QP.slice(qi0).concat(QP.slice(0,qi0)).map(item);board.classList.add("mason");makeCols();shown=0;return more()}
- if(home&&!cur)feed.push('<div class="item wx th2" hidden></div>');if(cur)feed.push(item(cur));if(home&&!cur)feed.push(ytVid(0));let yn=1,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
+ if(home&&!cur)feed.push('<div class="item wx th2" hidden></div>');if(cur)feed.push(item(cur));if(home&&!cur)feed.push(ytVid(0));let yn=1,sn=0,yk=0,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
  let rr=r,cn=0;if(home){if(!RND)RND=new Map(P.map(p=>[p.id,Math.random()]));rr=[...r].sort((a,b)=>RND.get(a.id)-RND.get(b.id))}
  rr.forEach((p,i)=>{feed.push(item(p));if(ad&&i%10===6)feed.push(raceCard(up[Math.floor(i/10)%up.length]));if(home&&CRS.length&&i%10===9)feed.push(courseCard(CRS[cn++%CRS.length]));if(home&&XYT.length&&i%14===11)feed.push(xVid());
-  if(home&&i===yAt){feed.push(ytVid(yn++));yGap+=5;yAt+=yGap}
+  if(home&&i===yAt){feed.push(YSV.length&&yk++%2===0?ytShort(sn++):ytVid(yn++));yGap+=5;yAt+=yGap}
   if(home&&i===(cur?5:4))feed.push(topCard());
   if(home&&i%5===2&&qn<QP.length)feed.push(item(QP[qn++]));
   if(home&&i%3===1&&tn<TALK.length)feed.push(talkItem(TALK[tn++]));});
