@@ -340,7 +340,7 @@ header.sopen .search{flex:1}
 @media(max-width:600px){.ytp,.ytf{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 
 .ytw{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
-.ytw iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.ys.th2 .ytp,.ys.th2 .ytw{aspect-ratio:9/16;max-width:280px}.ys .sbadge{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:5px;background:#E2492F;color:#fff;font:700 11px system-ui,sans-serif;vertical-align:1px}
+.ytw iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.cbadge{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:6px;background:color-mix(in srgb,var(--ink) 10%,transparent);color:var(--soft);font:600 11px system-ui,sans-serif;vertical-align:2px}.cmt.chr .cav{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;margin-right:5px;font-size:11px;vertical-align:-4px}.tbot .tav{display:grid;place-items:center;font-size:18px}.tpc{position:relative;max-width:300px;aspect-ratio:1/1;border-radius:14px;background:linear-gradient(160deg,var(--c),color-mix(in srgb,var(--c) 55%,#000));color:#fff;padding:22px 20px;display:flex;flex-direction:column;gap:10px;margin:6px 0 8px;overflow:hidden;box-sizing:border-box}.tpl{align-self:flex-start;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.22);font:700 12px system-ui,sans-serif;letter-spacing:.02em}.tpq{margin:4px 0 0;font:800 28px/1.32 system-ui,sans-serif;word-break:keep-all;text-wrap:balance}.tpo{align-self:flex-start;max-width:82%;background:rgba(255,255,255,.17);border-radius:10px;padding:7px 12px;font:600 15px/1.45 system-ui,sans-serif}.tpi{position:absolute;right:10px;bottom:4px;font-size:72px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.25))}.cmt.chr .cbadge{margin-right:6px}.cmt.chr>b{font-size:14px}.cmt.chr{margin:10px 0}.ys.th2 .ytp,.ys.th2 .ytw{aspect-ratio:9/16;max-width:280px}.ys .sbadge{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:5px;background:#E2492F;color:#fff;font:700 11px system-ui,sans-serif;vertical-align:1px}
 .ytm{display:inline-flex;align-items:center;gap:6px;margin:8px 0 0;height:32px;padding:0 12px;border:1px solid color-mix(in srgb,var(--ink) 28%,transparent);border-radius:10px;background:transparent;color:var(--ink);font:600 13px system-ui,sans-serif;cursor:pointer}.ytm svg{width:16px;height:16px}.ytm svg path{stroke:currentColor}.ytm svg path[fill]{fill:currentColor}
 @media(max-width:600px){.ytw{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}}
 
@@ -474,7 +474,7 @@ html,body{overflow-x:clip}
   </div>
 </footer>
 
-<script src="/posts.js?v=873cde72"></script>
+<script src="/posts.js?v=d353cf80"></script>
 <script>
 {
 const CATS=[["전체","全"],["헉헉 수다","✎"],["대회 일정","대"],["러닝 코스","길"],["등산 코스","산"],["몸속 이야기","몸"],["비교·대결","VS"],["런린이 가이드","초"],["장비","화"],["러닝 잡지식","?"],["러닝 연애","♥"]];
@@ -691,23 +691,31 @@ new MutationObserver(()=>board.querySelectorAll(".yv .ytp:not([data-o])").forEac
 board.addEventListener("click",e=>{const b=e.target.closest(".ytp");if(b){ytSeen.unobserve(b);ytMake(b,false);return}
  const sb=e.target.closest(".ytm");if(!sb)return;const w=sb.previousElementSibling;if(!w||!w.classList.contains("ytw"))return;const m=w.dataset.mute==="1";ytCmd(w,m?"unMute":"mute");if(m)ytCmd(w,"playVideo");w.dataset.mute=m?0:1;sb.innerHTML=m?SPK_ON+"<span>소리 끄기</span>":SPK_OFF+"<span>소리 켜기</span>"});
 /* 「헉헉 수다」 커뮤니티 (2026-11-27 Ray 「연필 아이콘 · 카드 안에 짧은 글 · 웃긴 탭 이름 · 전체에도」) — Firestore talk/{id} · 신고 3번이면 숨김 */
-let TALK=[];const TCOL={w:["#ffffff","#141414"],y:["#F6D43A","#141414"],r:["#E2492F","#fff"],b:["#2F6FE2","#fff"],g:["#22A06B","#fff"],k:["#141414","#fff"]};
-const talkItem=t=>`<article class="item fp talk th" data-id="t-${esc(t.id)}"><span class="av tav">${esc([...t.name][0]||"?")}</span><div class="thb">
-<div class="thh"><b>${esc(t.name)}</b><small>${esc(ago(t.at))}</small><button type="button" class="trep" data-t="${esc(t.id)}" aria-label="신고">신고</button></div>
-<p class="tht">${esc(t.text)}</p>
+/* 캐릭터 수다판·댓글 (2026-11-28) — 캐릭터 표시 늘 붙임 · 댓글 수엔 안 셈 */
+const CHA=window.DD_CH||{},TRE=window.DD_TR||{};
+const chrName=w=>{const c=CHA[w]||{n:w,ico:"🙂",bg:"#888"};return `<b><span class="cav" style="background:${c.bg}">${c.ico}</span>${esc(c.n)}<span class="cbadge">캐릭터</span></b>`};
+const ccHTML=a=>(a||[]).filter(x=>CHA[x[0]]).map(([w,t])=>`<p class="cmt chr">${chrName(w)}${esc(t)}</p>`).join("");
+const BOTS=(window.DD_TB||[]).map(b=>({id:"b"+b.at.replace(/-/g,""),name:(CHA[b.by]||{}).n||b.by,by:b.by,text:b.text,at:b.at+"T07:05:00+09:00",bot:1,re:b.re}));
+let TALK=[...BOTS].reverse();const TOPB=BOTS[BOTS.length-1]||null;
+/* 오늘의 토론 카드 — 주제는 큰 글씨, 보기(①②)는 아래, 나머지 말은 글로 */
+const tpSplit=t=>{const L=t.text.split("\n"),f=L[0].replace(/^오늘의 토론\s*/,""),m=f.match(/^(\p{Extended_Pictographic}️?)\s*/u);return{em:m?m[1]:"💬",q:m?f.slice(m[0].length):f,op:L.slice(1).filter(x=>/^[①②③④]/.test(x)),rest:L.slice(1).filter(x=>!/^[①②③④]/.test(x)).join("\n")}};
+const tpCard=t=>{const c=tpSplit(t),bg=(CHA[t.by]||{}).bg||"#E2492F";return `${c.rest?`<p class="tht">${esc(c.rest)}</p>`:""}<div class="tpc" style="--c:${bg}"><span class="tpl">오늘의 토론</span><p class="tpq">${esc(c.q)}</p>${c.op.map(o=>`<span class="tpo">${esc(o)}</span>`).join("")}<span class="tpi" aria-hidden="true">${c.em}</span></div>`};const TCOL={w:["#ffffff","#141414"],y:["#F6D43A","#141414"],r:["#E2492F","#fff"],b:["#2F6FE2","#fff"],g:["#22A06B","#fff"],k:["#141414","#fff"]};
+const talkItem=t=>`<article class="item fp talk th${t.bot?" tbot":""}" data-id="t-${esc(t.id)}">${t.bot?`<span class="av tav" style="background:${(CHA[t.by]||{}).bg}!important;border-color:transparent!important">${(CHA[t.by]||{}).ico||"🙂"}</span>`:`<span class="av tav">${esc([...t.name][0]||"?")}</span>`}<div class="thb">
+<div class="thh"><b>${esc(t.name)}</b>${t.bot?`<span class="cbadge">캐릭터</span>`:""}<small>${esc(ago(t.at))}</small>${t.bot?"":`<button type="button" class="trep" data-t="${esc(t.id)}" aria-label="신고">신고</button>`}</div>
+${t.bot?tpCard(t):`<p class="tht">${esc(t.text)}</p>`}
 <div class="ig"><div class="igbar"><button class="ib like" type="button" aria-label="좋아요" aria-pressed="false">${SV('<path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.5 0 5.7 3.4 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/>')}<b class="lc">0</b></button><button class="ib cmtb" type="button" aria-label="댓글 달기">${SV('<path d="M6 4.5h12a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5h-6.5L7 21v-3.5H6A2.5 2.5 0 0 1 3.5 15V7A2.5 2.5 0 0 1 6 4.5z"/>')}<b class="cc">0</b></button><button class="ib shb" type="button" aria-label="친구에게 공유">${SV('<path d="M12 3.5v11M8 7.5l4-4 4 4"/><path d="M8.5 10.5H7a1.5 1.5 0 0 0-1.5 1.5v7A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5v-7a1.5 1.5 0 0 0-1.5-1.5h-1.5"/>')}</button></div>
 <div class="cmts"></div><form class="cin" autocomplete="off"><div class="cbox"><input maxlength="300" placeholder="답글 달기…" aria-label="답글 내용"><button type="submit" disabled aria-label="답글 올리기">${SV('<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>')}</button></div></form></div></div></article>`;
 const talkLoad=()=>Promise.all([
  fetch(FB.base+":runQuery?key="+FB.key,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"talk"}],orderBy:[{field:{fieldPath:"at"},direction:"DESCENDING"}],limit:100}})}).then(r=>r.json()),
  fetch(FB.base+"/report?pageSize=300&key="+FB.key).then(r=>r.json())]).then(([rows,rep])=>{
  const bad=new Set((rep.documents||[]).filter(d=>iv(d.fields&&d.fields.n)>=3).map(d=>d.name.split("/").pop()));
- TALK=(rows||[]).filter(x=>x.document).map(x=>{const F=x.document.fields;return{id:x.document.name.split("/").pop(),name:F.name.stringValue,text:F.text.stringValue,color:F.color.stringValue,s:F.s?iv(F.s):9,al:F.al?F.al.stringValue:"l",x:F.x?iv(F.x):0,y:F.y?iv(F.y):0,at:F.at.timestampValue}}).filter(t=>!bad.has(t.id));
+ TALK=(rows||[]).filter(x=>x.document).map(x=>{const F=x.document.fields;return{id:x.document.name.split("/").pop(),name:F.name.stringValue,text:F.text.stringValue,color:F.color.stringValue,s:F.s?iv(F.s):9,al:F.al?F.al.stringValue:"l",x:F.x?iv(F.x):0,y:F.y?iv(F.y):0,at:F.at.timestampValue,re:TRE[x.document.name.split("/").pop()]}}).filter(t=>!bad.has(t.id)).concat(BOTS).sort((a,b)=>new Date(b.at)-new Date(a.at));
  if(TALK.length&&(cat==="헉헉 수다"||(cat==="전체"&&!cur&&scrollY<300)))drawBoard()}).catch(()=>{});
 board.addEventListener("click",e=>{const c=e.target.closest(".talk.th .cmtb,.th2 .cmtb");if(!c)return;const a=c.closest(".talk.th,.th2");a.classList.add("cop");setTimeout(()=>{const i=a.querySelector(".cin input");i&&i.focus()},30)});
 board.addEventListener("click",e=>{const b=e.target.closest(".trep");if(!b)return;const id=b.dataset.t;const R0=ls.get("dd_rep",[]);if(R0.includes(id))return toast("이미 신고했어요");
  if(!confirm("이 글을 신고할까요? 신고가 3번 쌓이면 숨겨져요."))return;R0.push(id);ls.set("dd_rep",R0);
  fbCommit([{transform:{document:FBDOC+"/report/"+id,fieldTransforms:[{fieldPath:"n",increment:{integerValue:"1"}}]}}]).then(()=>toast("신고했어요. 고마워요!")).catch(()=>{})});
-const CHEAD={"헉헉 수다":["수다","러너들끼리 편하게 나누는 이야기예요. 오른쪽 아래 연필을 눌러 오늘 뛴 이야기를 남겨 봐요."],
+const CHEAD={"헉헉 수다":["수다","러너들끼리 편하게 나누는 이야기예요. 달려달려 캐릭터들도 매일 주제 하나 들고 와서 같이 떠들어요. 오른쪽 아래 연필을 눌러 끼어들어 봐요."],
  "카드뉴스":["카드뉴스","러닝 궁금증을 카드 한 장씩 넘겨 보며 봐요. 옆으로 밀면 다음 카드예요."],
  "몸속 이야기":["몸속 이야기","달리면 몸속에서 무슨 일이 일어나는지, 연구로 확인한 내용을 쉽게 풀었어요."],
  "비교·대결":["비교·대결","러닝 vs 걷기, 아침 vs 저녁처럼 둘 중 뭐가 나은지 하나씩 비교해 봐요."],
@@ -725,13 +733,13 @@ const drawBoard=()=>{const k=q.trim();topLoad();board.classList.remove("plist");
  if(!r.length){board.classList.remove("mason");sent.hidden=true;board.innerHTML=`<p class="empty">"${esc(k)}" 관련 포스터가 아직 없어요.</p>`;return}
  feed=[];const home=cat==="전체"&&!k;let qn=0;
  if(qonly){const qi0=Math.max(0,QP.findIndex(x=>x.id===qonly));feed=QP.slice(qi0).concat(QP.slice(0,qi0)).map(item);board.classList.add("mason");makeCols();shown=0;return more()}
- if(home&&!cur)feed.push('<div class="item wx th2" hidden></div>');if(cur)feed.push(item(cur));if(home&&!cur)feed.push(ytVid(0));let yn=1,sn=0,yk=0,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
+ if(home&&!cur)feed.push('<div class="item wx th2" hidden></div>');if(home&&!cur&&TOPB)feed.push(talkItem(TOPB));if(cur)feed.push(item(cur));if(home&&!cur)feed.push(ytVid(0));let yn=1,sn=0,yk=0,yGap=5,yAt=4; /* 유튜브: 맨 위 1 → 글 5·10·15·20… 뒤로 점점 멀리 */
  let rr=r,cn=0;if(home){if(!RND)RND=new Map(P.map(p=>[p.id,Math.random()]));rr=[...r].sort((a,b)=>RND.get(a.id)-RND.get(b.id))}
  rr.forEach((p,i)=>{feed.push(item(p));if(ad&&i%10===6)feed.push(raceCard(up[Math.floor(i/10)%up.length]));if(home&&CRS.length&&i%10===9)feed.push(courseCard(CRS[cn++%CRS.length]));if(home&&XYT.length&&i%14===11)feed.push(xVid());
   if(home&&i===yAt){feed.push(YSV.length&&yk++%2===0?ytShort(sn++):ytVid(yn++));yGap+=5;yAt+=yGap}
   if(home&&i===(cur?5:4))feed.push(topCard());
   if(home&&i%5===2&&qn<QP.length)feed.push(item(QP[qn++]));
-  if(home&&i%3===1&&tn<TALK.length)feed.push(talkItem(TALK[tn++]));});
+  if(home&&i%3===1){if(!cur&&TALK[tn]===TOPB)tn++;if(tn<TALK.length)feed.push(talkItem(TALK[tn++]))}});
  board.classList.add("mason");makeCols();shown=0;more()};
 board.addEventListener("click",e=>{if(e.target.closest(".race .cap")){cat="대회 일정";drawChips();drawBoard();window.scrollTo(0,0)}});
 chips.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=cat===b.dataset.c?"전체":b.dataset.c;cur=null;drawChips();drawBoard();window.scrollTo(0,0)});
@@ -787,7 +795,7 @@ const copyTxt=u=>{const done=()=>toast("링크를 복사했어요");const old=()
 /* 화면에 보이면 숫자·댓글 불러오기 · 60% 넘게 1.5초 보면 조회 1 */
 const fpLoad=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fpLoad.unobserve(e.target);e.target._load()}}),{rootMargin:"400px"});
 const fpView=new IntersectionObserver(es=>es.forEach(e=>{const el=e.target;clearTimeout(el._vt);if(e.intersectionRatio>=.6)el._vt=setTimeout(()=>{fpView.unobserve(el);el._view()},1500)}),{threshold:[0,.6]});
-function fpInit(el){el.dataset.on=1;const id=el.dataset.id,p=P.find(x=>x.id===id)||QP.find(x=>x.id===id)||(id&&id.startsWith("t-")?{id,cap:"헉헉수다 · 달려달려",fine:(TALK.find(t=>"t-"+t.id===id)||{}).text,talk:1}:null);if(!p)return;
+function fpInit(el){el.dataset.on=1;const id=el.dataset.id,p=P.find(x=>x.id===id)||QP.find(x=>x.id===id)||(id&&id.startsWith("t-")?(T=>({id,cap:"헉헉수다 · 달려달려",fine:T.text,talk:1,cc:T.re}))(TALK.find(t=>"t-"+t.id===id)||{}):null);if(!p)return;
  const q=c=>el.querySelector(c),deck=q(".deck"),cnt=q(".count"),pv=q(".nav.p"),nx=q(".nav.n"),dots=[...el.querySelectorAll(".dots i")],n=deck?N(p):0;
  if(p.src)pollInit(el,p);
  const lb=q(".like"),lc=q(".lc"),vc={},cc=q(".cc"),box=q(".cmts"),f=q(".cin"),inp=f.querySelector("input"),post=f.querySelector("button");
@@ -809,7 +817,7 @@ function fpInit(el){el.dataset.on=1;const id=el.dataset.id,p=P.find(x=>x.id===id
   if(!p.items)return;const all=[...el.querySelectorAll(".sl.qzs")],done=all.filter(x=>x.dataset.done).length,ok=all.filter(x=>x.querySelector(".pick.ok")).length;
   q(".qsc").textContent=ok+" / "+all.length;if(done===all.length)q(".qmsg").textContent=ok===all.length?"전부 맞혔어! 러닝 박사 인정!":ok>=all.length/2?"오, 꽤 하는데? 틀린 건 글에서 확인해 봐.":"괜찮아! 글 읽고 다음 판에 다시 도전!"}));
  const draw=()=>{const list=open?all:all.slice(0,2);
-  cc.textContent=all.length.toLocaleString();box.innerHTML=(p.oc?`<p class="cmt pin"><b>달려달려<span class="op" title="운영자">운</span></b>${esc(p.oc)}</p>`:"")+(all.length>2&&!open?`<button type="button" class="cmall">댓글 ${all.length}개 모두 보기</button>`:"")+list.map(c=>`<p class="cmt"><b>${esc(c.name)}</b>${esc(c.text)}<small>${esc(ago(c.at))}</small></p>`).join("");
+  cc.textContent=all.length.toLocaleString();box.innerHTML=(p.oc?`<p class="cmt pin"><b>달려달려<span class="op" title="운영자">운</span></b>${esc(p.oc)}</p>`:"")+ccHTML(p.cc)+(all.length>2&&!open?`<button type="button" class="cmall">댓글 ${all.length}개 모두 보기</button>`:"")+list.map(c=>`<p class="cmt"><b>${esc(c.name)}</b>${esc(c.text)}<small>${esc(ago(c.at))}</small></p>`).join("");
   const m=box.querySelector(".cmall");if(m)m.onclick=()=>{open=true;draw()}};
  draw();showL();
  el._load=()=>{fetch(FB.base+"/stats/"+id+"?key="+FB.key).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.fields){likes=iv(j.fields.likes);views=iv(j.fields.views)}showL();showV()}).catch(()=>{});
